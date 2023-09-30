@@ -1,0 +1,114 @@
+@import "mixins";
+// @import "spectrum";
+
+
+:root {
+  color-scheme: light;
+  --HSDSRootFamily: "Aktiv Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+--font-mono: 'roboto mono', "Roboto Mono", Menlo, Monaco, monospace;
+--systemFont: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+--font-xs: 11px;
+--font-mini: 12px;
+--font-sm: 13px;
+--font-md: 14px;
+--font-sd: 15px;
+--font-lg: 16px;
+--font-xl: 18px;
+--font-xxl: 20px;
+--font-headline: 22px;
+--font-h1: 32px;
+
+--app-radius-xs: 3px;
+--app-radius-sm: 4px;
+--app-radius-sd: 5px;
+--app-radius-lg: 8px;
+--app-radius-xl: 16px;
+
+
+--app-color-white: #ffffff;
+--app-color-black: #000000;
+
+--color-grey-1: #262626;
+--color-grey-2: #4d4d4d;
+--color-grey-3: #707070;
+--color-grey-4: #5C756C;
+--color-green-1: #075845;
+--color-green-3: #4A786B;
+--color-green-2: #DAEFE8;
+--color-green-6: #A1ABA8;
+--color-green-7: #FAF8F7;
+
+--color-bg: var(--app-color-white);
+--color-text: var(--color-grey-1);
+
+--transition-basic: all 0.2s ease-in-out;
+
+// specific to the prototype UI
+--proto-width: 220px;
+
+--proto-14px: 0.875rem;
+--proto-15px: 0.9375rem;
+--proto-16px: 1rem;
+--proto-17px: 1.0625rem;
+--proto-18px: 1.125rem;
+--proto-19px: 1.1875rem;
+--proto-20px: 1.25rem;
+--proto-21px: 1.3125rem;
+--proto-24px: 1.5rem;
+--proto-42px: 2.652rem;
+--proto-64px: 4rem;
+
+--proto-radius: 8px;
+
+--proto-bg-primary: var(--color-green-7);
+--proto-bg-accent: var(--color-green-1);
+--proto-bg-secondary: var(--app-color-white);
+--proto-bg-tertiary: var(--app-color-white);
+--proto-bg-opaque: rgba(255,255,255,0.7);
+
+--proto-text-primary: var(--color-grey-1);
+--proto-text-secondary: var(--color-grey-2);
+--proto-text-tertiary: var(--color-grey-3);
+--proto-text-active: var(--color-green-1);
+
+--proto-border-primary: rgba(0,0,0,0.1);
+
+--proto-bg-accent: var(--spectrum-cobalt-600);
+
+}
+
+body, html {
+  font-family: var(--HSDSRootFamily);
+  font-size: var(--font-base);
+  color: var(--color-text);
+  background: var(--color-bg);
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overscroll-behavior: none;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body > div {
+  display: flex!important;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.icon-holder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.util-center {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
