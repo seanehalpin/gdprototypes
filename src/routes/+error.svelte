@@ -14,6 +14,12 @@
 
   @import "../mixins";
 
+  .util-center {
+    @include dm {
+      background: var(--color-green-1);
+    }
+  }
+
   .block {
     display: flex;
     min-height: 100vh;
@@ -21,10 +27,18 @@
     text-align: center;
     justify-content: center;
     gap: 10px;
+
+    @include dm {
+      color: var(--color-green-7);
+    }
   }
 
   a {
     color: var(--proto-text-active);
+
+    @include dm {
+      color: var(--color-green-6);
+    }
   }
 
 </style>

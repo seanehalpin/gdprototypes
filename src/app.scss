@@ -112,3 +112,24 @@ body > div {
   justify-content: center;
   align-items: center;
 }
+
+
+@include dm {
+  :root {
+    --color-green-1: #05362b;
+    --proto-bg-primary: var(--color-green-1);
+    --proto-bg-accent: var(--color-green-7);
+    --proto-bg-secondary: rgba(255,255,255,0.1);
+    --proto-bg-tertiary: rgba(255,255,255,0.1);
+    --proto-bg-opaque: rgba(255,255,255,0.1);
+
+    --proto-text-primary: var(--color-green-7);
+    --proto-text-secondary: var(--color-green-6);
+    --proto-text-tertiary: var(--color-green-6);
+    --proto-text-active: var(--color-green-1);
+
+    --proto-border-primary: rgba(255,255,255,0.1);
+
+    --proto-bg-accent: rgba(255,255,255,0.1);
+  }
+}
