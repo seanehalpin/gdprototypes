@@ -2,11 +2,10 @@ import { writable } from 'svelte/store'
 
 export let nav = writable([
   {
-    title: "Home",
+    title: "Website",
     open: true,
     links: [
-      { url: '/home/v1', text: 'Home v1' },
-      { url: '/home/v2', text: 'Home v2' },
+      { url: '/menu/v1', text: 'Menu v1' },
     ]
   },
   

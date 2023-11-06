@@ -8,73 +8,121 @@
 --font-mono: 'roboto mono', "Roboto Mono", Menlo, Monaco, monospace;
 --systemFont: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 
---font-xs: 11px;
---font-mini: 12px;
---font-sm: 13px;
---font-md: 14px;
---font-sd: 15px;
---font-lg: 16px;
---font-xl: 18px;
---font-xxl: 20px;
---font-headline: 22px;
---font-h1: 32px;
+  --font-xs: 11px;
+  --font-mini: 12px;
+  --font-sm: 13px;
+  --font-md: 14px;
+  --font-sd: 15px;
+  --font-lg: 16px;
+  --font-xl: 18px;
+  --font-xxl: 20px;
+  --font-headline: 22px;
+  --font-h1: 32px;
 
---app-radius-xs: 3px;
---app-radius-sm: 4px;
---app-radius-sd: 5px;
---app-radius-lg: 8px;
---app-radius-xl: 16px;
+  --app-radius-xs: 3px;
+  --app-radius-sm: 4px;
+  --app-radius-sd: 5px;
+  --app-radius-lg: 8px;
+  --app-radius-xl: 16px;
+
+  --app-color-white: #ffffff;
+  --app-color-black: #000000;
+
+  --color-bg: var(--app-color-white);
+
+  --blue-100: #e0eeff;
+  --blue-200: #d2ecff;
+  --blue-300: #a6c6e3;
+  --blue-400: #729cc4;
+  --blue-500: #456ea8;
+  --blue-600: #0c3a91;
+  --brown-100: #f7eee1;
+  --brown-200: #f3e9d3;
+  --brown-300: #d5c2a1;
+  --brown-400: #8f7b67;
+  --brown-500: #654e38;
+  --brown-600: #472300;
+  --green-100: #e4eeec;
+  --green-200: #cededa;
+  --green-300: #9dbcb5;
+  --green-400: #6b9b8f;
+  --green-500: #3a796a;
+  --green-600: #095845;
+  --grey-100: #d9d9d9;
+  --grey-200: #c2c2c2;
+  --grey-300: #a3a3a3;
+  --grey-400: #757575;
+  --grey-50: #f0f0f0;
+  --grey-500: #4d4d4d;
+  --grey-600: #262626;
+  --white: #ffffff;
+  --black: #000000;
+  --purple-100: #f1efff;
+  --purple-200: #eee3fa;
+  --purple-300: #cfcaec;
+  --purple-400: #9e91c7;
+  --purple-500: #8069a8;
+  --purple-600: #4f1e7a;
+  --red-100: #fbebe5;
+  --red-200: #f7d8cc;
+  --red-300: #f2c4b2;
+  --red-400: #eeb199;
+  --red-50: #fcf5f2;
+  --red-500: #ea9d7f;
+  --red-600: #d94636;
+  --yellow-100: #fbf7d6;
+  --yellow-200: #f2f2bf;
+  --yellow-300: #e6e291;
+  --yellow-400: #e6e077;
+  --yellow-500: #e0d852;
+  --yellow-600: #e0d300;
+
+  --transition-basic: all 0.2s ease-in-out;
+
+  --color-text: var(--grey-600);
+
+  --14px: 0.875rem;
+  --15px: 0.9375rem;
+  --16px: 1rem;
+  --17px: 1.0625rem;
+  --18px: 1.125rem;
+  --19px: 1.1875rem;
+  --20px: 1.25rem;
+  --21px: 1.3125rem;
+  --24px: 1.5rem;
+  --42px: 2.652rem;
+  --64px: 4rem;
 
 
---app-color-white: #ffffff;
---app-color-black: #000000;
+  // specific to the prototype UI
+  --proto-width: 220px;
 
---color-grey-1: #262626;
---color-grey-2: #4d4d4d;
---color-grey-3: #707070;
---color-grey-4: #5C756C;
---color-green-1: #075845;
---color-green-3: #4A786B;
---color-green-2: #DAEFE8;
---color-green-6: #A1ABA8;
---color-green-7: #FAF8F7;
+  --proto-14px: 0.875rem;
+  --proto-15px: 0.9375rem;
+  --proto-16px: 1rem;
+  --proto-17px: 1.0625rem;
+  --proto-18px: 1.125rem;
+  --proto-19px: 1.1875rem;
+  --proto-20px: 1.25rem;
+  --proto-21px: 1.3125rem;
+  --proto-24px: 1.5rem;
+  --proto-42px: 2.652rem;
+  --proto-64px: 4rem;
 
---color-bg: var(--app-color-white);
---color-text: var(--color-grey-1);
+  --proto-radius: 8px;
 
---transition-basic: all 0.2s ease-in-out;
+  --proto-bg-primary: #FAF8F7;
+  --proto-bg-accent: var(--green-600);
+  --proto-bg-secondary: var(--white);
+  --proto-bg-tertiary: var(--white);
+  --proto-bg-opaque: rgba(255,255,255,0.7);
 
-// specific to the prototype UI
---proto-width: 220px;
+  --proto-text-primary: var(--grey-600);
+  --proto-text-secondary: var(--grey-500);
+  --proto-text-tertiary: var(--grey-400);
+  --proto-text-active: var(--white);
 
---proto-14px: 0.875rem;
---proto-15px: 0.9375rem;
---proto-16px: 1rem;
---proto-17px: 1.0625rem;
---proto-18px: 1.125rem;
---proto-19px: 1.1875rem;
---proto-20px: 1.25rem;
---proto-21px: 1.3125rem;
---proto-24px: 1.5rem;
---proto-42px: 2.652rem;
---proto-64px: 4rem;
-
---proto-radius: 8px;
-
---proto-bg-primary: var(--color-green-7);
---proto-bg-accent: var(--color-green-1);
---proto-bg-secondary: var(--app-color-white);
---proto-bg-tertiary: var(--app-color-white);
---proto-bg-opaque: rgba(255,255,255,0.7);
-
---proto-text-primary: var(--color-grey-1);
---proto-text-secondary: var(--color-grey-2);
---proto-text-tertiary: var(--color-grey-3);
---proto-text-active: var(--color-green-1);
-
---proto-border-primary: rgba(0,0,0,0.1);
-
---proto-bg-accent: var(--spectrum-cobalt-600);
+  --proto-border-primary: rgba(0,0,0,0.1);
 
 }
 

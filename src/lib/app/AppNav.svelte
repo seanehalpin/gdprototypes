@@ -191,6 +191,7 @@
 
     &.active {
       background: var(--proto-bg-accent);
+      color: var(--proto-text-active);
       font-weight: 700;
       
       span {
