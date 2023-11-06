@@ -79,7 +79,7 @@
           <div class="title">Why Poverty?</div>
           <a href="#" class="sub-link image">
             <span>No one should live on $2.15 per day</span>
-            <img src="/mega/why-poverty.png" alt="">
+            <img src="/mega/why-poverty.png" alt="" width="220" height="147">
 
             <div class="learn">
               Learn more
