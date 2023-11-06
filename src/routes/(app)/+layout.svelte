@@ -16,7 +16,6 @@
     ready = true 
   })
 
-
 </script>
 
 {#if ready}
