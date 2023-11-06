@@ -179,7 +179,7 @@
     font-size: var(--16px);
 
     &.last {
-      flex: 1;
+      // flex: 1;
     }
   }
 
@@ -206,6 +206,7 @@
     transition: all 0.25s ease-in-out;
     min-width: 140px;
     text-wrap: nowrap;
+    white-space: -moz-pre-space;
     position: relative;
   
     &.image {
