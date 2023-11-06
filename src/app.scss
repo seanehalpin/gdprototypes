@@ -165,16 +165,16 @@ body > div {
 @include dm {
   :root {
     --color-green-1: #05362b;
-    --proto-bg-primary: var(--color-green-1);
-    --proto-bg-accent: var(--color-green-7);
+    --proto-bg-primary: #05362b;
+    --proto-bg-accent: #05362b;
     --proto-bg-secondary: rgba(255,255,255,0.1);
     --proto-bg-tertiary: rgba(255,255,255,0.1);
     --proto-bg-opaque: rgba(255,255,255,0.1);
 
-    --proto-text-primary: var(--color-green-7);
-    --proto-text-secondary: var(--color-green-6);
-    --proto-text-tertiary: var(--color-green-6);
-    --proto-text-active: var(--color-green-1);
+    --proto-text-primary: var(--green-100);
+    --proto-text-secondary: var(--green-200);
+    --proto-text-tertiary: var(--green-200);
+    --proto-text-active: var(--green-100);
 
     --proto-border-primary: rgba(255,255,255,0.1);
 
