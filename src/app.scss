@@ -4,7 +4,7 @@
 
 :root {
   color-scheme: light;
-  --HSDSRootFamily: "Aktiv Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --gd-root: "Aktiv Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 --font-mono: 'roboto mono', "Roboto Mono", Menlo, Monaco, monospace;
 --systemFont: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 
@@ -93,6 +93,19 @@
   --42px: 2.652rem;
   --64px: 4rem;
 
+  // accents 
+
+  --accent-bg-primary: var(--green-600);
+  --accent-bg-secondary: var(--grey-600);
+  --accent-bg-tertiary: var(--green-300);
+  --accent-bg-quaternary: var(--red-500);
+  --accent-bg-quinary: var(--brown-500);
+  --accent-bg-senary: var(--brown-300);
+
+  --accent-text-on-primary: var(--white);
+  --accent-text-on-secondary: var(--white);
+  --accent-text-on-tertiary: var(--green-600);
+  --accent-text-on-transparent: var(--green-600);
 
   // specific to the prototype UI
   --proto-width: 220px;
@@ -127,7 +140,7 @@
 }
 
 body, html {
-  font-family: var(--HSDSRootFamily);
+  font-family: var(--gd-root);
   font-size: var(--font-base);
   color: var(--color-text);
   background: var(--color-bg);
