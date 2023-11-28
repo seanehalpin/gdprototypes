@@ -15,7 +15,8 @@
     --_justify-content: var(--justify-content, center);
     justify-content: var(--_justify-content);
     align-items: center;
-    background: var(--proto-bg-secondary);
+    --_background: var(--background, var(--proto-bg-secondary));
+    background: var(--_background);
     --_flex-direction: var(--flex-direction, row);
     flex-direction: var(--_flex-direction);
     --_background: var(--background, transparent);

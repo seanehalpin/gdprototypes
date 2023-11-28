@@ -37,26 +37,16 @@
 
 {#if ready}
 <div class="ok">
-  <!-- <div class="button" on:click={() => fire()} in:fade|local={{duration:250}}>
-    <img class="blueprint" src="/misc/blueprint/blueprint_{imageNum}.png" alt="">
-  </div> -->
-
-  <div class="svg">
+  <div class="button" on:click={() => fire()} in:fade|local={{duration:250}}>
     <ProtoMark />
   </div>
 </div>
-
-<div class="jumbo-holder">
-  <div class="jumbo"></div>
-</div>
-<div class="overlay"></div>
-<div class="bg"></div>
 
 {/if}
 
 <style lang="scss">
 
-  @import "../../mixins";
+  @import "../../../mixins";
 
     .ok {
       display: flex;
@@ -65,6 +55,7 @@
       height: 100vh;
       width: 100%;
       z-index: 100;
+      background: var(--proto-bg-primary);
 
       &:after {
         background: url("/misc/grid.svg") center center;
@@ -103,7 +94,7 @@
     }
 
     .button {
-      width: 100px;
+      // width: 100px;
       // height: 80px;
       // border-radius: 50%;
       display: flex;
@@ -115,17 +106,17 @@
       z-index: 1000;
       transition: all 0.2s ease-in-out;
       overflow: hidden;
-      box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-      border-radius: 22px;
+      // box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+      // border-radius: 22px;
 
-      @include dm {
-        background: var(--proto-bg-secondary);
-      }
+      // @include dm {
+      //   background: var(--proto-bg-secondary);
+      // }
 
       &:hover {
         // transform: scale3d(1.6,1.6,1.6) ;
         transform: translate3d(0,-8px,0);
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+        // box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
 
       }
       &:active {

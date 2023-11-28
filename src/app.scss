@@ -126,6 +126,7 @@
 
   --proto-bg-primary: #FAF8F7;
   --proto-bg-accent: var(--green-600);
+  --proto-bg-logo: var(--green-500);
   --proto-bg-secondary: var(--white);
   --proto-bg-tertiary: var(--white);
   --proto-bg-opaque: rgba(255,255,255,0.7);
@@ -190,7 +191,7 @@ body > div {
     --proto-text-active: var(--green-100);
 
     --proto-border-primary: rgba(255,255,255,0.1);
-
+    --proto-bg-logo: rgba(255,255,255,1);
     --proto-bg-accent: rgba(255,255,255,0.1);
   }
 }
