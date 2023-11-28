@@ -84,7 +84,7 @@
       const circleY = clientY - top - circleSize / 2;
       let circleNewId = circleID++
       let circleNewColor = circleColor++
-      circles = [...circles, { x: circleX, y: circleY, id: circleNewId, color: "circle-" + circleNewColor }];
+      circles = [...circles, { x: circleX, y: circleY, id: circleNewId, color: "circle-" + circleNewColor, village: "", desc: "", editMode: false }];
     }
   }
 
@@ -96,6 +96,16 @@
     setTimeout(() => {
       circleActive = false
     }, 100);
+  }
+
+  function toggleEditMode(id) {
+    circles = circles.map(circle => {
+      if (circle.id === id) {
+        return { ...circle, editMode: true };
+      } else {
+        return { ...circle, editMode: false };
+      }
+    });
   }
 
   let circleActive = false
@@ -113,6 +123,27 @@
   --justify-content="flex-start"
   
   >
+  <div class="footer">
+    <div class="options-holder">
+      <div class="dropdown">
+        <button class="current" class:active={showDropdown} on:click={() => toggleDropdown()}>
+          {#key currentCountry}
+          <span in:fly|local={{y: 5, duration:250}}>{currentCountry}</span>
+          {/key}
+        </button>
+        {#if showDropdown}
+          <div class="options" in:fly|local={{y:-5, duration:250}} out:fly|local={{y:-5, duration:250}}>
+            {#each $map as map, i}
+              <button class="option-item {i === lastClickedIndex ? 'active' : ''}" on:click={() => handleClick(i)}>
+                <span>{map.short}</span>
+              </button>
+            {/each}
+          </div>
+        {/if}
+      </div>
+    </div>
+    <button class="primary" on:click={captureAndDownload}>Download</button>
+  </div>
   <!-- svelte-ignore a11y-no-static-element-interactions -->
   <!-- svelte-ignore a11y-click-events-have-key-events -->
   <div class="export-content">
@@ -148,37 +179,26 @@
     {#if circles.length > 0}
     <div class="location-holder">
       {#each circles as circle}
-      <div class="location" in:fade|local={{duration:250}}>
+      {#if circle.editMode}
+      <div class="location edit-mode" in:fade|local={{duration:250}}>
+        <form on:submit|preventDefault={() => circle.editMode = false}>
+          <input type="text" bind:value={circle.village} placeholder="Village">
+          <input type="text" bind:value={circle.desc} placeholder="Description">
+          <button type="submit" class="primary">Save</button>
+        </form>
+      </div>
+      {:else}
+      <div class="location" in:fade|local={{duration:250}} on:click={() => toggleEditMode(circle.id)}>
         <div class="color {circle.color}"></div>
         <div class="location-details">
-          <div class="name">Village</div>
-          <div class="desc">Description</div>
+          <div class="name">{circle.village === '' ? 'Village' : circle.village}</div>
+          <div class="desc">{circle.desc === '' ? 'Description' : circle.desc}</div>
         </div>
       </div>
+      {/if}
       {/each}
     </div>
     {/if}
-  </div>
-  <div class="footer">
-    <div class="options-holder">
-      <div class="dropdown">
-        <button class="current" class:active={showDropdown} on:click={() => toggleDropdown()}>
-          {#key currentCountry}
-          <span in:fly|local={{y: 5, duration:250}}>{currentCountry}</span>
-          {/key}
-        </button>
-        {#if showDropdown}
-          <div class="options" in:fly|local={{y:-5, duration:250}} out:fly|local={{y:-5, duration:250}}>
-            {#each $map as map, i}
-              <button class="option-item {i === lastClickedIndex ? 'active' : ''}" on:click={() => handleClick(i)}>
-                <span>{map.short}</span>
-              </button>
-            {/each}
-          </div>
-        {/if}
-      </div>
-    </div>
-    <button class="primary" on:click={captureAndDownload}>Download</button>
   </div>
 </Center>
 
@@ -187,7 +207,9 @@
   $width: 598px;
 
   .export-content {
-    padding-top: var(--24px);
+    position: relative;
+    z-index: 10;
+    // padding-top: var(--24px);
   }
 
   .country-name {
@@ -264,7 +286,7 @@
     position: absolute;
     z-index: 10;
     // background: var(--white);
-    background: var(--green-100);
+    background: var(--green-200);
     top: calc(100% + 6px);
     padding: calc(var(--16px) / 2);
     border-radius: 8px;
@@ -355,8 +377,8 @@
     }
 
     &:hover {
-      background: var(--green-200);
-      box-shadow: inset 0 0 0 2px var(--green-200);
+      background: var(--green-100);
+      box-shadow: inset 0 0 0 2px var(--green-100);
     }
 
     &.active {
@@ -392,6 +414,9 @@
     display: flex;
     gap: var(--20px);
     width: $width;
+    padding-top: var(--24px);
+    position: relative;
+    z-index: 100;
   }
 
   .circles {
@@ -452,13 +477,41 @@
   .location-holder {
     width: $width;
     background: var(--white);
-    padding: var(--16px);
+    padding: var(--16px) 0;
   }
 
   .location {
-    padding: calc(var(--16px) / 2) 0;
+    padding: var(--16px);
     display: flex;
     gap: var(--16px);
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.25s ease-in-out;
+
+    &:hover {
+      box-shadow: 0 0 0 2px var(--green-200);
+    }
+
+    &.edit-mode {
+      padding: var(--16px);
+      cursor: default;
+      background: none;
+      background: var(--green-100);
+      box-shadow: none !important;
+    }
+
+    form {
+      display: flex;
+      width: 100%;
+      gap: calc(var(--16px) / 2);
+      
+      input {
+        padding: 0 var(--16px);
+        width: 100%;
+        border: 0;
+        border-radius: 6px;
+      }
+    }
 
     .color {
       width: 24px;
@@ -523,10 +576,12 @@
     .name {
       color: var(--green-600);
       font-weight: 600;
+      word-wrap: break-word;
     }
     
     .desc {
       color: var(--grey-500);
+      word-wrap: break-word;
     }
 
   }
