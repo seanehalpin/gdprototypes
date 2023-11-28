@@ -510,6 +510,11 @@
         width: 100%;
         border: 0;
         border-radius: 6px;
+        transition: all 0.25s ease-in-out;
+        &:active, &:focus {
+          outline: none;
+          box-shadow: 0 0 0 1px var(--green-500);
+        }
       }
     }
 
