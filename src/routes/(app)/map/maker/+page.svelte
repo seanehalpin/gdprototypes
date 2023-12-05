@@ -435,6 +435,7 @@
     border-radius: 50%;
     // background-color: var(--red-400);
     border: 2px solid #FFA17D;
+    cursor: not-allowed;
     background: url('/maps/patterns/pattern-01.svg') center center;
 
     &.circle-1 {

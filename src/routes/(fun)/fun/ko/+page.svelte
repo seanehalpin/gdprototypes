@@ -6,6 +6,7 @@
   import Center from '$lib/util/Center.svelte';
 
   let ready = false
+  let blueprint = false
 
   onMount(() => {
     ready = true 
@@ -23,7 +24,10 @@
 {#if ready}
 
 <Center --background="#F5F5F5">
-  <div class="ep-133">
+  <!-- svelte-ignore a11y-no-static-element-interactions -->
+  <!-- svelte-ignore a11y-click-events-have-key-events -->
+  <div class="ep-133" class:blueprint={blueprint} on:click={() => blueprint = !blueprint}>
+    <!-- <div class="ep-133"> -->
     <div class="ep-133-module">
     <div class="connection-ports">
       <button class="output">Output</button>
@@ -73,17 +77,64 @@
         <div class="dash-item"></div>
         <div class="dash-item"></div>
         <div class="dash-item"></div>
+        <div class="dash-item lcd">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="number number-1">
+            <div class="number-angle-top-left"></div>
+            <div class="number-angle-bottom-left"></div>
+            <div class="number-angle-top-right"></div>
+            <div class="number-angle-bottom-right"></div>
+            <div class="number-small"></div>
+            <div class="number-small"></div>
+            <div class="number-middle">
+              <div class="number-small"></div>
+              <div class="number-small"></div>
+            </div>
+            <div class="number-small"></div>
+            <div class="number-small active"></div>
+          </div>
+          <div class="number number-9">
+            <div class="number-angle-top-left active"></div>
+            <div class="number-angle-bottom-left"></div>
+            <div class="number-angle-top-right active"></div>
+            <div class="number-angle-bottom-right active"></div>
+            <div class="number-small"></div>
+            <div class="number-small active-top"></div>
+            <div class="number-middle">
+              <div class="number-small"></div>
+              <div class="number-small"></div>
+            </div>
+            <div class="number-small active"></div>
+            <div class="number-small"></div>
+          </div>
+          <div class="number number-3">
+            <div class="number-angle-top-left"></div>
+            <div class="number-angle-bottom-left"></div>
+            <div class="number-angle-top-right active"></div>
+            <div class="number-angle-bottom-right active"></div>
+            <div class="number-small"></div>
+            <div class="number-small"></div>
+            <div class="number-middle">
+              <div class="number-small"></div>
+              <div class="number-small"></div>
+            </div>
+            <div class="number-small active"></div>
+            <div class="number-small"></div>
+          </div>
+
+        </div>
         <div class="dash-item"></div>
         <div class="dash-item"></div>
+        
         <div class="dash-item"></div>
         <div class="dash-item"></div>
-        <div class="dash-item"></div>
-        <div class="dash-item"></div>
-        <div class="dash-item"></div>
-        <div class="dash-item"></div>
-        <div class="dash-item"></div>
-        <div class="dash-item"></div>
-        <div class="dash-item"></div>
+        <div class="dash-item no-overflow">
+          <div class="simon top-left"></div>
+        </div>
+        <div class="dash-item no-overflow">
+          <div class="simon top-right"></div>
+        </div>
         <div class="dash-item"></div>
         <div class="dash-item"></div>
         <div class="dash-item"></div>
@@ -103,17 +154,21 @@
         <div class="dash-item"></div>
         <div class="dash-item"></div>
         <div class="dash-item"></div>
+        <div class="dash-item">
+          
+        </div>
+        <div class="dash-item no-overflow">
+          <div class="simon bottom-left"></div>
+        </div>
+        <div class="dash-item no-overflow">
+          <div class="simon bottom-right"></div>
+        </div>
+        <div class="dash-item">
+          
+        </div>
         <div class="dash-item"></div>
         <div class="dash-item"></div>
-        <div class="dash-item"></div>
-        <div class="dash-item"></div>
-        <div class="dash-item"></div>
-        <div class="dash-item"></div>
-        <div class="dash-item"></div>
-        <div class="dash-item"></div>
-        <div class="dash-item"></div>
-        <div class="dash-item"></div>
-        <div class="dash-item"></div>
+        
         <div class="dash-item">
           <div class="keys">
             <div class="key"></div>
@@ -175,8 +230,12 @@
         <div class="dash-item"></div>
         <div class="dash-item"></div>
         <div class="dash-item"></div>
-        <div class="dash-item"></div>
-        <div class="dash-item"></div>
+        <div class="dash-item">
+          <div class="red-circle"></div>
+        </div>
+        <div class="dash-item">
+          <div class="play"></div>
+        </div>
         <div class="dash-item"></div>
         <div class="dash-item"></div>
         <div class="dash-item"></div>
@@ -239,13 +298,204 @@
     </div>
     <div class="controls">
       <div class="top-controls">
-        <button class="round-button"><span>volume</span></button>
+        <button class="round-button" data-label="Volume"><span>volume</span></button>
+        <div class="entry">
+          <button class="connected"><span class="button-inside dark-gray">Sound</span></button>
+          <div class="button-panel white">Edit</div>
+        </div>
+        <div class="entry">
+          <button class="connected"><span class="button-inside dark-gray">Main</span></button>
+          <div class="button-panel orange">Commit</div>
+        </div>
+        <div class="entry long-handle">
+          <button class="connected"><span class="button-inside dark-gray">Tempo</span></button>
+          <div class="button-panel grey">Loop</div>
+        </div>
         <div class="space"></div>
-        <div class="space"></div>
-        <div class="space"></div>
-        <div class="space"></div>
-        <button class="round-button orange"><span>bpm</span></button>
-        <button class="round-button dark"><span>metronome</span></button>
+        <button class="round-button orange" data-label="Bpm"><span>bpm</span></button>
+        <button class="round-button dark" data-label="Metronome"><span>metronome</span></button>
+
+        <div class="entry small">
+          
+        </div>
+        <div class="entry small">
+          <div class="light"></div>
+          
+        </div>
+        <div class="entry small">
+          <div class="light off"></div>
+          <span class="light-text">Level</span>
+        </div>
+        <div class="entry small">
+          <div class="light off"></div>
+          <span class="light-text">Pitch</span>
+        </div>
+        <div class="entry small">
+          <div class="light"></div>
+          <span class="light-text">Time</span>
+        </div>
+        <div class="entry small center">
+          <span class="axis">X</span>
+        </div>
+        <div class="entry small center">
+          <span class="axis dark">Y</span>
+        </div>
+
+        <div class="entry">
+          <button class=""><span class="button-inside dark-gray">Keys</span></button>
+        </div>
+        <div class="entry">
+          <button class="big"><span class="button-inside big light-gray">A</span></button>
+        </div>
+        <div class="entry">
+          <button class="big"><span class="button-inside big dark-gray">7</span></button>
+        </div>
+        <div class="entry">
+          <button class="big"><span class="button-inside big dark-gray">8</span></button>
+        </div>
+        <div class="entry">
+          <button class="big"><span class="button-inside big dark-gray">9</span></button>
+        </div>
+        <div class="entry left-gain">
+          <button class="connected"><span class="button-inside">Sample</span></button>
+          <div class="button-panel white">Chop</div>
+        </div>
+        <div class="entry right-swing">
+          <button class="connected"><span class="button-inside dark-gray">Timing</span></button>
+          <div class="button-panel white">Correct</div>
+        </div>
+        <div class="entry small">
+          <button class=""><span class="button-inside dark-gray">Fader</span></button>
+        </div>
+        <div class="entry small">
+          <div class="light off"></div>
+        </div>
+        <div class="entry small">
+          <div class="light"></div>
+          <span class="light-text">Lpf</span>
+        </div>
+        <div class="entry small">
+          <div class="light"></div>
+          <span class="light-text">Hpf</span>
+        </div>
+        <div class="entry small">
+          <div class="light off"></div>
+          <span class="light-text">FX</span>
+        </div>
+        <div class="entry small">
+        
+        </div>
+        <div class="entry small">
+        
+        </div>
+        <div class="entry long">
+          <input type="range"/>
+        </div>
+        <div class="entry">
+          <button class="big"><span class="button-inside big light-gray">B</span></button>
+        </div>
+        <div class="entry">
+          <button class="big"><span class="button-inside big dark-gray">4</span></button>
+        </div>
+        <div class="entry">
+          <button class="big"><span class="button-inside big dark-gray">5</span></button>
+        </div>
+        <div class="entry">
+          <button class="big"><span class="button-inside big dark-gray">6</span></button>
+        </div>
+        <div class="entry">
+          <button class="connected"><span class="button-inside dark-gray">Fx</span></button>
+          <div class="button-panel white">Output</div>
+        </div>
+        <div class="entry">
+          <button class="connected"><span class="button-inside white">Erase</span></button>
+          <div class="button-panel white">System</div>
+        </div>
+        <div class="entry small">
+          <div class="light off"></div>
+        </div>
+        <div class="entry small">
+          <div class="light off"></div>
+          <span class="light-text">Atk</span>
+        </div>
+        <div class="entry small">
+          <div class="light off"></div>
+          <span class="light-text">Rel</span>
+        </div>
+        <div class="entry small">
+          <div class="light off"></div>
+          <span class="light-text">Pan</span>
+        </div>
+        <div class="entry small">
+        
+        </div>
+        <div class="entry small">
+        
+        </div>
+        
+        
+        <div class="entry">
+          <button class="big"><span class="button-inside big light-gray">C</span></button>
+        </div>
+        <div class="entry">
+          <button class="big"><span class="button-inside big dark-gray">1</span></button>
+        </div>
+        <div class="entry">
+          <button class="big"><span class="button-inside big dark-gray">2</span></button>
+        </div>
+        <div class="entry">
+          <button class="big"><span class="button-inside big dark-gray">3</span></button>
+        </div>
+        <div class="entry">
+          <button class="big"><span class="button-inside big big-middle white">-</span></button>
+        </div>
+        <div class="entry">
+          <button class="big"><span class="button-inside big big-middle white">+</span></button>
+        </div>
+  
+        <div class="entry small">
+          <div class="light off"></div>
+        </div>
+        <div class="entry small">
+          <div class="light off"></div>
+          <span class="light-text">Tune</span>
+        </div>
+        <div class="entry small">
+          <div class="light"></div>
+          <span class="light-text">Vel</span>
+        </div>
+        <div class="entry small">
+          <div class="light off"></div>
+          <span class="light-text">Mod</span>
+        </div>
+        <div class="entry small">
+          <div class="light off"></div>
+          <div class="light right"></div>
+        </div>
+        <div class="entry small">
+        
+        </div>
+        <div class="entry bottom">
+          <button class=""><span class="button-inside light-gray">Shift</span></button>
+        </div>
+        <div class="entry">
+          <button class="big"><span class="button-inside big light-gray">D</span></button>
+        </div>
+        <div class="entry">
+          <button class="big"><span class="button-inside big dark-gray">.</span></button>
+        </div>
+        <div class="entry">
+          <button class="big"><span class="button-inside big dark-gray">0</span></button>
+        </div>
+        <div class="entry">
+          <button class="big"><span class="button-inside big small-text dark-gray">Enter</span></button>
+        </div>
+        <div class="entry">
+          <button class="big"><span class="button-inside big small-text">Record</span></button>
+        </div>
+        <div class="entry">
+          <button class="big"><span class="button-inside big small-text gray">Play</span></button>
+        </div>
       </div>
     </div>
     </div>
@@ -263,6 +513,8 @@
     font-style: normal;
     font-display: swap;
   }
+
+  // see Nicolas Jesenberger wonderful codepen https://codepen.io/nicolasjesenberger/pen/gOqzJed
 
   $r: 4px;
   $top: 27px;
@@ -286,6 +538,38 @@
     box-shadow: 0px 11px 24px 0px rgba(0, 0, 0, 0.14), 0px 43px 43px 0px rgba(0, 0, 0, 0.12), 0px 97px 58px 0px rgba(0, 0, 0, 0.07), 0px 172px 69px 0px rgba(0, 0, 0, 0.02), 0px 269px 75px 0px rgba(0, 0, 0, 0.00);
     border-radius: $r;
     position: relative;
+
+    // used for outline purposes
+
+    &.blueprint {
+      box-shadow: none;
+      * {
+        border: 0 !important;
+        background: rgba(54,79,217, 0.3) !important;
+        color: #fff !important;
+        box-shadow: inset 0 0 0 1px rgba(255,255 ,255, 0.3) !important;
+        &:before, &:after {
+          display: none !important;
+        }
+      }
+      &:before, &:after {
+        display: none !important;
+      }
+      input[type="range"] {
+        display: none !important;
+      }
+      // .number {
+      //   display: none !important;
+      // }
+      .number {
+        .number-small, .number-angle-bottom-right.active, .number-angle-top-right.active, .number-angle-top-left.active {
+          background: rgba(54,79,217, 0.3) !important;
+          color: #fff !important;
+        }
+        
+      }
+    }
+    // end of outline
 
     &:after {
       position: absolute;
@@ -578,7 +862,7 @@
   .dash {
     height: 164px;
     background: linear-gradient(180deg, #1F1F1F 0%, #2B2A2A 100%);
-    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.40), 0px 15px 15px 0px rgba(0, 0, 0, 0.34), 0px 34px 20px 0px rgba(0, 0, 0, 0.20), 0px 60px 24px 0px rgba(0, 0, 0, 0.06), 0px 94px 26px 0px rgba(0, 0, 0, 0.01);
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.40), 0px 7px 7px 0px rgba(0, 0, 0, 0.34), 0px 16px 10px 0px rgba(0, 0, 0, 0.20), 0px 28px 11px 0px rgba(0, 0, 0, 0.06), 0px 44px 12px 0px rgba(0, 0, 0, 0.01);
     position: relative;
     z-index: 200;
     padding: 30px;
@@ -622,7 +906,7 @@
         position: absolute;
         right: 0;
         top: -40px;
-        opacity: 0.4;
+        opacity: 0.6;
       }
     }
 
@@ -641,12 +925,273 @@
         justify-content: center;
         position: relative;
 
+        &.no-overflow {
+          overflow: hidden;
+        }
+
         &.top {
           align-items: flex-start;
           // justify-content: flex-start;
         }
+
+        &.lcd {
+          grid-row: span 2; 
+          grid-column: span 5;
+          width: auto;
+          height: auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 2px;
+          position: relative;
+          padding: 0 1px;
+
+          .dot {
+            // filter: blur(0.5px);
+            position: absolute;
+            left: 41px;
+            bottom: -1px;
+            border-radius: 50%;
+            width: 5px;
+            height: 5px;
+            background: #E1ECF1;
+            z-index: 10;
+
+            &:nth-child(2) {
+              left: 86px;
+            }
+          }
+        }
+      }
+    }
+
+    .simon {
+      --fill: #FF4F2C;
+      --left: 0;
+      --top: 0;
+      position: absolute;
+      left: var(--left);
+      top: var(--top);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 13px solid var(--fill);
+
+      &.top-left {
+        --left: 0;
+        --top: 0;
+      }
+      &.top-right {
+        --left: -27px;
+        --top: 0;
+        --fill: #e32656;
+      }
+      &.bottom-left {
+        --left: 0;
+        --top: -27px;
+        --fill: #ff4000;
+      }
+      &.bottom-right {
+        --left: -27px;
+        --top: -27px;
+        --fill: #45a2e0;
+      }
+    }
+
+    .red-circle {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #FF4F2C;
+    }
+
+    .play {
+      width: 0;
+      height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 18px solid white;
+      border-radius: 2px;
+    }
+
+    .number {
+      // filter: blur(0.5px);
+      --active: #E1ECF1;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      gap: 2px;
+      overflow: hidden;
+      clip-path: polygon(30% 0%, 70% 0%, 100% 20%, 100% 80%, 70% 100%, 30% 100%, 0% 80%, 0% 20%);
+      position: relative;
+
+      .active {
+        background: var(--active) !important;
       }
 
+      .active-top {
+        background: linear-gradient(180deg, var(--active) 0%, var(--active) 46%, #353535 47%, #353535 100%) !important;
+      }
+
+      &:after {
+        content: "";
+        height: 5px;
+        width: 18px;
+        position: absolute;
+        left: 12px;
+        top: 0;
+        background: #353535;
+        box-shadow: 0 2px 0 #222;
+        z-index: 20;
+      }
+
+      &:before {
+        content: "";
+        height: 5px;
+        width: 18px;
+        position: absolute;
+        left: 12px;
+        bottom: 0;
+        background: #353535;
+        box-shadow: 0 -2px 0 #222;
+        z-index: 20;
+      }
+
+      &.number-9, &.number-3 {
+        &:after, &:before {
+          background: var(--active);
+        }
+      }
+
+      .number-small {
+        width: 5px;
+        background: #353535;
+        height: 100%;
+
+        &.active {
+          background: #E1ECF1;
+        }
+      }
+
+      .number-middle {
+        flex: 1;
+        gap: 12px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
+        z-index: 1;
+        padding: 7px 0;
+
+          .number-small {
+            position: relative;
+            
+            &:nth-child(1) {
+              clip-path: polygon(0% 0%, 100% 0%, 100% 20%, 100% 80%, 50% 100%, 50% 100%, 0% 80%, 0% 20%);
+            }
+
+            &:nth-child(2) {
+              clip-path: polygon(50% 0%, 50% 0%, 100% 20%, 100% 80%, 100% 100%, 100% 100%, 0% 100%, 0% 20%);
+            }
+          }
+        
+        &:before {
+          content: "";
+          width: 0;
+          height: 0;
+          border-top: 5px solid transparent;
+          border-bottom: 5px solid transparent;
+          border-left: 10px solid #242424;
+          position: absolute;
+          left: -7px;
+          top: 19px;
+        }
+        &:after {
+          content: "";
+          width: 0;
+          height: 0;
+          border-top: 5px solid transparent;
+          border-bottom: 5px solid transparent; 
+          border-right: 10px solid #242424; 
+          position: absolute;
+          right: -7px;
+          top: 19px;
+        }
+      }
+
+      .number-angle-top-left {
+        position: absolute;
+        left: 8px;
+        top: 18px;
+        background: #353535;
+        width: 14px;
+        height: 5px;
+        z-index: 200;
+        transform: rotate(26deg);
+        border-radius: 3px;
+
+        &:before {
+          content: "";
+          width: 20px;
+          height: 2px;
+          z-index: 200;
+          // background: red;
+          background: #242424;
+          left: 4px;
+          top: 2px;
+          position: absolute;
+          transform: rotate(-26deg);
+          
+        }
+
+        &:after {
+          content: "";
+          width: 12px;
+          height: 2px;
+          z-index: 200;
+          // background: blue;
+          background: #242424;
+          left: 8px;
+          top: 2px;
+          position: absolute;
+          transform: rotate(64deg);
+        }
+      }
+      .number-angle-bottom-left {
+        position: absolute;
+        left: 8px;
+        bottom: 19px;
+        background: #353535;
+        width: 14px;
+        height: 5px;
+        z-index: 60;
+        transform: rotate(-26deg);
+        border-radius: 3px;
+      }
+      .number-angle-top-right {
+        position: absolute;
+        right: 8px;
+        top: 18px;
+        background: #353535;
+        width: 14px;
+        height: 5px;
+        z-index: 50;
+        transform: rotate(-26deg);
+        border-radius: 3px;
+      }
+      .number-angle-bottom-right {
+        position: absolute;
+        right: 8px;
+        bottom: 19px;
+        background: #353535;
+        width: 14px;
+        height: 5px;
+        z-index: 50;
+        transform: rotate(26deg);
+        border-radius: 3px;
+      }
     }
 
     .battery {
@@ -829,6 +1374,398 @@
     overflow: hidden;
     padding: 26px;
 
+    .entry {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 55px;
+
+      &.small {
+        height: 26px;
+      }
+
+      &.center {
+        align-items: center;
+        justify-content: center;
+      }
+
+      &.bottom {
+        justify-content: flex-end;
+      }
+
+      &.long {
+        position: relative;
+        grid-row: span 4; 
+        grid-column: span 1;
+        height: 100%;
+      }
+
+      &.long-handle {
+        &:before {
+          content: "";
+          width: 146px;
+          height: 10px;
+          border: 1px solid #2F2E2E;
+          border-bottom: 0;
+          border-right: 0;
+          position: absolute;
+          top: -15px;
+          left: 50%;
+        }
+        &:after {
+          content: "";
+          width: 28px;
+          height: 10px;
+          border: 1px solid #2F2E2E;
+          border-bottom: 0;
+          border-right: 0;
+          border-left: 0;
+          position: absolute;
+          top: -15px;
+          left: 209px;
+        }
+      }
+
+      &.left-gain {
+        --main-color: #E96231;
+        &:before {
+          content: "";
+          width: 68px;
+          height: 10px;
+          border: 1px solid var(--main-color);
+          border-bottom: 0;
+          position: absolute;
+          top: -25px;
+          left: -44px;
+          transform: rotate(-90deg);
+          z-index: 1;
+        }
+        &:after {
+          font-family: $techno;
+          color: var(--main-color);
+          font-size: 11px;
+          letter-spacing: 0.1px;
+          background: #BDBBB9;
+          content: "Gain";
+          position: absolute;
+          top: -29px;
+          left: -31px;
+          transform: rotate(-91deg);
+          z-index: 2;
+          padding: 0 6px;
+        }
+      }
+
+      &.right-swing {
+        --main-color: #242424;
+        &:before {
+          content: "";
+          width: 68px;
+          height: 10px;
+          border: 1px solid var(--main-color);
+          border-bottom: 0;
+          position: absolute;
+          top: -25px;
+          right: -44px;
+          transform: rotate(90deg);
+          z-index: 1;
+        }
+        &:after {
+          font-family: $techno;
+          color: var(--main-color);
+          font-size: 11px;
+          letter-spacing: 0.1px;
+          background: #bdbcba;
+          content: "Swing";
+          position: absolute;
+          top: -29px;
+          right: -36px;
+          transform: rotate(-90deg);
+          z-index: 2;
+          padding: 0 6px;
+        }
+      }
+
+    }
+
+    .axis {
+      --background: linear-gradient(180deg, #FE4A17 35.19%, #F83A0A 100%);
+      --dark-shadow: #AA311C;
+      box-shadow: 0.5px 0 0 0 var(--dark-shadow);
+      // height: 10px;
+      width: 15px;
+      color: #BAB8B7;
+      display: flex;
+      background: var(--background);
+      align-items: center;
+      justify-content: center;
+      font-family: $techno;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1px;
+      border-radius: 4px;
+
+      &.dark {
+        --background: linear-gradient(180deg, #101010 35%, #141414 100%);
+        --dark-shadow: #000;
+      }
+    }
+
+    .light-text {
+      font-family: $techno;
+      position: absolute;
+      left: 25px;
+      top: 5px;
+      color: #0E0D0D;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1px;
+    }
+
+    .light {
+      --background-color: linear-gradient(180deg, #FE4A17 35.19%, #F83A0A 100%);
+      --light-shadow-color: rgba(255, 255, 255, 0.2);
+      --medium-shadow-color: rgba(255, 255, 255, 0.5);
+      --fuzz: #d72d12;
+      --dark-shadow-color: rgba(0,0,0,0.3);
+
+      position: absolute;
+      left: 9px;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--background-color);
+      box-shadow: inset 0 0 0 0.5px var(--dark-shadow-color), 
+                  inset 0.5px 0.5px 0 0 var(--light-shadow-color), 
+                  0 0.5px 0 0 var(--medium-shadow-color),
+                  0.5px 0.5px 0 0 var(--light-shadow-color),
+                  0 0 3px 0 var(--fuzz);
+      
+      &.off {
+        --background-color: linear-gradient(145deg, #403F3F 35%, #646260 100%);
+        --light-shadow-color: rgba(255, 255, 255, 0.2);
+        --medium-shadow-color: rgba(255, 255, 255, 0.7);
+        --fuzz: transparent;
+      }
+
+      &.right {
+        left: auto;
+        right: 8px;
+      }
+    }
+
+    input[type="range"] {
+      position: absolute;
+      top: 92px;
+      left: -34px;
+      transform: rotate(270deg);
+      -webkit-appearance: none;
+      appearance: none;
+      background: transparent;
+      cursor: pointer;
+      width: 120px;
+
+      &:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        height: 50px;
+        width: 1px;
+        left: 50%;
+        top: -21px;
+        background-color: #050404;
+      }
+    }
+    input[type="range"]::-webkit-slider-runnable-track {
+      background: #0D0C0C;
+      height: 8px;
+      border-radius: 50px;
+    }
+    input[type="range"]::-moz-range-track {
+      background: #0D0C0C;
+      height: 8px;
+      border-radius: 50px;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      --background-color: #676767;
+      --light-shadow-color: rgba(255, 255, 255, 0.8);
+      --dark-shadow-color: #383838;
+      -webkit-appearance: none; /* Override default look */
+      appearance: none;
+      margin-top: -10px; /* Centers thumb on the track */
+      background-color: var(--background-color);
+      border: 0;
+      border-radius: 50%;
+      transform: rotate(90deg);
+      box-shadow:
+        inset 0.5px 1px 1px var(--light-shadow-color),
+        inset -1px -1px 1px var(--dark-shadow-color),
+        1px 1px 3px 0px rgba(0, 0, 0, 0.23), 4px 4px 5px 0px rgba(0, 0, 0, 0.2), 9px 8px 7px 0px rgba(0, 0, 0, 0.22), 16px 14px 9px 0px rgba(0, 0, 0, 0.03), 25px 22px 9px 0px rgba(0, 0, 0, 0);
+      height: 27px;
+      width: 27px;
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      border: none; /*Removes extra border that FF applies*/
+      border-radius: 0; /*Removes default border-radius that FF applies*/
+      --background-color: #676767;
+      --light-shadow-color: rgba(255, 255, 255, 0.8);
+      --dark-shadow-color: #383838;
+      -webkit-appearance: none; /* Override default look */
+      appearance: none;
+      margin-top: -10px; /* Centers thumb on the track */
+      background-color: var(--background-color);
+      border: 0;
+      border-radius: 50%;
+      transform: rotate(90deg);
+      box-shadow:
+        inset 0.5px 1px 1px var(--light-shadow-color),
+        inset -1px -1px 1px var(--dark-shadow-color),
+        1px 1px 3px 0px rgba(0, 0, 0, 0.23), 4px 4px 5px 0px rgba(0, 0, 0, 0.2), 9px 8px 7px 0px rgba(0, 0, 0, 0.22), 16px 14px 9px 0px rgba(0, 0, 0, 0.03), 25px 22px 9px 0px rgba(0, 0, 0, 0);
+      height: 27px;
+      width: 27px;
+    }
+
+    button {
+      cursor: pointer;
+      display: flex;
+      border: 2px solid transparent;
+      border-radius: 2px;
+      background-color: #010101;
+      box-shadow: 1px 1px 1px rgb(255 255 255 / .6);
+      width: 100%;
+      padding: 0px;
+      margin: 0;
+      height: calc(55px / 2);
+
+      &.big {
+        height: 100%;
+      }
+
+      &.connected {
+        border-radius: 2px 2px 0 0;
+      }
+    }
+
+    .button-panel {
+      --background-color: linear-gradient(180deg, #FE4A17 35.19%, #F83A0A 100%);
+      --light-shadow-color: rgba(255, 255, 255, 0.4);
+      --dark-shadow-color: #d72d12;
+      --text-color: #fff;
+      flex: 1;
+      font-family: $techno;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      color: var(--text-color);
+      background: var(--background-color);
+      font-size: 10px;
+      width: 100%;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.2px;
+      border-radius: 0 0 2px 2px;
+      box-shadow: inset 0 0 0 0.5px var(--dark-shadow-color), inset 1px 1px 0 0 var(--light-shadow-color), 0 0.5px 0 0 var(--light-shadow-color);
+
+      &.grey {
+        --background-color: #8D8C8B;
+        --light-shadow-color: rgba(255, 255, 255, 0.4);
+        --dark-shadow-color: #504E4D;
+        --text-color: #fff;
+      }
+      &.white {
+        --background-color: #E3DFDD;
+        --light-shadow-color: rgba(255, 255, 255, 0.7);
+        --dark-shadow-color: #c0bbb9;
+        --text-color: #050404;
+        box-shadow: inset 0 0 0 0.5px var(--dark-shadow-color), inset 1px 1px 0 0 var(--light-shadow-color);
+      }
+
+    }
+
+    .button-inside {
+      font-family: $techno;
+      --background-color: linear-gradient(180deg, #FE4A17 35.19%, #F83A0A 100%);
+      --light-shadow-color: #ffb147;
+      --dark-shadow-color: #d72d12;
+      --text-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border-radius: 4px;
+      width: 100%;
+      height: 100%;
+      font-size: 10px;
+      background: var(--background-color);
+      box-shadow:
+        inset 0.5px 0.5px 0.5px var(--light-shadow-color),
+        inset -0.5px -0.5px 0.5px var(--dark-shadow-color),
+        1px 1px 3px 0px rgba(0, 0, 0, 0.23), 4px 4px 5px 0px rgba(0, 0, 0, 0.2), 9px 8px 7px 0px rgba(0, 0, 0, 0.22), 16px 14px 9px 0px rgba(0, 0, 0, 0.03), 25px 22px 9px 0px rgba(0, 0, 0, 0);
+      text-align: center;
+      text-transform: uppercase;
+      color: var(--text-color);
+      letter-spacing: 0.2px;
+      transition-property: transform, background-color, box-shadow;
+      transition-duration: .2s;
+      transition-timing-function: cubic-bezier(.25, .5, .5, 1);
+
+      &.big {
+        border-radius: 6px;
+        padding: 2px 0 0 6px;
+        font-size: 16px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        box-shadow:
+        inset 0.5px 1px 1px var(--light-shadow-color),
+        inset -1px -1px 1px var(--dark-shadow-color),
+        1px 1px 3px 0px rgba(0, 0, 0, 0.23), 4px 4px 5px 0px rgba(0, 0, 0, 0.2), 9px 8px 7px 0px rgba(0, 0, 0, 0.22), 16px 14px 9px 0px rgba(0, 0, 0, 0.03), 25px 22px 9px 0px rgba(0, 0, 0, 0);
+      }
+
+      &.big-middle {
+        padding: 0;
+        font-size: 22px;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &.small-text {
+        padding: 6px 0 0 0;
+        font-size: 10px;
+        align-items: flex-start;
+        justify-content: center;
+      }
+      
+      &.dark-gray {
+        --background-color: #2f2e2e;
+        --background-color-active: #313030;
+        --light-shadow-color: #a7a7a7;
+        --dark-shadow-color: #1c1c1c;
+      }
+
+      &.white {
+        --background-color: #cfcbca;
+        --light-shadow-color: #fafafa;
+        --dark-shadow-color: #646464;
+        --text-color: #010101;
+      }
+      
+      &.light-gray {
+        --background-color: #bcbcbc;
+        --light-shadow-color: #f7f7f7;
+        --dark-shadow-color: #646464;
+      }
+      
+      &.gray {
+        --background-color: #676767;
+        --light-shadow-color: #b8b7b5;
+        --dark-shadow-color: #383838;
+      }
+    }
+
     &:before {
       pointer-events: none;
       content: "";
@@ -846,13 +1783,18 @@
     .top-controls {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(55px, 1fr));
-      gap: 26px;
+      grid-template-rows: 55px 26px;
+      // gap: 26px;
+      gap: 0;
+      grid-column-gap: 26px;
       width: 100%;
       position: relative;
       z-index: 120;
     }
 
     .round-button {
+      position: relative;
+      z-index: 50;
       width: 55px;
       height: 55px;
       border-radius: 50%;
@@ -873,6 +1815,20 @@
         top: 14px;
         background: linear-gradient(180deg, #F2EEEC 35.19%, #CECCCB 100%);
         box-shadow: 0px 1px 0px 0px #FFF inset, 0px 1px 4px 0px #FFF inset, -0.5px -0.5px 1px 0px #B5AEAB inset, 1px 1px 3px rgba(0, 0, 0, 0.23), 4px 4px 5px rgba(0, 0, 0, 0.20), 9px 8px 7px rgba(0, 0, 0, 0.12), 16px 14px 9px rgba(0, 0, 0, 0.03), 0px 0.5px 0px rgba(0, 0, 0, 0.06), -1px -1px 4px rgba(255, 255, 255, 0.35);
+      }
+
+      &:before {
+        width: 65px;
+        text-align: center;
+        content: attr(data-label);
+        position: absolute;
+        top: -20px;
+        left: -5px;
+        color: #0E0D0D;
+        font-family: $techno;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.1px;
       }
 
       &.orange {

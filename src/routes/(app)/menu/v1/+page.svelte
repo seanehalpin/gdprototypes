@@ -47,7 +47,12 @@
   <title>GD: Menu exploration</title>
 </svelte:head>
 
-<Center>
+<Center
+--flex-direction="column" 
+  --background="var(--white)" 
+  --gap="var(--24px)" 
+  --justify-content="flex-start"
+>
   <div class="menu">
     <div class="links">
       {#each links as link}
@@ -99,6 +104,7 @@
   $hover: #fff;
 
   .menu {
+    margin-top: 10px;
     position: relative;
   }
 
