@@ -1,36 +1,59 @@
 <script lang="ts">
-    import GdLogoSingle from '$lib/svg/GdLogoSingle.svelte';
-    import Center from '$lib/util/Center.svelte';
-    import type { PageData } from './$types';
-    import { fade } from 'svelte/transition'
-    export let data: PageData;
+  import GdLogoSingle from '$lib/svg/GdLogoSingle.svelte';
+  import Center from '$lib/util/Center.svelte';
+  import type { PageData } from './$types';
 
-    let name = "Joseph"
+  import { onMount, onDestroy } from 'svelte'
+  import { fade, fly } from 'svelte/transition'
+  import { backOut, quartOut, quintIn } from "svelte/easing"
+  import Story from '$lib/util/Story.svelte'
+  export let data: PageData;
 
-    let formSmall = true
+  let ready = false
+  let name = "Joseph"
+  let formSmall = true
 
-    $: number = 0
+  $: number = 0
 
-    let dots = [
-      {id: 0, active: true},
-      {id: 1, active: false},
-      {id: 2, active: false},
-      {id: 3, active: false},
-    ]
+  let dots = [
+    {id: 0, active: true},
+    {id: 1, active: false},
+    {id: 2, active: false},
+    {id: 3, active: false},
+  ]
 
-    let quotes = [
-      "I've always had a lot of passion for beekeeping but my financial situation made it impossible for me to grow my business. I opted for casual jobs. I would be lucky to even make $2 a day.", "The money I received from GiveDirectly awakened my desire to restart this project. The happiness I felt can't even be put into words.", "I've already bought 11 locally made beehives using a portion of my first transfer, and I intend to add 5 more. This cost me $130.", "I am anticipating relatively high profits and I plan to use my income to purchase a piece of land and build a new house."
-    ]
-    $: quote = quotes[number]
+  let quotes = [
+    "I've always had a lot of passion for beekeeping but my financial situation made it impossible for me to grow my business. I opted for casual jobs. I would be lucky to even make $2 a day.", "The money I received from GiveDirectly awakened my desire to restart this project. The happiness I felt can't even be put into words.", "I've already bought 11 locally made beehives using a portion of my first transfer, and I intend to add 5 more. This cost me $130.", "I am anticipating relatively high profits and I plan to use my income to purchase a piece of land and build a new house."
+  ]
+  $: quote = quotes[number]
 
-    setInterval(() => {
-    number = (number + 1) % 4;
-    dots.forEach(dot => {
-      dot.active = false
-      dot.active = dot.id === number;
-    });
-    dots = dots
-    }, 8000);
+  setInterval(() => {
+  number = (number + 1) % 4;
+  dots.forEach(dot => {
+    dot.active = false
+    dot.active = dot.id === number;
+  });
+  dots = dots
+  }, 8000);
+
+  $: filteredKey = 1
+
+  const storyKey = (story: number) => filteredKey = story
+
+  const handleStory = (event: { detail: { text: any; }; }) => {
+    let story = event.detail.text
+    filteredKey = story
+  }
+
+  let storys = [
+    {id: 1, title: "Donate with story", loom: "182b94f341c64e56951a834248e502a3", description: "", key: 1},
+  ]
+
+  let showStory = true
+
+  onMount(() => {
+    ready = true
+  })
 
 </script>
 
@@ -38,6 +61,10 @@
   <title>Donate v1 | GiveDirectly</title>
 </svelte:head>
 
+{#if ready}
+{#if showStory}
+  <Story bind:filteredKey={filteredKey} bind:storys={storys} />
+{/if}
 <Center
   --flex-direction="column" 
   --background="var(--white)" 
@@ -179,6 +206,7 @@
     </div>
   </div>
 </Center>
+{/if}
 
 <style lang="scss">
 
