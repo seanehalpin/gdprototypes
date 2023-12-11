@@ -23,6 +23,9 @@
     background: var(--_background);
     --_gap: var(--gap, 0);
     gap: var(--_gap);
+    --_overflow: var(--overflow, initial);
+    overflow: var(--_overflow);
+    
   }
 
 </style>

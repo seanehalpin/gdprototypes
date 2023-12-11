@@ -23,12 +23,16 @@
 
 {#if ready}
 
-<Center --background="#F5F5F5">
+<Center 
+--background="#F5F5F5"
+--flex-direction="column"
+--gap="80px"
+>
   <!-- svelte-ignore a11y-no-static-element-interactions -->
   <!-- svelte-ignore a11y-click-events-have-key-events -->
-  <div class="ep-133" class:blueprint={blueprint} on:click={() => blueprint = !blueprint}>
+  <div class="ep-133" class:blueprint={blueprint}>
     <!-- <div class="ep-133"> -->
-    <div class="ep-133-module">
+    <div class="ep-133-module" class:active={blueprint}>
     <div class="connection-ports">
       <button class="output">Output</button>
       <button class="input">Input</button>
@@ -74,7 +78,8 @@
         <div class="dash-item">
           <div class="letter red dimmed">A</div>
         </div>
-        <div class="dash-item"></div>
+        <div class="dash-item">
+        </div>
         <div class="dash-item"></div>
         <div class="dash-item"></div>
         <div class="dash-item lcd">
@@ -136,8 +141,12 @@
           <div class="simon top-right"></div>
         </div>
         <div class="dash-item"></div>
-        <div class="dash-item"></div>
-        <div class="dash-item"></div>
+        <div class="dash-item no-overflow dimmed">
+          <div class="simon top-left"></div>
+        </div>
+        <div class="dash-item no-overflow dimmed">
+          <div class="simon top-right"></div>
+        </div>
         <div class="dash-item">
           <div class="mute"></div>
         </div>
@@ -164,10 +173,23 @@
           <div class="simon bottom-right"></div>
         </div>
         <div class="dash-item">
-          
+          <div class="small-squares red">
+            <div class="small-square"></div>
+            <div class="small-square"></div>
+            <div class="small-square"></div>
+            <div class="small-square"></div>
+            <div class="small-square"></div>
+            <div class="small-square"></div>
+            <div class="small-square"></div>
+            <div class="small-square"></div>
+          </div>
         </div>
-        <div class="dash-item"></div>
-        <div class="dash-item"></div>
+        <div class="dash-item no-overflow dimmed">
+          <div class="simon bottom-left"></div>
+        </div>
+        <div class="dash-item no-overflow dimmed">
+          <div class="simon bottom-right"></div>
+        </div>
         
         <div class="dash-item">
           <div class="keys">
@@ -239,14 +261,83 @@
         <div class="dash-item"></div>
         <div class="dash-item"></div>
         <div class="dash-item"></div>
+        <div class="dash-item">
+          <div class="fader">
+            <div class="fader-row">
+              <div class="fader-lg"></div>
+              <div class="fader-md"></div>
+              <div class="fader-md"></div>
+              <div class="fader-sm"></div>
+              <div class="fader-sm"></div>
+              <div class="fader-sm"></div>
+            </div>
+            <div class="fader-row">
+              <div class="fader-lg"></div>
+              <div class="fader-md"></div>
+              <div class="fader-md"></div>
+              <div class="fader-sm"></div>
+              <div class="fader-sm"></div>
+              <div class="fader-sm"></div>
+            </div>
+            <div class="fader-row">
+              <div class="fader-lg"></div>
+              <div class="fader-md"></div>
+              <div class="fader-md"></div>
+              <div class="fader-sm"></div>
+              <div class="fader-sm"></div>
+              <div class="fader-sm"></div>
+            </div>
+          </div>
+        </div>
+        <div class="dash-item">
+          <div class="fx">FX</div>
+        </div>
+        <div class="dash-item">
+          <div class="fader">
+            <div class="fader-row">
+              <div class="fader-sm"></div>
+              <div class="fader-sm"></div>
+              <div class="fader-sm"></div>
+              <div class="fader-md"></div>
+              <div class="fader-md"></div>
+              <div class="fader-lg"></div>
+            </div>
+            <div class="fader-row">
+              <div class="fader-sm"></div>
+              <div class="fader-sm"></div>
+              <div class="fader-sm"></div>
+              <div class="fader-md"></div>
+              <div class="fader-md"></div>
+              <div class="fader-lg"></div>
+            </div>
+            <div class="fader-row">
+              <div class="fader-sm"></div>
+              <div class="fader-sm"></div>
+              <div class="fader-sm"></div>
+              <div class="fader-md"></div>
+              <div class="fader-md"></div>
+              <div class="fader-lg"></div>
+            </div>
+          </div>
+        </div>
         <div class="dash-item"></div>
         <div class="dash-item"></div>
         <div class="dash-item"></div>
-        <div class="dash-item"></div>
-        <div class="dash-item"></div>
-        <div class="dash-item"></div>
-        <div class="dash-item"></div>
-        <div class="dash-item"></div>
+        <div class="dash-item">
+          <div class="small-squares blue">
+            <div class="small-square"></div>
+            <div class="small-square"></div>
+            <div class="small-square"></div>
+            <div class="small-square"></div>
+            <div class="small-square"></div>
+            <div class="small-square"></div>
+            <div class="small-square"></div>
+            <div class="small-square"></div>
+          </div>
+        </div>
+        <div class="dash-item">
+          <div class="q"></div>
+        </div>
         <div class="dash-item"></div>
         <div class="dash-item"></div>
         <div class="dash-item">
@@ -293,6 +384,48 @@
         </div>
         <div class="dash-item">
           <div class="letter red dimmed">D</div>
+        </div>
+        <div class="dash-item two-col">
+          <div class="sound">Sound</div>
+        </div>
+        <div class="dash-item">
+        </div>
+        <div class="dash-item two-col">
+          <div class="sound red dimmed">Main</div>
+        </div>
+        <div class="dash-item">
+        </div>
+        <div class="dash-item">
+        </div>
+        <div class="dash-item">
+        </div>
+        <div class="dash-item">
+        </div>
+        <div class="dash-item">
+        </div>
+        <div class="dash-item">
+        </div>
+        <div class="dash-item">
+        </div>
+        <div class="dash-item">
+        </div>
+        <div class="dash-item">
+        </div>
+        <div class="dash-item">
+          <div class="small-squares white">
+            <div class="small-square"></div>
+            <div class="small-square"></div>
+            <div class="small-square"></div>
+            <div class="small-square"></div>
+            <div class="small-square"></div>
+            <div class="small-square"></div>
+            <div class="small-square"></div>
+            <div class="small-square"></div>
+          </div>
+        </div>
+        <div class="dash-item">
+        </div>
+        <div class="dash-item">
         </div>
       </div>
     </div>
@@ -342,7 +475,7 @@
         </div>
 
         <div class="entry">
-          <button class=""><span class="button-inside dark-gray">Keys</span></button>
+          <button class="small"><span class="button-inside dark-gray">Keys</span></button>
         </div>
         <div class="entry">
           <button class="big"><span class="button-inside big light-gray">A</span></button>
@@ -365,7 +498,7 @@
           <div class="button-panel white">Correct</div>
         </div>
         <div class="entry small">
-          <button class=""><span class="button-inside dark-gray">Fader</span></button>
+          <button class="small"><span class="button-inside dark-gray">Fader</span></button>
         </div>
         <div class="entry small">
           <div class="light off"></div>
@@ -476,7 +609,7 @@
         
         </div>
         <div class="entry bottom">
-          <button class=""><span class="button-inside light-gray">Shift</span></button>
+          <button class="small"><span class="button-inside light-gray">Shift</span></button>
         </div>
         <div class="entry">
           <button class="big"><span class="button-inside big light-gray">D</span></button>
@@ -499,6 +632,15 @@
       </div>
     </div>
     </div>
+  </div>
+
+  <div class="ui-control">
+    <label class="ui-label">
+      <button class="ui-button" type="button" aria-pressed={blueprint} class:active={blueprint} on:click={() => blueprint = !blueprint}>
+        <div class="ui-knob" class:active={blueprint}></div>
+      </button>
+    <div class="ui-text">Blueprint</div>
+  </label>
   </div>
 </Center>
 
@@ -526,23 +668,18 @@
     font-family: $sono;
     width: 600px;
     // background-color: #E4E1DF;
-    background-image: linear-gradient(
-    90deg,
-    rgba(243,243,243,0.75),
-    rgba(243,243,243,0) 15% 85%,
-    rgba(243,243,243,0.75)
-    ), 
-    linear-gradient(#FEFEFE, #F9F7F8),
-    linear-gradient(#DDD9DA, #E2DEDF, #EAE8EB, #F3F1F4);
+    
     // box-shadow: 0px 25px 20px -15px rgba(0, 0, 0, 0.1), 10px 65px 50px -10px rgba(0, 0, 0, 0.05);
-    box-shadow: 0px 11px 24px 0px rgba(0, 0, 0, 0.14), 0px 43px 43px 0px rgba(0, 0, 0, 0.12), 0px 97px 58px 0px rgba(0, 0, 0, 0.07), 0px 172px 69px 0px rgba(0, 0, 0, 0.02), 0px 269px 75px 0px rgba(0, 0, 0, 0.00);
+    // box-shadow: 0px 11px 24px 0px rgba(0, 0, 0, 0.14), 0px 43px 43px 0px rgba(0, 0, 0, 0.12), 0px 97px 58px 0px rgba(0, 0, 0, 0.07), 0px 172px 69px 0px rgba(0, 0, 0, 0.02), 0px 269px 75px 0px rgba(0, 0, 0, 0.00);
     border-radius: $r;
     position: relative;
-
+    perspective: 2000px;
     // used for outline purposes
 
     &.blueprint {
-      box-shadow: none;
+      background: transparent;
+      box-shadow: 0px 11px 24px 0px rgba(0, 0, 0, 0), 0px 43px 43px 0px rgba(0, 0, 0, 0), 0px 97px 58px 0px rgba(0, 0, 0, 0), 0px 172px 69px 0px rgba(0, 0, 0, 0), 0px 269px 75px 0px rgba(0, 0, 0, 0);
+      transition: all 500ms ease 0s;
       * {
         border: 0 !important;
         background: rgba(54,79,217, 0.3) !important;
@@ -586,6 +723,11 @@
     .ep-133-module {
       overflow: hidden;
       position: relative;
+      transition: all 500ms ease 0s;
+      
+      &.active {
+        // transform: translateY(0px) scale(1.15) rotateX(30deg) rotateY(0deg) translateZ(0px);
+      }
     }
 
   }
@@ -845,11 +987,11 @@
         overflow: hidden;
         flex-shrink: 0;
         background: #5A5857;
-        box-shadow: -0.5px -0.5px 1px 0px #adadad inset, 2px 2px 4px 0px rgba(0, 0, 0, 0.70) inset, -0.5px -0.5px 1px #5A5857, 0.5px 0.5px 0.5px rgba(255, 255, 255, 0.60);
+        box-shadow: -0.5px -0.5px 1px 0px #adadad inset, 2px 2px 4px 0px rgba(0, 0, 0, 0.70) inset, -0.5px -0.5px 0px #5A5857, 0.5px 0.5px 0px rgba(255, 255, 255, 0.60);
 
         &:nth-child(1), &:nth-child(2), &:nth-child(13), &:nth-child(14),&:nth-child(15), &:nth-child(16), &:nth-child(27), &:nth-child(28), &:nth-child(141), &:nth-child(142),  &:nth-child(153),  &:nth-child(154),&:nth-child(155), &:nth-child(156), &:nth-child(167), &:nth-child(168) {
           background: #83807E;
-          box-shadow: -0.5px -0.5px 1px 0px #adadad inset, 1px 1px 2px 0px rgba(0, 0, 0, 0.60) inset, -0.5px -0.5px 1px #5A5857, 0.5px 0.5px 0.5px rgba(255, 255, 255, 0.60);
+          box-shadow: -0.5px -0.5px 0px 0px #adadad inset, 1px 1px 2px 0px rgba(0, 0, 0, 0.60) inset, -0.5px -0.5px 0px #5A5857, 0.5px 0.5px 0px rgba(255, 255, 255, 0.60);
         }
         
       }
@@ -934,6 +1076,11 @@
           // justify-content: flex-start;
         }
 
+        &.two-col {
+          grid-column: span 2;
+          width: 100%;
+        }
+
         &.lcd {
           grid-row: span 2; 
           grid-column: span 5;
@@ -963,6 +1110,111 @@
           }
         }
       }
+    }
+
+    .q {
+      --color: #F5F3F2;
+      width: 100%;
+      height: 100%;
+      border: 2px solid var(--color);
+      border-radius: 50%;
+      position: relative;
+
+      &:before {
+        position: absolute;
+        content: "";
+        width: 10px;
+        height: 2px;
+        right: -2px;
+        bottom: 0;
+        transform: rotate(45deg);
+        background: var(--color);
+      }
+    }
+
+    .small-squares {
+      --color: #B02F49;
+      width: 50%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px;
+
+      &.red {
+        --color: #B02F49;
+      }
+
+      &.blue {
+        --color: #4580B0;
+      }
+      &.white {
+        --color: #E1ECF1;
+      }
+
+      .small-square {
+        width: 4px;
+        height: 4px;
+        background: var(--color);
+      }
+    }
+
+    .fader {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+
+      .fader-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2px;
+      }
+      .fader-sm {
+        background: #EC5228;
+        height: 3px;
+        width: 1px;
+      }
+      .fader-md {
+        background: #EC5228;
+        height: 3px;
+        width: 5px;
+      }
+      .fader-lg {
+        background: #EC5228;
+        height: 3px;
+        width: 100%;
+      }
+    }
+
+    .sound {
+      --color: #E3ECF0;
+      --text: #1A1919;
+      background: var(--color);
+      color: var(--text);
+      text-transform: uppercase;
+      font-family: $techno;
+      font-size: 12px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &.red {
+        --color: #EB573A;
+        --text: #1A1919;
+      }
+    }
+
+    .fx {
+      color: #fff;
+      text-transform: uppercase;
+      font-family: $techno;
+      font-size: 16px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .simon {
@@ -1639,13 +1891,36 @@
       padding: 0px;
       margin: 0;
       height: calc(55px / 2);
+      // transition: all 10s ease-in-out;
 
       &.big {
         height: 100%;
+  
+        &:active {
+          .button-inside {
+            transform: scale(0.99);
+            box-shadow: inset 0 0 0.25em rgba(0,0,0,1), inset 0.5px 0.5px 0.5px transparent, inset -0.5px -0.5px 0.5px transparent, 1px 1px 3px 0px transparent, 4px 4px 5px 0px transparent, 9px 8px 7px 0px transparent, 16px 14px 9px 0px transparent, 25px 22px 9px 0px transparent;
+          }
+        }
       }
 
       &.connected {
         border-radius: 2px 2px 0 0;
+        &:active {
+          .button-inside {
+            transform: scale(0.99);
+            box-shadow: inset 0 0 0.25em rgba(0,0,0,1), inset 0.5px 0.5px 0.5px transparent, inset -0.5px -0.5px 0.5px transparent, 1px 1px 3px 0px transparent, 4px 4px 5px 0px transparent, 9px 8px 7px 0px transparent, 16px 14px 9px 0px transparent, 25px 22px 9px 0px transparent;
+          }
+        }
+      }
+
+      &.small {
+        &:active {
+          .button-inside {
+            transform: scale(0.99);
+            box-shadow: inset 0 0 0.25em rgba(0,0,0,1), inset 0.5px 0.5px 0.5px transparent, inset -0.5px -0.5px 0.5px transparent, 1px 1px 3px 0px transparent, 4px 4px 5px 0px transparent, 9px 8px 7px 0px transparent, 16px 14px 9px 0px transparent, 25px 22px 9px 0px transparent;
+          }
+        }
       }
     }
 
@@ -1702,6 +1977,7 @@
       font-size: 10px;
       background: var(--background-color);
       box-shadow:
+        inset 0 0 0.25em rgba(0,0,0,0),
         inset 0.5px 0.5px 0.5px var(--light-shadow-color),
         inset -0.5px -0.5px 0.5px var(--dark-shadow-color),
         1px 1px 3px 0px rgba(0, 0, 0, 0.23), 4px 4px 5px 0px rgba(0, 0, 0, 0.2), 9px 8px 7px 0px rgba(0, 0, 0, 0.22), 16px 14px 9px 0px rgba(0, 0, 0, 0.03), 25px 22px 9px 0px rgba(0, 0, 0, 0);
@@ -1709,9 +1985,7 @@
       text-transform: uppercase;
       color: var(--text-color);
       letter-spacing: 0.2px;
-      transition-property: transform, background-color, box-shadow;
-      transition-duration: .2s;
-      transition-timing-function: cubic-bezier(.25, .5, .5, 1);
+      transition: all 0.2s ease-in-out;
 
       &.big {
         border-radius: 6px;
@@ -1858,6 +2132,86 @@
 
     }
 
+  }
+
+  .ui-control {
+    $val: 6px;
+    --color: rgba(54, 79, 217, 1);
+    --accent: #F5F5F5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+
+    .ui-label {
+      align-self: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      box-shadow: 0 0 0 1px var(--color);
+      padding: 10px 20px;
+      cursor: pointer;
+      gap: 8px;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        box-shadow: 0 0 0 1px var(--color), 0 0 0 6px lighten(rgba(54, 79, 217, 1), 40%);
+      }
+    }
+
+    .ui-button {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      width: 30px;
+      position: relative;
+      cursor: pointer;
+
+      &:before {
+        content: "";
+        position: absolute;
+        z-index: 0;
+        inset: -2px;
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        top: 0px;
+        left: 3px;
+        right: 3px;
+        bottom: 0px;
+        margin: auto;
+        height: 3px;
+        background: lighten(rgba(54, 79, 217, 1), 30%);
+        border-radius: 10px;
+      }
+
+    }
+    .ui-knob {
+      position: relative;
+      z-index: 2;
+      background: #fff;
+      border: 1px solid var(--color);
+      width: calc(20px - $val);
+      height: calc(20px - $val);
+      border-radius: 50%;
+      outline: 2px solid var(--accent);
+      transition: all 0.2s ease-in-out;
+
+      &.active {
+        background: var(--color);
+        transform: translate3d(100%,0,0);
+      }
+    }
+    .ui-text {
+      color: var(--color);
+      font-weight: 500;
+      font-size: var(--14px);
+    }
   }
 
 </style>
