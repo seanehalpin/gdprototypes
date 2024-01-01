@@ -43,11 +43,11 @@
 </svelte:head>
 
 {#if ready}
-<div class="holder">
-  <div class="records">
+<div class="holder" >
+  <div class="records" in:fade={{duration:250, delay: 800}}>
     {#each releases as release,i}
       <!-- svelte-ignore a11y-no-static-element-interactions -->
-      <div class="record" class:active={release.hover} in:fly={{y:20, duration:200, delay: i*50}}>
+      <div class="record" class:active={release.hover} >
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <div 
           class="sleeve" 
@@ -96,9 +96,12 @@
 
 <style lang="scss">
 
+  @import '../../../../mixins';
+
   $size: 300px;
 
   .holder {
+    overflow-x: hidden;
     background-image: repeating-linear-gradient( 0deg, navajowhite 0 15px, bisque 5px 10px, wheat 5px 15px, tan 1px 16px );
     background-color: burlywood;
   }
@@ -111,7 +114,11 @@
     max-width: 1600px;
     grid-template-columns: repeat(auto-fit,minmax($size,1fr));
     gap: 50px;
-    padding: var(--64px);
+    padding: var(--42px) var(--14px);
+
+    @include sm {
+      padding: var(--64px); 
+    }
     // overflow-x: hidden;
     // background-image: repeating-linear-gradient( 0deg, navajowhite 0 15px, bisque 5px 10px, wheat 5px 15px, tan 1px 16px );
     // background-color: burlywood;
