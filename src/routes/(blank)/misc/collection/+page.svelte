@@ -5,11 +5,8 @@
   /** @type {import('./$types').PageData} */
   export let data
 
-  
-  // $: console.log("complete data: ", data);
+  $: console.log("complete data: ", data);
   let releases:any;
-
-  // let releases = data.releases;
 
   $: {
     if (data) {
@@ -20,21 +17,10 @@
     }
   }
 
-  let allReleasesLoaded = false;
-  $: {
-    if (releases && releases.length === data.releases.length) {
-      allReleasesLoaded = true;
-    }
-  }
-
-  // $: console.log(allReleasesLoaded)
-
   let ready = false
   onMount(() => {
     ready = true
   });
-
-  // $: console.log(releases);
 
 </script>
 
@@ -78,6 +64,11 @@
         </div>
         {:else if release.basic_information.formats[0].text && release.basic_information.formats[0].text.includes("White")}
         <div class="lp white">
+          <div class="label" style="background-image: url({release.basic_information.cover_image});"></div>
+          <div class="spindle"></div>
+        </div>
+        {:else if release.basic_information.formats[0].text && release.basic_information.formats[0].text.includes("Green")}
+        <div class="lp green">
           <div class="label" style="background-image: url({release.basic_information.cover_image});"></div>
           <div class="spindle"></div>
         </div>
@@ -145,9 +136,11 @@
     }
 
     &.active {
+      transform: scale3d(1.03,1.03,1.03) rotate(-1deg) translate3d(-60px,-20px,0);
       z-index: 100;
       .lp {
         transform: translate3d(190px,0,0) rotate(0);
+        box-shadow: 0 20px 20px -4px rgba(0,0,0,0.4);
       }
     }
   }
@@ -199,7 +192,7 @@
       background: linear-gradient(45deg, #EF8F37, #EE7E37, #EE7E37, #EE7E37, #EF8F37);
 
       &:before, &:after {
-        background: repeating-radial-gradient( circle at center, #EF8F37 3px, transparent 6px );
+        background: repeating-radial-gradient( circle at center, #EF8F37 2px, transparent 4px );
       }
       &:after {
         background-color: rgba(255,255,255, 0.1);
@@ -210,7 +203,7 @@
       background: linear-gradient(45deg, #FFFF54, #FAFA93, #FFFF54);
 
       &:before, &:after {
-        background: repeating-radial-gradient( circle at center, #F4F43D 3px, transparent 6px );
+        background: repeating-radial-gradient( circle at center, #F4F43D 2px, transparent 4px );
       }
       &:after {
         background-color: rgba(255,255,255, 0.1);
@@ -229,6 +222,18 @@
       }
     }
 
+    &.green {
+      background: rgba(59,87,91, 0.9);
+      backdrop-filter: blur(20px);
+
+      &:before, &:after {
+        background: repeating-radial-gradient( circle at center, #30474A 2px, transparent 4px );
+      }
+      &:after {
+        background-color: rgba(0,0,0, 0.07);
+      }
+    }
+
     &:before, &:after {
       content: "";
       position: absolute;
@@ -238,7 +243,7 @@
       left: 0;
       margin: auto;
       background-color: rgba(0, 0, 0, 0);
-      background: repeating-radial-gradient( circle at center, black 3px, transparent 6px );
+      background: repeating-radial-gradient( circle at center, black 2px, transparent 4px );
       border-radius: 100%;
     }
 
