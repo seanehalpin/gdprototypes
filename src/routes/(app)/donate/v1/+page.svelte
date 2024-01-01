@@ -604,30 +604,30 @@
   }
 
 
-  @include dm {
-    :root {
-      --white: #11241F;
-      --green-600: #167961;
-      --grey-600: #fff;
-      --grey-500: var(--green-300);
-      --grey-400: var(--green-300);
-      --grey-100: #27473d;
-      --grey-50: #19342c;
-    }
+  // @include dm {
+  //   :root {
+  //     --white: #11241F;
+  //     --green-600: #167961;
+  //     --grey-600: #fff;
+  //     --grey-500: var(--green-300);
+  //     --grey-400: var(--green-300);
+  //     --grey-100: #27473d;
+  //     --grey-50: #19342c;
+  //   }
 
-    h1, h2, footer h3, .form-inner .donate, .form-inner .tab.active {
-      color: #fff;
-    }
+  //   h1, h2, footer h3, .form-inner .donate, .form-inner .tab.active {
+  //     color: #fff;
+  //   }
 
-    .form-inner .value.active {
-      background: transparent;
-      color: #fff;
-    }
+  //   .form-inner .value.active {
+  //     background: transparent;
+  //     color: #fff;
+  //   }
 
-    .input input {
-      background: transparent;
-    }
-  }
+  //   .input input {
+  //     background: transparent;
+  //   }
+  // }
   
 
 </style>

@@ -5,7 +5,7 @@ export let nav = writable([
     title: "Fun",
     open: true,
     links: [
-      { url: '/fun/ko', text: 'K.O II' },
+      { url: '/fun/wrapped/23', text: 'Wrapped 23' },
     ]
   },
   
