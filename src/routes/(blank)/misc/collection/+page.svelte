@@ -1,17 +1,38 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
+  import { fade, fly } from 'svelte/transition'
+
   /** @type {import('./$types').PageData} */
   export let data
 
-  import { fade, fly } from 'svelte/transition'
-
+  
   $: console.log("complete data: ", data);
+  let releases:any;
 
   // let releases = data.releases;
 
-  let releases = data.releases.map(release => ({
-    ...release,
-    hover: false
-  }));
+  $: {
+    if (data) {
+      releases = data.releases.map(release => ({
+        ...release,
+        hover: false
+      }));
+    }
+  }
+
+  let allReleasesLoaded = false;
+  $: {
+    if (releases && releases.length === data.releases.length) {
+      allReleasesLoaded = true;
+    }
+  }
+
+  $: console.log(allReleasesLoaded)
+
+  let ready = false
+  onMount(() => {
+    ready = true
+  });
 
   // $: console.log(releases);
 
@@ -21,38 +42,53 @@
   <title>Collection</title>
 </svelte:head>
 
-{#if releases !== null}
-<div class="records">
-
-  {#each releases as release,i}
-    <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div class="record" class:active={release.hover} in:fade|local={{duration:200, delay: i*50}}>
-      <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <div 
-        class="sleeve" 
-        style="background-image:url({release.basic_information.cover_image});"
-        on:click={() => release.hover = true}
-        on:mouseleave={() => release.hover = false}
-        >
-        {#if release.hover}
-        <div class="text" in:fade={{duration:250}} out:fade={{duration:250}}>
-          <h3>{release.basic_information.title}</h3>
-          <p>
-            {#each release.basic_information.artists as artist}
-              <span>{artist.name} </span>
-            {/each}
-          </p>
+{#if ready}
+  <div class="records">
+    {#each releases as release,i}
+      <!-- svelte-ignore a11y-no-static-element-interactions -->
+      <div class="record" class:active={release.hover} in:fly={{y:20, duration:200, delay: i*50}}>
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <div 
+          class="sleeve" 
+          style="background-image:url({release.basic_information.cover_image});"
+          on:click={() => release.hover = true}
+          on:mouseleave={() => release.hover = false}
+          >
+          {#if release.hover}
+          <div class="text" in:fade={{duration:250}} out:fade={{duration:250}}>
+            <h3>{release.basic_information.title}</h3>
+            <p>
+              {#each release.basic_information.artists as artist}
+                <span>{artist.name} </span>
+              {/each}
+            </p>
+          </div>
+          {/if}
+        </div>
+        {#if release.basic_information.formats[0].text && release.basic_information.formats[0].text.includes("Orange")}
+        <div class="lp orange">
+          <div class="label" style="background-image: url({release.basic_information.cover_image});"></div>
+          <div class="spindle"></div>
+        </div>
+        {:else if release.basic_information.formats[0].text && release.basic_information.formats[0].text.includes("Yellow")}
+        <div class="lp yellow">
+          <div class="label" style="background-image: url({release.basic_information.cover_image});"></div>
+          <div class="spindle"></div>
+        </div>
+        {:else if release.basic_information.formats[0].text && release.basic_information.formats[0].text.includes("White")}
+        <div class="lp white">
+          <div class="label" style="background-image: url({release.basic_information.cover_image});"></div>
+          <div class="spindle"></div>
+        </div>
+        {:else}
+        <div class="lp">
+          <div class="label" style="background-image: url({release.basic_information.cover_image});"></div>
+          <div class="spindle"></div>
         </div>
         {/if}
       </div>
-      <div class="lp">
-        <div class="label" style="background-image: url({release.basic_information.cover_image});"></div>
-        <div class="spindle"></div>
-      </div>
-    </div>
-  {/each}
-
-</div>
+    {/each}
+  </div>
 {/if}
 
 <style lang="scss">
@@ -60,6 +96,7 @@
   $size: 300px;
 
   .records {
+    position: relative;
     // display: flex;
     // flex-wrap: wrap;
     // align-content: flex-start;
@@ -124,7 +161,7 @@
     left: 0;
     width: 100%;
     padding: var(--16px);
-    background: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
+    background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
     color: #fff;
   }
 
@@ -143,6 +180,40 @@
     background: linear-gradient(45deg, #333, black, #555, black, #333);
     transform: translate3d(0,0,0) rotate(-90deg);
     transition: all 0.2s ease-in-out;
+
+    &.orange {
+      background: linear-gradient(45deg, #EF8F37, #EE7E37, #EE7E37, #EE7E37, #EF8F37);
+
+      &:before, &:after {
+        background: repeating-radial-gradient( circle at center, #EF8F37 3px, transparent 6px );
+      }
+      &:after {
+        background-color: rgba(255,255,255, 0.1);
+      }
+    }
+
+    &.yellow {
+      background: linear-gradient(45deg, #FFFF54, #FAFA93, #FFFF54);
+
+      &:before, &:after {
+        background: repeating-radial-gradient( circle at center, #F4F43D 3px, transparent 6px );
+      }
+      &:after {
+        background-color: rgba(255,255,255, 0.1);
+      }
+    }
+
+    &.white {
+      background: rgba(255,255,255, 0.1);
+      backdrop-filter: blur(20px);
+
+      &:before, &:after {
+        background: repeating-radial-gradient( circle at center, #fff 2px, transparent 4px );
+      }
+      &:after {
+        background-color: rgba(255,255,255, 0.01);
+      }
+    }
 
     &:before, &:after {
       content: "";
