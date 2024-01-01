@@ -6,7 +6,7 @@
   export let data
 
   
-  $: console.log("complete data: ", data);
+  // $: console.log("complete data: ", data);
   let releases:any;
 
   // let releases = data.releases;
@@ -27,7 +27,7 @@
     }
   }
 
-  $: console.log(allReleasesLoaded)
+  // $: console.log(allReleasesLoaded)
 
   let ready = false
   onMount(() => {
@@ -43,6 +43,7 @@
 </svelte:head>
 
 {#if ready}
+<div class="holder">
   <div class="records">
     {#each releases as release,i}
       <!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -89,25 +90,31 @@
       </div>
     {/each}
   </div>
+</div>
 {/if}
+
 
 <style lang="scss">
 
   $size: 300px;
 
+  .holder {
+    background-image: repeating-linear-gradient( 0deg, navajowhite 0 15px, bisque 5px 10px, wheat 5px 15px, tan 1px 16px );
+    background-color: burlywood;
+  }
+
   .records {
     position: relative;
-    // display: flex;
-    // flex-wrap: wrap;
-    // align-content: flex-start;
     display: grid;
+    margin: 0 auto;
     width: 100%;
+    max-width: 1600px;
     grid-template-columns: repeat(auto-fit,minmax($size,1fr));
     gap: 50px;
     padding: var(--64px);
-    overflow-x: hidden;
-    background-image: repeating-linear-gradient( 0deg, navajowhite 0 15px, bisque 5px 10px, wheat 5px 15px, tan 1px 16px );
-    background-color: burlywood;
+    // overflow-x: hidden;
+    // background-image: repeating-linear-gradient( 0deg, navajowhite 0 15px, bisque 5px 10px, wheat 5px 15px, tan 1px 16px );
+    // background-color: burlywood;
     // box-shadow: -25px 0px 75px 2px grey, -5px 0px 8px 5px grey, 10px 0px 2px burlywood;
     
   }
