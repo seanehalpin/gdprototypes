@@ -4,7 +4,7 @@
 
   import { fade, fly } from 'svelte/transition'
 
-  // $: console.log("complete data: ", data);
+  $: console.log("complete data: ", data);
 
   // let releases = data.releases;
 
@@ -21,11 +21,12 @@
   <title>Collection</title>
 </svelte:head>
 
+{#if releases !== null}
 <div class="records">
 
-  {#each releases as release}
+  {#each releases as release,i}
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div class="record" class:active={release.hover}>
+    <div class="record" class:active={release.hover} in:fade|local={{duration:200, delay: i*50}}>
       <!-- svelte-ignore a11y-click-events-have-key-events -->
       <div 
         class="sleeve" 
@@ -52,6 +53,7 @@
   {/each}
 
 </div>
+{/if}
 
 <style lang="scss">
 
@@ -104,6 +106,7 @@
     width: $size;
     height: $size;
     margin: 0 auto;
+    background-color: #fff;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
