@@ -1,11 +1,12 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { fade, fly } from 'svelte/transition'
+  import svelteTilt from 'vanilla-tilt-svelte';
 
   /** @type {import('./$types').PageData} */
   export let data
 
-  $: console.log("complete data: ", data);
+  // $: console.log("complete data: ", data);
   let releases:any;
 
   $: {
@@ -33,13 +34,38 @@
   <div class="records" in:fade={{duration:250, delay: 800}}>
     {#each releases as release,i}
       <!-- svelte-ignore a11y-no-static-element-interactions -->
-      <div class="record" class:active={release.hover} >
-        <!-- svelte-ignore a11y-click-events-have-key-events -->
+      <!-- svelte-ignore a11y-click-events-have-key-events -->
+      <div 
+        class="record" 
+        class:active={release.hover} 
+        on:mouseleave={() => release.hover = false}
+        on:click={() => release.hover = !release.hover}
+        use:svelteTilt={{
+          reverse: true,
+          max: 15,
+          startX: 0,
+          startY: 0,
+          perspective: 1000,
+          scale: 1.1,
+          speed: 100,
+          transition: true,
+          axis: null,
+          reset: true,
+          "reset-to-start": true,
+          easing: "linear",
+          glare: true,
+          "max-glare": 0.5,
+          "mouse-event-element": null,
+          gyroscope: true,
+          gyroscopeMinAngleX: -45,
+          gyroscopeMaxAngleX: 45,
+          gyroscopeMinAngleY: -45,
+          gyroscopeMaxAngleY: 45
+          }}
+        >
         <div 
           class="sleeve" 
           style="background-image:url({release.basic_information.cover_image});"
-          on:click={() => release.hover = true}
-          on:mouseleave={() => release.hover = false}
           >
           {#if release.hover}
           <div class="text" in:fade={{duration:250}} out:fade={{duration:250}}>
@@ -97,6 +123,13 @@
     background-color: burlywood;
   }
 
+  :global(.js-tilt-glare) {
+    z-index: 200;
+    width: 300px !important;
+    height: 300px !important;
+    left: calc(50% - 150px) !important;
+  }
+
   .records {
     position: relative;
     display: grid;
@@ -121,10 +154,10 @@
     cursor: pointer;
     position: relative;
     z-index: 10;
-    transition: all 0.2s ease-in-out;
+    // transition: all 0.2s ease-in-out;
 
     &:hover {
-      transform: scale3d(1.03,1.03,1.03) rotate(-1deg) translate3d(0,-20px,0);
+      // transform: scale3d(1.03,1.03,1.03) rotate(-1deg) translate3d(0,-20px,0);
       z-index: 100;
       // .lp {
       //   transform: translate3d(150px,0,0) rotate(0);
@@ -136,7 +169,7 @@
     }
 
     &.active {
-      transform: scale3d(1.03,1.03,1.03) rotate(-1deg) translate3d(-60px,-20px,0);
+      // transform: scale3d(1.03,1.03,1.03) rotate(-1deg) translate3d(-60px,-20px,0);
       z-index: 100;
       .lp {
         transform: translate3d(190px,0,0) rotate(0);
@@ -163,6 +196,7 @@
   }
 
   .text {
+    user-select: none;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -192,7 +226,7 @@
       background: linear-gradient(45deg, #EF8F37, #EE7E37, #EE7E37, #EE7E37, #EF8F37);
 
       &:before, &:after {
-        background: repeating-radial-gradient( circle at center, #EF8F37 2px, transparent 4px );
+        background: repeating-radial-gradient( circle at center, #EF8F37 3px, transparent 6px );
       }
       &:after {
         background-color: rgba(255,255,255, 0.1);
@@ -200,13 +234,13 @@
     }
 
     &.yellow {
-      background: linear-gradient(45deg, #FFFF54, #FAFA93, #FFFF54);
+      background: linear-gradient(45deg, #FFFF54, #FAF39D, #FFFF54, #FAF39D);
 
       &:before, &:after {
-        background: repeating-radial-gradient( circle at center, #F4F43D 2px, transparent 4px );
+        background: repeating-radial-gradient( circle at center, #EAEA3C 3px, transparent 6px );
       }
       &:after {
-        background-color: rgba(255,255,255, 0.1);
+        background-color: rgba(0,0,0, 0.02);
       }
     }
 
@@ -215,10 +249,10 @@
       backdrop-filter: blur(20px);
 
       &:before, &:after {
-        background: repeating-radial-gradient( circle at center, #fff 2px, transparent 4px );
+        background: repeating-radial-gradient( circle at center, #fff 3px, transparent 6px );
       }
       &:after {
-        background-color: rgba(255,255,255, 0.01);
+        background-color: rgba(255,255,255, 0.02);
       }
     }
 
@@ -227,7 +261,7 @@
       backdrop-filter: blur(20px);
 
       &:before, &:after {
-        background: repeating-radial-gradient( circle at center, #30474A 2px, transparent 4px );
+        background: repeating-radial-gradient( circle at center, #30474A 3px, transparent 6px );
       }
       &:after {
         background-color: rgba(0,0,0, 0.07);
@@ -243,7 +277,7 @@
       left: 0;
       margin: auto;
       background-color: rgba(0, 0, 0, 0);
-      background: repeating-radial-gradient( circle at center, black 2px, transparent 4px );
+      background: repeating-radial-gradient( circle at center, black 3px, transparent 6px );
       border-radius: 100%;
     }
 
@@ -280,11 +314,11 @@
       bottom: 0;
       left: 0;
       margin: auto;
-      width: 5px;
-      height: 5px;
-      background-color: white;
+      width: 6px;
+      height: 6px;
+      background-color: #fff;
       border-radius: 50%;
-      box-shadow: rgba(0, 0, 0, 0.1) 0 0 20px 1px;
+      box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.4);
       z-index: 3;
     }
 
