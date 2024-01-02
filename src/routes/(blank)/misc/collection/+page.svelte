@@ -57,10 +57,10 @@
           "max-glare": 0.5,
           "mouse-event-element": null,
           gyroscope: true,
-          gyroscopeMinAngleX: -45,
-          gyroscopeMaxAngleX: 45,
-          gyroscopeMinAngleY: -45,
-          gyroscopeMaxAngleY: 45
+          gyroscopeMinAngleX: -15,
+          gyroscopeMaxAngleX: 15,
+          gyroscopeMinAngleY: -15,
+          gyroscopeMaxAngleY: 15
           }}
         >
         <div 
@@ -172,8 +172,12 @@
       // transform: scale3d(1.03,1.03,1.03) rotate(-1deg) translate3d(-60px,-20px,0);
       z-index: 100;
       .lp {
-        transform: translate3d(190px,0,0) rotate(0);
+        transform: translate3d(0,-190px,0) rotate(0);
         box-shadow: 0 20px 20px -4px rgba(0,0,0,0.4);
+
+        @include lg {
+          transform: translate3d(190px,0,0) rotate(0);
+        }
       }
     }
   }
