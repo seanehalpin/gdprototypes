@@ -113,7 +113,7 @@
       .arcsData(arcsData)
       // .width(896)
       .width(512)
-      .height(550)
+      .height(470)
       // .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
       // .showglobe(false)
       .showAtmosphere(false)

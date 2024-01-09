@@ -78,22 +78,22 @@
           </div>
           {/if}
         </div>
-        {#if release.basic_information.formats[0].text && release.basic_information.formats[0].text.includes("Orange")}
+        {#if release.basic_information.formats[0].text && release.basic_information.formats[0].text.toLowerCase().includes("orange")}
         <div class="lp orange">
           <div class="label" style="background-image: url({release.basic_information.cover_image});"></div>
           <div class="spindle"></div>
         </div>
-        {:else if release.basic_information.formats[0].text && release.basic_information.formats[0].text.includes("Yellow")}
+        {:else if release.basic_information.formats[0].text && release.basic_information.formats[0].text.toLowerCase().includes("yellow")}
         <div class="lp yellow">
           <div class="label" style="background-image: url({release.basic_information.cover_image});"></div>
           <div class="spindle"></div>
         </div>
-        {:else if release.basic_information.formats[0].text && release.basic_information.formats[0].text.includes("White")}
+        {:else if release.basic_information.formats[0].text && release.basic_information.formats[0].text.toLowerCase().includes("white")}
         <div class="lp white">
           <div class="label" style="background-image: url({release.basic_information.cover_image});"></div>
           <div class="spindle"></div>
         </div>
-        {:else if release.basic_information.formats[0].text && release.basic_information.formats[0].text.includes("Green")}
+        {:else if release.basic_information.formats[0].text && release.basic_information.formats[0].text.toLowerCase().includes("green")}
         <div class="lp green">
           <div class="label" style="background-image: url({release.basic_information.cover_image});"></div>
           <div class="spindle"></div>

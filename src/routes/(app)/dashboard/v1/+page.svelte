@@ -1,5 +1,7 @@
 <script lang="ts">
     import { onMount } from 'svelte';
+    import { tweened } from 'svelte/motion'
+    import { formatNumber } from '$lib/util'
     import Globev1 from '$lib/components/Globev2.svelte';
     import Logo from '$lib/components/dash/Logo.svelte';
     import Center from '$lib/util/Center.svelte';
@@ -8,6 +10,9 @@
     export let data: PageData;
 
     let name = "Seán"
+
+    const defaults = { duration: 3000 }
+    const score1 = tweened(0, defaults)
 
     let buttons = [
       {id: 1, text: 'Home', svg: "M20.5153 9.7288L13.0153 2.65255C13.0116 2.64935 13.0082 2.6459 13.005 2.64223C12.7289 2.39111 12.369 2.25195 11.9958 2.25195C11.6225 2.25195 11.2627 2.39111 10.9866 2.64223L10.9763 2.65255L3.48469 9.7288C3.33187 9.86932 3.20989 10.04 3.12646 10.2301C3.04303 10.4202 2.99997 10.6256 3 10.8332V19.5004C3 19.8982 3.15804 20.2797 3.43934 20.561C3.72064 20.8423 4.10218 21.0004 4.5 21.0004H19.5C19.8978 21.0004 20.2794 20.8423 20.5607 20.561C20.842 20.2797 21 19.8982 21 19.5004V10.8332C21 10.6256 20.957 10.4202 20.8735 10.2301C20.7901 10.04 20.6681 9.86932 20.5153 9.7288ZM19.5 19.5004H4.5V10.8332L4.51031 10.8238L12 3.75036L19.4906 10.8219L19.5009 10.8313L19.5 19.5004Z", active: true},
@@ -61,7 +66,7 @@
 
     onMount(() => {
       setTimeout(() => {
-        // animate();
+        $score1 = 9240
       }, 1000);
     })
 
@@ -80,7 +85,6 @@
   --gap="var(--24px)" 
   --justify-content="flex-start"
 >
-
 
 <div class="dash">
   <nav>
@@ -131,7 +135,7 @@
           Lifetime Impact
         </div>
         <div class="amount" >
-          $<span bind:this={counterElement} data-val="9240">{dataCount}</span>
+          ${formatNumber($score1)}
         </div>
       </div>
       <div class="card">
@@ -162,7 +166,7 @@
           </div>
           <img src="/dash/story-1.png" alt="">
         </div>
-        <div class="story-2">
+        <!-- <div class="story-2">
           <div class="story-controls">
             <div class="text">
               Leonilles story
@@ -172,7 +176,7 @@
             </div>
           </div>
           <img src="/dash/story-2.png" alt="">
-        </div>
+        </div> -->
       </div>
       <div class="globe">
         <div class="title">
@@ -197,6 +201,7 @@
   $green2: #93DCCE;
   $green3: #97D275;
   $green-dark: #002921;
+  $navHeight: 100px;
 
   .cards {
     font-family: $space;
@@ -280,7 +285,7 @@
 
   .header {
     width: 100%;
-    height: 144px;
+    height: $navHeight;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -288,7 +293,7 @@
 
   .controls {
     width: 100%;
-    height: 144px;
+    height: $navHeight;
     display: flex;
     align-items: center;
     justify-content: flex-end;

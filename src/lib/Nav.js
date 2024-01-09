@@ -1,13 +1,13 @@
 import { writable } from 'svelte/store'
 
 export let nav = writable([
-  // {
-  //   title: "Donate Portal",
-  //   open: true,
-  //   links: [
-  //     { url: '/dashboard/v1', text: 'Donate v1' },
-  //   ]
-  // },
+  {
+    title: "Donate Portal",
+    open: true,
+    links: [
+      { url: '/dashboard/v1', text: 'Donate v1' },
+    ]
+  },
   {
     title: "Website",
     open: true,
