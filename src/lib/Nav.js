@@ -6,6 +6,7 @@ export let nav = writable([
     open: true,
     links: [
       { url: '/dashboard/v1', text: 'Donate v1' },
+      { url: '/dashboard/v2', text: 'Donate v2' },
     ]
   },
   {

@@ -5,8 +5,10 @@ export let nav = writable([
     title: "Fun",
     open: true,
     links: [
-      { url: '/fun/wrapped/23', text: 'Wrapped 23' },
+      // { url: '/fun/wrapped/23', text: 'Wrapped 23' },
+      { url: '/fun/stories', text: 'Story canvas' },
     ]
   },
+  
   
 ]);

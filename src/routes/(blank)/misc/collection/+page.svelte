@@ -2,25 +2,48 @@
   import { onMount } from 'svelte';
   import { fade, fly } from 'svelte/transition'
   import svelteTilt from 'vanilla-tilt-svelte';
-
+  import type { PageLoad } from './$types';
   /** @type {import('./$types').PageData} */
-  export let data
+  export let data: ReturnType<PageLoad>;
 
   // $: console.log("complete data: ", data);
   let releases:any;
+  let wants:any;
+  let showingRelease = true
+  let showingWant = false
+  let startdelay = 800
+
+  $: dataInView = releases
 
   $: {
-    if (data) {
-      releases = data.releases.map(release => ({
+    if (data.releases) {
+      // releases = data.releases.releases;
+      releases = data.releases.releases.map(release => ({
         ...release,
         hover: false
       }));
     }
   }
 
+  $: {
+    if (data.wants) {
+      wants = data.wants.wants.map(want => ({
+        ...want,
+        hover: false
+      }));
+    }
+  }
+
+  // $: console.log("releases", releases)
+  // $: console.log("wants", wants)
+
   let ready = false
+
   onMount(() => {
     ready = true
+    setTimeout(() => {
+      startdelay = 0
+    }, 1500)
   });
 
 </script>
@@ -30,11 +53,20 @@
 </svelte:head>
 
 {#if ready}
-<div class="holder" >
-  <div class="records" in:fade={{duration:250, delay: 800}}>
-    {#each releases as release,i}
-      <!-- svelte-ignore a11y-no-static-element-interactions -->
+<div class="nav">
+  <button class:active={showingRelease} on:click={()=> {dataInView = releases;showingRelease = true; showingWant = false}}>
+    Collection
+  </button>
+  <button class:active={showingWant} on:click={()=> {dataInView = wants;showingRelease = false; showingWant = true}}>
+    Wantlist
+  </button>
+</div>
+{#key showingRelease}
+<div class="holder">
+  <div class="records" in:fade={{duration:250, delay: startdelay}}>
+    {#each dataInView as release,i}
       <!-- svelte-ignore a11y-click-events-have-key-events -->
+      <!-- svelte-ignore a11y-no-static-element-interactions -->
       <div 
         class="record" 
         class:active={release.hover} 
@@ -108,6 +140,7 @@
     {/each}
   </div>
 </div>
+{/key}
 {/if}
 
 
@@ -324,6 +357,41 @@
       border-radius: 50%;
       box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.4);
       z-index: 3;
+    }
+
+  }
+
+  .nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: 20px 0;
+    gap: 5px;
+
+    button {
+      background: transparent;
+      border: none;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.3);
+      color: #333;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      backdrop-filter: blur(10px);
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+
+      &.active {
+        background: #222;
+        color: #fff;
+      }
     }
 
   }
