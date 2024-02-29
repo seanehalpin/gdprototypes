@@ -2,7 +2,9 @@
   import {onMount} from 'svelte';
   import { fade, fly } from 'svelte/transition'
   import { backOut, quartOut, quintIn } from "svelte/easing"
-    import Logo from './Logo.svelte';
+  import Logo from './Logo.svelte';
+  import ImageLoader from '$lib/util/image/Loader.svelte'
+
   
   export let story = []
 
@@ -37,7 +39,17 @@
     {:else}
     <div class="story" >
       <div class="top">
-        <img src={story.image} alt={story.name} />
+        <!-- <img src={story.image} alt={story.name} /> -->
+        <ImageLoader 
+          src={story.image} 
+          alt={story.name}
+          skeleton={false} 
+          fit={true}
+          fullwidth={true} 
+          width="100%" 
+          height="auto" 
+        ></ImageLoader>
+
       </div>
       <div class="bottom">
         <p>
