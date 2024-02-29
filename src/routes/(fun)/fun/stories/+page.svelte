@@ -144,6 +144,40 @@
     }
   }
 
+  function onTouchStart() {
+    moving = true;
+  }
+
+  function onTouchMove(e: TouchEvent) {
+    if (moving) {
+      // Use the first touch point
+      const touch = e.touches[0];
+
+      x += touch.clientX - x;
+      y += touch.clientY - y;
+
+      // Loop through each quadrant
+      for (let i = 0; i < quadrants.length; i++) {
+        // If the quadrant is off-screen, reposition it to the opposite side
+        if (x + quadrants[i].x < -width - offset) {
+          quadrants[i].x += width * 2;
+        } else if (x + quadrants[i].x > width + offset) {
+          quadrants[i].x -= width * 2;
+        }
+        if (y + quadrants[i].y < -height - offset) {
+          quadrants[i].y += height * 2;
+        } else if (y + quadrants[i].y > height + offset) {
+          quadrants[i].y -= height * 2;
+        }
+      }
+    }
+  }
+
+  function onTouchEnd() {
+    moving = false;
+  }
+
+
 </script>
 {#if ready}
 <!-- svelte-ignore missing-declaration -->
@@ -170,7 +204,7 @@
 <svelte:head>
   <title>GD Stories</title>
 </svelte:head>
-<svelte:window on:mouseup={onMouseUp} on:mousemove={onMouseMove} on:wheel={onMouseWheel} />
+<svelte:window on:mouseup={onMouseUp} on:mousemove={onMouseMove} on:wheel={onMouseWheel} on:touchstart={onTouchStart} on:touchmove={onTouchMove} on:touchend={onTouchEnd} />
 
 <style lang="scss">
 
