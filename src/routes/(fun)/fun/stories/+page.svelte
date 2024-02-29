@@ -6,12 +6,9 @@
   import QuadrantThree from "$lib/fun/drag/QuadrantThree.svelte";
   import QuadrantFour from "$lib/fun/drag/QuadrantFour.svelte";
   export let data: PageData;
-  import Masonry from '$lib/fun/drag/Masonary.svelte'
-  import Story from '$lib/util/Story.svelte';
-    import Logo from '$lib/components/dash/Logo.svelte';
 
   let ready = false
-  let width = 3008, height = 1980
+  let width = 3008, height = 1990
   let offset = 50
   let moving = false, x = offset, y = offset
   
@@ -123,6 +120,30 @@
     moving = false;
   }
 
+  function onMouseWheel(e: WheelEvent) {
+    // Adjust the scroll speed as needed
+    const scrollSpeed = 1;
+
+    // Update x and y based on the scroll direction
+    x -= e.deltaX * scrollSpeed;
+    y -= e.deltaY * scrollSpeed;
+
+    // Loop through each quadrant
+    for (let i = 0; i < quadrants.length; i++) {
+      // If the quadrant is off-screen, reposition it to the opposite side
+      if (x + quadrants[i].x < -width - offset) {
+        quadrants[i].x += width * 2;
+      } else if (x + quadrants[i].x > width + offset) {
+        quadrants[i].x -= width * 2;
+      }
+      if (y + quadrants[i].y < -height - offset) {
+        quadrants[i].y += height * 2;
+      } else if (y + quadrants[i].y > height + offset) {
+        quadrants[i].y -= height * 2;
+      }
+    }
+  }
+
 </script>
 {#if ready}
 <!-- svelte-ignore missing-declaration -->
@@ -149,7 +170,7 @@
 <svelte:head>
   <title>GD Stories</title>
 </svelte:head>
-<svelte:window on:mouseup={onMouseUp} on:mousemove={onMouseMove} />
+<svelte:window on:mouseup={onMouseUp} on:mousemove={onMouseMove} on:wheel={onMouseWheel} />
 
 <style lang="scss">
 
