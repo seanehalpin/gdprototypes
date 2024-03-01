@@ -43,11 +43,12 @@
         <ImageLoader 
           src={story.image} 
           alt={story.name}
-          skeleton={false} 
-          fit={true}
+          skeleton={true} 
+          fit={false} 
+          skip={false}
           fullwidth={true} 
           width="100%" 
-          height="auto" 
+          height={story.height || 'auto'}
         ></ImageLoader>
 
       </div>
@@ -157,20 +158,13 @@
     font-family: var(--systemFont);
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 3px 4px rgba(0, 0, 0, 0.05);
 
-    img {
-      width: 100%;
-      height: auto;
-      user-select: none;
-      pointer-events: none;
-      -webkit-user-select: none;
-    }
-
     .bottom {
       padding: var(--48px);
       display: flex;
       width: 100%;
       gap: var(--16px);
       flex-direction: column;
+      text-wrap: pretty;
 
       p {
         font-size: var(--16px);

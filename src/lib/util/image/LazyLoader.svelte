@@ -8,6 +8,7 @@
   export let left = 0;
   export let right = 0;
   export let alignBottom = false
+  export let height = 'auto'
 
   let intersecting = false;
   let container: Element;
@@ -49,7 +50,7 @@
   });
 </script>
 
-<div bind:this={container} class:bottom={alignBottom}>
+<div bind:this={container} class:bottom={alignBottom} style="height: {height + 'px' || 'auto'};">
   <slot {intersecting}></slot>
 </div>
 

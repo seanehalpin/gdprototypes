@@ -26,7 +26,7 @@
 {#if skip}
   <Image {alt} {src} {srcset} {radius} {fit} {caption} {fullwidth} {maxwidth} {width} {height} {skeleton} {figshadow} {alignment} skip={true} />
 {:else}
-  <IntersectionObserver once={true} let:intersecting={intersecting} {alignBottom} {top}>
+  <IntersectionObserver once={true} let:intersecting={intersecting} {alignBottom} {top} {height}>
     {#if intersecting || nativeLoading}
       <Image {alt} {src} {srcset} {radius} {fit} {caption} {fullwidth} {maxwidth} {width} {height} {skeleton} {figshadow} {alignment} />
     {/if}
