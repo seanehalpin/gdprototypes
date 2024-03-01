@@ -18,14 +18,15 @@
 
   let story = [
     
+    
+    {
+      intro: true
+    },
     {
       name: "Leonille, Rwanda",
       quote: "I am very delighted to receive money from GiveDirectly. With the first lump sum, I was able to buy a small house and renovate it. I also bought a pig. We had entered the spring period, and my children did not have sweaters. I bought clothes and sweaters for my children and I also bought bed covers. For the rest of the money, I will buy arable land for $300 and get rid of working as a farm laborer. A job that was not giving me an income to be able to meet the needs of my family. It was not easy to live in a rented house, where at the end of every month I was liable to pay rent of about $3 per month. Since I started receiving money, I have never run out of money to buy food and I was already able to buy inputs. Nothing makes me more happy when it comes to the end of the month than remembering that I have money to pay rent. It gives me peace of mind.",
       image: "/fun/drag/leonille.jpg",
       height: 363
-    },
-    {
-      intro: true
     },
     {
       name: "Rosine, Rwanda",

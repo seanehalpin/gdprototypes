@@ -54,7 +54,7 @@
       </div>
       <div class="bottom">
         <p>
-          {story.quote}
+          {story.quote}"
         </p>
         <span>
           {story.name}
@@ -173,6 +173,15 @@
         user-select: none;
         pointer-events: none;
         -webkit-user-select: none;
+        position: relative;
+
+        &:before {
+          content: '"';
+          position: absolute;
+          left: -8px;
+          top: 0;
+        }
+        
       }
 
       span {
