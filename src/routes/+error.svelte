@@ -28,7 +28,7 @@
   <div class="block">
     <div class="content">
       <h1>You're lost</h1>
-      <p>This page doesn't exist, 404</p>
+      <p>This page doesn't exist, here's some cool NASA stuff instead.</p>
       <a href="/">Go back</a>
 
       <div class="deets">
@@ -124,7 +124,7 @@
   }
 
   .content {
-    color: var(--color-green-7);
+    color: #fff;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -138,11 +138,10 @@
   }
 
   a {
-    color: var(--proto-text-active);
+    color: #fff;
     display: flex;
     text-decoration: none;
-    color: var(--color-green-1);
-    background: var(--color-green-7);
+    background: rgba(0,0,0,.4);
     padding: 10px;
     align-items: center;
     justify-content: center;
