@@ -79,6 +79,7 @@
   .qa-title {
 
     h2 {
+      font-size: var(--32px);
       text-align: center;
       margin-bottom: var(--32px);
     }
