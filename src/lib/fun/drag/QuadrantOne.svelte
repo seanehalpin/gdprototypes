@@ -34,7 +34,7 @@
         <span>
           Move to explore stories
         </span>
-        </div>
+      </div>
     </div>
     {:else}
     <div class="story" >
