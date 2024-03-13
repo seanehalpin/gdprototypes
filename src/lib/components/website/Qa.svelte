@@ -155,7 +155,7 @@
     right: 20px;
     top: 22px;
     transition: all 0.2s ease-in-out;
-    border-radius: 50%;
+    border-radius: 8px;
     width: 30px;
     height: 30px;
     pointer-events: none;
@@ -199,6 +199,16 @@
       }
     }
     
+    &:focus-visible {
+      box-shadow: 0 0 0 1px var(--border-brand), 0 0 0 4px var(--focus);
+      outline: 0;
+      // outline: 4px solid var(--focus);
+      // outline-offset: 0px;
+      // border-radius: 6px;
+    }
+    &:active {
+      // outline: 0;
+    }
     
   }
 

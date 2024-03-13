@@ -102,16 +102,33 @@
     border-radius: $radius;
     padding: 0 var(--32px);
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
   }
 
-  input, button {
+  input {
     &:focus-visible {
-      outline: 2px solid var(--bg-brand);
-      outline-offset: 1px;
-      border-radius: 6px;
+      box-shadow: 0 0 0 1px var(--border-brand), 0 0 0 4px var(--focus);
+      outline: 0;
+      // outline: 4px solid var(--focus);
+      // outline-offset: 0px;
+      // border-radius: 6px;
     }
     &:active {
+      // outline: 0;
+    }
+  }
+
+  button {
+    &:focus-visible {
+      // box-shadow: none;
+      // outline: 2px solid var(--border-brand);
       outline: 0;
+      box-shadow: 0 0 0 1px var(--bg), 0 0 0 3px var(--bg-brand);
+      // outline-offset: 2px;
+      // border-radius: 6px;
+    }
+    &:active {
+      // outline: 0;
     }
   }
 

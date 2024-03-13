@@ -6,6 +6,7 @@
   import Qa from '$lib/components/website/Qa.svelte';
   import type { PageData } from './$types';
   import ImageLoader from '$lib/util/image/Loader.svelte'
+    import { active } from 'd3';
   export let data: PageData;
 
   let transition = quartOut
@@ -14,29 +15,49 @@
     {
       image: "/times.png",
       content: "The future of not working, UBI in Kenya",
-      link: "#"
+      link: "#",
+      active: false,
     },
     {
       image: "/npr.png",
       content: "Charity To Amp Up Direct Aid Mission In Impoverished East Africa",
-      link: "#"
+      link: "#",
+      active: false,
     },
     {
       image: "/canva.png",
       content: "Uplifting people from extreme poverty: the next step in our journey with GiveDirectly",
-      link: "#"
+      link: "#",
+      active: false,
     },
     {
       image: "/slate.png",
       content: "What If We Just Gave Poor People a Basic Income for Life?",
-      link: "#"
+      link: "#",
+      active: false,
     },
     {
       image: "/vox.png",
       content: "How a basic income experiment helped these Kenyans weather the Covid-19 crisis",
-      link: "#"
+      link: "#",
+      active: false,
     }
   ]
+
+  function handleHover(index:any) {
+    console.log("fired")
+    cards = cards.map((card, i) => {
+      if (i === index) {
+        return { ...card, active: true };
+      } 
+      else {
+        return { ...card, active: false };
+      }
+    });
+  }
+  function resetActive() {
+    cards = cards.map(card => ({ ...card, active: false }));
+  }
 
 </script>
 
@@ -56,8 +77,8 @@
       <h2>News</h2>
     </div>
     <div class="cards">
-      {#each cards as card}
-      <a class="card" href={card.link}>
+      {#each cards as card, index}
+      <a class="card" class:active={card.active} href={card.link} on:mouseenter={() => handleHover(index)} on:mouseleave={() => resetActive()} on:focusin={() => handleHover(index)} on:focusout={() => resetActive()}>
         <div class="image">
           <ImageLoader 
           src="/website/news/{card.image}" 
@@ -72,7 +93,7 @@
         </div>
         <p>{card.content}</p>
 
-      <div class="tooltip">
+      <div class="tooltip" class:active={card.active}>
         <span>
           Read
         </span>
@@ -132,10 +153,10 @@
       border-color: var(--border-active);
       box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.04);
 
-      .tooltip {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-      }
+      // .tooltip {
+      //   opacity: 1;
+      //   transform: translate3d(0, 0, 0);
+      // }
     }
 
     .image {
@@ -167,18 +188,37 @@
       justify-content: center;
       gap: 8px;
       border-radius: 8px;
+
+      &.active {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
     }
 
+    // &:focus-visible {
+    //   outline: 2px solid var(--bg-brand);
+    //   outline-offset: 1px;
+    //   border-radius: 6px;
+    // }
+    // &:active {
+    //   outline: 0;
+    // }
+
     &:focus-visible {
-      outline: 2px solid var(--bg-brand);
-      outline-offset: 1px;
-      border-radius: 6px;
+      box-shadow: 0 0 0 1px var(--border-brand), 0 0 0 4px var(--focus);
+      outline: 0;
+      // outline: 4px solid var(--focus);
+      // outline-offset: 0px;
+      // border-radius: 6px;
     }
     &:active {
-      outline: 0;
+      // outline: 0;
     }
 
   }
+
+
+  
 
   
 
