@@ -126,7 +126,7 @@
     justify-content: flex-start;
     position: relative;
     text-decoration: none;
-    transition: all 0.2s ease-in-out;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 
     &:hover {
       border-color: var(--border-active);
@@ -145,6 +145,7 @@
     p {
       color: var(--text-muted);
       text-decoration: none;
+      text-wrap: pretty;
     }
 
 
@@ -166,6 +167,15 @@
       justify-content: center;
       gap: 8px;
       border-radius: 8px;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--bg-brand);
+      outline-offset: 1px;
+      border-radius: 6px;
+    }
+    &:active {
+      outline: 0;
     }
 
   }

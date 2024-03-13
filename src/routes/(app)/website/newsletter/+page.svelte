@@ -79,6 +79,12 @@
     color: var(--text);
     padding: 0 var(--16px);
     font-size: var(--16px);
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+    &:hover {
+      border-color: var(--border-active);
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.04);
+    }
 
     
   }
@@ -95,6 +101,7 @@
     border: 0;
     border-radius: $radius;
     padding: 0 var(--32px);
+    cursor: pointer;
   }
 
   input, button {
