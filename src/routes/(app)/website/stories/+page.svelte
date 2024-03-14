@@ -1,6 +1,6 @@
 <script lang="ts">
   import Center from '$lib/util/Center.svelte';
-  import { fade, fly, slide } from 'svelte/transition';
+  import { fade, fly, scale, slide } from 'svelte/transition';
   import { quartOut, backOut, elasticOut, linear} from "svelte/easing"
   import { onMount } from 'svelte';
   import ImageLoader from '$lib/util/image/Loader.svelte'
@@ -16,23 +16,34 @@
       title: "Dweh built a home for his family of 6",
       text: `“My wife, Balla, and I have four children. I have been stressed and unhappy with the work that I am doing because it is tedious but the money I earn is insufficient to take care of the family… The new things we’ve invested our transfers into are; three bundles of metal roof sheets at the cost of $233, sticks for the house for $38 and another $38 for transporting the materials from Giabo to here.”`,
       location: "Liberia",
-      image: "/dweh.jpg"
+      image: "dweh.jpg"
     },
     {
       title: "Emma is going back to school",
       text: `“Today, there is a new dawn. I am so happy after GiveDirectly enrolled me in the program where I will be getting about $550. I will surely be going back to secondary school. I plan to use the money to buy goats which will keep me in school. I do not want to just use the money, I want to invest it. I can sell the goats every term for my school fees.”`,
       location: "Malawi",
-      image: "/emma.jpg"
+      image: "emma.jpg"
+    },
+    {
+      title: "Rabeca wants to open a business selling vegetables",
+      text: `“I thank God for bringing GiveDirectly and USAID to my family because they have significantly changed Nhampoca. Today, our community is developing. We are building brick houses, our children are in school, and we have light in our homes, which makes us stop thinking about our problems and start thinking about the future. For example, with my next transfer, I want to open a business selling vegetables to guarantee our livelihood even after the project is finished. Selling vegetables is a business that makes a lot of money in our community. Having my stall with tomatoes, onions, carrots, cabbage, and other vegetables will make a profit that can help with my household expenses.”`,
+      location: "Mozambique",
+      image: "rabeca.jpg"
     }
   ]
 
   let currentStory = stories[0]
+  let secondaryImage = stories[1].image
 
   function nextStory() {
     direction = ""
     const currentIndex = stories.indexOf(currentStory);
     const nextIndex = (currentIndex + 1) % stories.length;
     currentStory = nextIndex === 0 ? stories[0] : stories[nextIndex];
+    
+    secondaryImage = stories[(stories.indexOf(currentStory) + 1) % stories.length].image;
+    
+
   }
 
   function previousStory() {
@@ -40,6 +51,10 @@
     const currentIndex = stories.indexOf(currentStory);
     const previousIndex = (currentIndex - 1 + stories.length) % stories.length;
     currentStory = previousIndex === stories.length - 1 ? stories[stories.length - 1] : stories[previousIndex];
+
+    const secondaryIndex = (previousIndex - 1 + stories.length) % stories.length;
+    secondaryImage = stories[secondaryIndex].image;
+
   }
 
 </script>
@@ -88,9 +103,11 @@
           </div>
           {/key}
         </div>
-        <!-- {#key currentStory} -->
-        <div class="photo" in:fade={{duration:600}}>
-          <ImageLoader 
+        
+        <div class="photo-holder">
+          {#key currentStory}
+          <div class="photo" in:fade={{duration:300}}>
+            <ImageLoader 
             src="/website/stories/{currentStory.image}" 
             alt=""
             skeleton={false} 
@@ -100,9 +117,31 @@
             width="368" 
             height="537"
             --radius="8px"
+            --shadow="0 0 0 1px rgba(0,0,0,0.4), 0 1px 1px hsl(0deg 0% 0% / 0.075),
+            0 2px 2px hsl(0deg 0% 0% / 0.075),
+            0 4px 4px hsl(0deg 0% 0% / 0.075),
+            0 8px 8px hsl(0deg 0% 0% / 0.075),
+            0 16px 16px hsl(0deg 0% 0% / 0.075)"
           ></ImageLoader>
+          </div>
+          {/key}
+          <!-- {#key secondaryImage} -->
+          <div class="secondary-photo">
+            <ImageLoader 
+            src="/website/stories/{secondaryImage}" 
+            alt=""
+            skeleton={false} 
+            fit={false} 
+            skip={false}
+            fullwidth={false} 
+            width="368" 
+            height="537"
+            --radius="8px"
+          ></ImageLoader>
+          </div>
+          <!-- {/key} -->
         </div>
-        <!-- {/key} -->
+        
       </div>
     
   </div>
@@ -149,6 +188,34 @@
     display: flex;
     gap: var(--24px);
     border-radius: $radius;;
+  }
+
+  .photo-holder {
+    position: relative;
+    border-radius: 8px;
+
+    .photo {
+      min-width: 368px;
+      position: relative;
+      border-radius: 8px;
+      z-index: 100;
+      transition: all 0.2s ease-in-out;
+
+      // &:hover {
+      //   transform-origin: center  center;
+      //   transform: translate3d(20px, 30px, 0) rotate(3deg);
+      // }
+    }
+
+    .secondary-photo {
+      position: absolute;
+      z-index: 1;
+      opacity: 0.5;
+      left: 0;
+      top: 0;
+      transform: rotate(3deg);
+      display: none;
+    }
   }
 
   .recipient {
