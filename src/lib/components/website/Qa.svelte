@@ -122,11 +122,12 @@
     font-weight: 600;
 
     &:hover {
-      color: var(--text);
+      color: var(--text-brand);
     }
 
     &.is-open-true {
       color: var(--text);
+      // background: var(--bg-secondary);
     }
   }
 
@@ -136,6 +137,7 @@
     color: var(--text-muted);
     width: 100%;
     max-width: var(--767px);
+    // background: var(--bg-secondary);
 
   }
 
