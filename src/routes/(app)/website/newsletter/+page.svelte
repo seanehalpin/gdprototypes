@@ -41,6 +41,8 @@
 
 <style lang="scss">
 
+  @import "../../../../donor";
+
   $height: 48px;
   $radius: 8px;
 
@@ -107,6 +109,7 @@
 
   input {
     &:focus-visible {
+      border-color: transparent;
       box-shadow: 0 0 0 1px var(--border-brand), 0 0 0 4px var(--focus);
       outline: 0;
       // outline: 4px solid var(--focus);

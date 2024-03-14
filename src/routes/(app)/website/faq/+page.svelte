@@ -31,6 +31,8 @@
 
 <style lang="scss">
 
+  @import "../../../../donor";
+
   .holder {
     max-width: 880px;
     width: 100%;

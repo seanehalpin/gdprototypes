@@ -16,7 +16,8 @@ export let nav = writable([
       { url: '/menu/v1', text: 'Menu' },
       { url: '/website/faq', text: 'FAQ' },
       { url: '/website/newsletter', text: 'Newsletter' },
-      { url: '/website/newsarticles', text: 'News Articles' },
+      { url: '/website/newsarticles', text: 'News articles' },
+      { url: '/website/stories', text: 'Recipient stories' },
     ]
   },
   {
@@ -37,7 +38,7 @@ export let nav = writable([
     title: "Map",
     open: true,
     links: [
-      { url: '/map/maker', text: 'Map Maker' },
+      { url: '/map/maker', text: 'Map maker' },
     ]
   },
   

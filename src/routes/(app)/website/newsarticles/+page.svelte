@@ -6,7 +6,6 @@
   import Qa from '$lib/components/website/Qa.svelte';
   import type { PageData } from './$types';
   import ImageLoader from '$lib/util/image/Loader.svelte'
-    import { active } from 'd3';
   export let data: PageData;
 
   let transition = quartOut
@@ -112,6 +111,8 @@
 
 <style lang="scss">
 
+  @import "../../../../donor";
+
   $height: 48px;
   $radius: 8px;
 
@@ -205,6 +206,7 @@
     // }
 
     &:focus-visible {
+      border-color: transparent;
       box-shadow: 0 0 0 1px var(--border-brand), 0 0 0 4px var(--focus);
       outline: 0;
       // outline: 4px solid var(--focus);
