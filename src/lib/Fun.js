@@ -6,7 +6,7 @@ export let nav = writable([
     open: true,
     links: [
       // { url: '/fun/wrapped/23', text: 'Wrapped 23' },
-      { url: '/fun/stories', text: 'Story canvas' },
+      { url: '/ideas/stories', text: 'Story canvas' },
     ]
   },
   

@@ -233,11 +233,13 @@
       color: var(--text);
       font-size: var(--18px);
       line-height: 1.2;
+      text-wrap: pretty;
     }
 
     p {
       color: var(--text-muted);
       font-size: var(--16px);
+      text-wrap: pretty;
     }
 
     .location {
