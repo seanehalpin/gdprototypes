@@ -161,7 +161,7 @@
     max-width: 880px;
     width: 100%;
     margin: 0 auto;
-    padding-top: 100px;
+    padding: var(--42px) 0 calc(var(--96px) * 2);
   }
 
   .title {
@@ -231,9 +231,10 @@
 
     h3 {
       color: var(--text);
-      font-size: var(--18px);
+      font-size: var(--22px);
       line-height: 1.2;
-      text-wrap: pretty;
+      // text-wrap: pretty;
+      text-wrap: balance;
     }
 
     p {
