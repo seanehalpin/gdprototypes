@@ -20,6 +20,7 @@ export let nav = writable([
       { url: '/website/storiesv1', text: 'Recipient stories v1' },
       { url: '/website/storiesv2', text: 'Recipient stories v2' },
       { url: '/website/storiesv3', text: 'Recipient stories v3' },
+      { url: '/website/storiesv4', text: 'Recipient stories v4' },
     ]
   },
   {

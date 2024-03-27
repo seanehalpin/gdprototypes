@@ -61,6 +61,30 @@
         <br/><br/>
         I do hope we get to meet again in the future, you're always welcome here in Ireland (if you fancy a pint of Guinness 🍺)`,
         image: "sean.gif"
+      },
+      {
+        person: "Harris Roberts",
+        message: `Thank you for being the best hosts (pls don’t tell the other countries I said this) — truly from logistics, to making time out of your busy schedules to speak with us to having SIMs for us on landing it was so worth the long flight. What you don’t have in flight connections you make up for in personal connections and Shaunak’s puns.
+        <br/><br/>
+        As always it was inspiring to see field operations and wanted to thank the entire team for their professionalism and commitment to recipients first. I look forward to our team continuing to support of your team!
+        <br/><br/>
+        A few shout outs (I’m sure i’ll miss people)
+        <br/><br/>
+        <ul class='fancy-list'>
+        <li>Freddie for showing up on the weekend to make sure we got in and out on tiem</li>
+        <li>Yvonne for answering all our ops questions and shopping tips!</li>
+        <li>Tom for taking extra time friday to speak with us</li>
+        <li>Patrick for getting time to speak about field content!</li>
+        <li>Christine for blazing the path on community engagement work</li>
+        <li>Esnatt for skipping town but giving us all the recs</li>
+        <li>Chris for helping with all the logistics</li>
+        <li>Shaunak for street meats</li>
+        <li>Bhahart for field visit logistics!</li>
+        <li>Vincent, Besai, Chris, Benjamin, Richard, Chisomo, Angelina, Tamandani, and everyone else for field trip logistics</li>
+        <li>The many others who helped make this happen!</li>
+        </ul>
+        `,
+        image: "harris.gif"
       }
     ]
 
@@ -125,18 +149,20 @@
   <div class="cards">
     {#each thanks as thank}
       <div class="card">
+        {#if thank.image}
         <ImageLoader 
-              src="/misc/thanks-malawi/{thank.image}" 
-              alt=""
-              skeleton={true} 
-              fit={false} 
-              skip={false}
-              fullwidth={true} 
-              width="100%" 
-              height="auto"
-              --radius="0"
-              --display="block"
-            ></ImageLoader>
+        src="/misc/thanks-malawi/{thank.image}" 
+        alt=""
+        skeleton={true} 
+        fit={false} 
+        skip={false}
+        fullwidth={true} 
+        width="100%" 
+        height="auto"
+        --radius="0"
+        --display="block"
+      ></ImageLoader>
+        {/if}
         <div class="message">{@html thank.message}</div>
         <div class="person">{thank.person}</div>
       </div>

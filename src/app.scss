@@ -82,6 +82,7 @@
   --color-text: var(--grey-600);
 
   --8px: 0.5rem;
+  --12px: 0.75rem;
   --14px: 0.875rem;
   --15px: 0.9375rem;
   --16px: 1rem;
@@ -200,5 +201,14 @@ body > div {
     --proto-border-primary: rgba(255,255,255,0.1);
     --proto-bg-logo: rgba(255,255,255,1);
     --proto-bg-accent: rgba(255,255,255,0.1);
+  }
+}
+
+.fancy-list {
+  margin: 0;
+  padding: 0 0 0 var(--16px);
+
+  li {
+    margin-bottom: 5px;
   }
 }
