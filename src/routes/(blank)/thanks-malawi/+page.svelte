@@ -164,6 +164,8 @@
       font-size: var(--48px);
       letter-spacing: -1px;
       color: var(--text-brand);
+      line-height: 1.2;
+      text-wrap: pretty;
     }
   }
 
