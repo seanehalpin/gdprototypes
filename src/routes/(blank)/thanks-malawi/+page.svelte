@@ -178,7 +178,7 @@
 
   .holder {
     margin: 0 auto;
-    max-width: 1100px;
+    max-width: 2000px;
     padding: var(--48px) var(--16px);
   }
 
@@ -211,20 +211,35 @@
       @include md {
         width: calc(50% - var(--gap));
       }
+
+      @include xl {
+        // width: calc(50% - var(--gap));
+        width: calc(25% - var(--gap));
+      }
     }
 
     .message {
       color: var(--text);
-      font-size: var(--20px);
-      padding:  var(--24px) var(--48px) 0;
+      font-size: var(--16px);
+      padding:  var(--24px) var(--24px) 0;
       text-wrap: pretty;
+
+      @include md {
+        font-size: var(--18px);
+        padding:  var(--48px) var(--48px) 0;
+      }
     }
 
     .person {
       color: var(--text-secondary);
-      font-size: var(--16px);
+      font-size: var(--14px);
       font-weight: 500;
-      padding:  var(--24px) var(--48px) var(--48px);
+      padding:  var(--24px);
+
+      @include md {
+        font-size: var(--16px);
+        padding:  var(--24px) var(--48px) var(--48px);
+      }
     }
   }
 
