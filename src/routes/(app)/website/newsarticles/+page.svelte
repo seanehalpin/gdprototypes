@@ -71,7 +71,6 @@
 
 </script>
 
-
 <svelte:head>
   <title>GD: FAQ</title>
 </svelte:head>
@@ -93,7 +92,7 @@
           <ImageLoader 
           src="/website/news/{card.image}" 
           alt=""
-          skeleton={false} 
+          skeleton={true} 
           fit={false} 
           skip={false}
           fullwidth={false} 
@@ -125,6 +124,7 @@
 <style lang="scss">
 
   @import "../../../../donor";
+  @import "../../../../mixins";
 
   $height: 48px;
   $radius: 8px;
@@ -133,7 +133,7 @@
     max-width: 880px;
     width: 100%;
     margin: 0 auto;
-    padding-top: 100px;
+    padding: var(--96px) var(--16px);
     
   }
 
@@ -146,8 +146,14 @@
 
   .cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     grid-gap: calc(var(--16px) / 2);
+
+
+    @include md {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
   }
 
   .card {
@@ -166,11 +172,6 @@
     &:hover {
       border-color: var(--border-active);
       box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.04);
-
-      // .tooltip {
-      //   opacity: 1;
-      //   transform: translate3d(0, 0, 0);
-      // }
     }
 
     .image {
@@ -233,10 +234,5 @@
     }
 
   }
-
-
-  
-
-  
 
 </style>

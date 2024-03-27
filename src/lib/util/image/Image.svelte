@@ -60,9 +60,24 @@
   $radius: 50px;
   $blur: 10px;
   $saturate: 1.3;
+  $bg: #f9f7f2;
 
   .skeleton {
-    background: var(--color-opaque);
+    background: $bg;
+    // animation: pulse 2s infinite;
+    // transition: opacity 0.2s linear;
+  }
+
+  @keyframes pulse {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 
   figure {

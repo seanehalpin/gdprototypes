@@ -110,7 +110,7 @@
             <ImageLoader 
             src="/website/stories/{currentStory.image}" 
             alt=""
-            skeleton={false} 
+            skeleton={true} 
             fit={false} 
             skip={false}
             fullwidth={false} 
@@ -130,7 +130,7 @@
             <ImageLoader 
             src="/website/stories/{secondaryImage}" 
             alt=""
-            skeleton={false} 
+            skeleton={true} 
             fit={false} 
             skip={false}
             fullwidth={false} 

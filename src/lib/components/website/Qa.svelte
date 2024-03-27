@@ -168,7 +168,7 @@
       height: 15px;
       position: absolute;
       left: calc(50% - 1px);
-      top: calc(50% - 8.5px);
+      top: calc(50% - 7.5px);
       background: var(--icon);
       transition: all 0.2s ease-in-out;
       pointer-events: none;
@@ -180,7 +180,7 @@
       height: 2px;
       position: absolute;
       left: calc(50% - 7.5px);
-      top: calc(50% - 2px);
+      top: calc(50% - 1px);
       background: var(--icon);
       transition: all 0.2s ease-in-out;
       pointer-events: none;

@@ -3,11 +3,28 @@
   import { fade, fly, slide } from 'svelte/transition';
   import { quartOut, backOut, elasticOut, linear} from "svelte/easing"
   import { onMount } from 'svelte';
-  import Qa from '$lib/components/website/Qa.svelte';
   import type { PageData } from './$types';
   export let data: PageData;
 
   let transition = quartOut
+  let email = '';
+  let firstName = '';
+  let emailError = false
+  let firstNameError = false
+
+  function handleSubmit() {
+    if (email.trim() === '') {
+      emailError = true
+    }
+
+    if (firstName.trim() === '') {
+      firstNameError = true
+    }
+
+    if (emailError || firstNameError) {
+      return;
+    }
+  }
 
 </script>
 
@@ -29,9 +46,19 @@
         Sign up and stay informed about stories from recipients, exclusive event invites, and research updates.
       </p>
     </div>
-    <form action="" class="form">
-      <input type="text" class="input" placeholder="Email address">
-      <input type="text" class="input" placeholder="First Name">
+    <form on:submit|preventDefault={handleSubmit} class="form">
+      <div class="input-holder">
+        <input bind:value={email} type="text" class="input" class:error={emailError} placeholder="Email address*">
+        {#if emailError}
+          <p class="error-text" in:fade={{duration:250}}>Please enter a valid email address</p>
+        {/if}
+      </div>
+      <div class="input-holder">
+      <input bind:value={firstName} type="text" class="input" class:error={firstNameError} placeholder="First Name*">
+      {#if firstNameError}
+        <p class="error-text" in:fade={{duration:250}}>Please enter your first name</p>
+      {/if}
+      </div>
       <button class="button">Sign Up</button>
     </form>
   </div>
@@ -42,6 +69,7 @@
 <style lang="scss">
 
   @import "../../../../donor";
+  @import "../../../../mixins";
 
   $height: 48px;
   $radius: 8px;
@@ -50,7 +78,7 @@
     max-width: 880px;
     width: 100%;
     margin: 0 auto;
-    padding-top: 100px;
+    padding: var(--96px) var(--16px) 0;
   }
 
   h2 {
@@ -66,9 +94,28 @@
     margin-bottom: var(--32px);
   }
 
+  .error-text {
+    text-align: left;
+    font-size: var(--font-sm);
+    color: var(--red-600);
+    padding: 4px 0 0;
+    margin: 0;
+  }
+
   form {
     display: flex;
     gap: calc(var(--16px) / 2);
+    flex-direction: column;
+
+    @include md {
+      flex-direction: row;
+    }
+  }
+
+  .input-holder {
+    width: 100%;
+    flex: 1;
+    position: relative;
   }
 
   input {
@@ -88,7 +135,9 @@
       box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.04);
     }
 
-    
+    &.error {
+      border: 1px solid var(--red-600);
+    }
   }
 
   button {
@@ -105,6 +154,10 @@
     padding: 0 var(--32px);
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+
+    &:active {
+      transform: translateY(2px);
+    }
   }
 
   input {
