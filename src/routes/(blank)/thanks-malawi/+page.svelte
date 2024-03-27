@@ -162,7 +162,7 @@
     h1 {
       text-align: center;
       font-size: var(--48px);
-      letter-spacing: -0.3px;
+      letter-spacing: -1px;
       color: var(--text-brand);
     }
   }
