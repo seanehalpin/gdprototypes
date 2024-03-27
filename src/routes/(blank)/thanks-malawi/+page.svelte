@@ -189,6 +189,7 @@
       color: var(--text);
       font-size: var(--20px);
       padding:  var(--24px) var(--48px) 0;
+      text-wrap: pretty;
     }
 
     .person {
