@@ -16,7 +16,7 @@
         A few shout outs (I’m sure i’ll miss people)
         <br/><br/>
         <ul class='fancy-list'>
-        <li>Freddie for showing up on the weekend to make sure we got in and out on tiem</li>
+        <li>Freddie for showing up on the weekend to make sure we got in and out on time</li>
         <li>Yvonne for answering all our ops questions and shopping tips!</li>
         <li>Tom for taking extra time friday to speak with us</li>
         <li>Patrick for getting time to speak about field content!</li>
