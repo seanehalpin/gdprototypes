@@ -29,7 +29,7 @@
         <li>The many others who helped make this happen!</li>
         </ul>
         `,
-        image: "harris.gif"
+        image: "harris.png"
       },
       {
         person: "Nsubuga Kasozi",
