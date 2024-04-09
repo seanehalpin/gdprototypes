@@ -82,9 +82,14 @@
         image: "sean.gif"
       },
       {
-        person: "Kayla",
+        person: "Kayla Fishman",
         message: `Thank you all so much for the A+ trip coordination and support, great visit to the field and context on your work, and your company at meals and office hangs! Hope we can return the favor in New York - or better yet, come back to your office for more home-cooked lunches. 😋`,
         image: "kayla.jpg"
+      },
+      {
+        person: "Julia Guerra",
+        message: `Malawi Team - Thank you for welcoming us and taking the time to teach us about the work you're doing. It was really special to have the chance to see your busy call center in action, discuss programs with various team members, visit recipients and see multiple steps of the process in real time. Each person on the team I got to speak with showed so much warmth and care for the work. I'm hopeful for the chance to host you here or to visit again.`,
+        image: "julia.gif"
       },
     ]
 
