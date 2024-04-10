@@ -168,7 +168,7 @@
     justify-content: center;
 
     @include md {
-      height: var(--144px);
+      height: var(--128px);
     }
   }
 
