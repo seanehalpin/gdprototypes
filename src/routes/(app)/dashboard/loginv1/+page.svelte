@@ -182,7 +182,7 @@
     background: var(--bg-secondary);
     border-radius: var(--16px);
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
 
     @include md {
       flex-direction: row;
@@ -209,11 +209,16 @@
 
     &.image-col {
       align-items: flex-end;
+      display: none;
+      @include md {
+        display: flex;
+      }
     }
   }
 
   .title {
     font-weight: 600;
+    font-weight: bold;
     font-size: var(--24px);
     color: var(--text-brand);
   }
