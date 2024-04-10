@@ -1,0 +1,29 @@
+/* @link https://utopia.fyi/grid/calculator?c=320,14,1.2,1184,16,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,2xl,12 */
+
+$utopia: 680px;
+
+
+:root {
+  --grid-max-width: 74.00rem;
+  --grid-gutter: var(--space-s-l, clamp(0.875rem, 0.4583rem + 2.0833vw, 2rem));
+  --grid-columns: 12;
+}
+
+.u-container {
+  max-width: var(--grid-max-width);
+  padding-inline: var(--grid-gutter);
+  margin-inline: auto;
+  width: 100%;
+}
+
+.u-grid {
+  display: grid;
+  gap: var(--grid-gutter);
+  width: 100%;
+}
+
+@mixin utopia {
+  @media (min-width: #{$utopia}) {
+    @content;
+  }
+}
