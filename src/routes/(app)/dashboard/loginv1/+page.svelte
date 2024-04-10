@@ -153,6 +153,8 @@
   @import "../../../../donor";
   @import "../../../../mixins";
 
+  $height: calc(var(--144px) * 5);
+
   .card-holder {
     padding: 0 var(--16px);
     max-width: 1200px;
@@ -183,7 +185,7 @@
 
     @include md {
       flex-direction: row;
-      height: 800px;
+      height: $height;
     }
   }
 
