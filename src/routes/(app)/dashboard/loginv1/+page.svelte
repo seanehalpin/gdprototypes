@@ -24,6 +24,7 @@
   function signIn() {
     // requested = true
     loading = true
+    isValidEmail = false
     setTimeout(() => {
       requested = true
     }, 2000)
@@ -59,7 +60,7 @@
         Sign in
       </div>
       <div class="desc" in:fade={{duration:200}}>
-        Enter an email to access your Impact Dashboard
+        Enter your email to access the Impact Dashboard
       </div>
 
       <div class="form" in:fade={{duration:200}}>
@@ -68,11 +69,11 @@
           {#if loading}
           <span class="loader-docs" in:fade={{duration:200}}></span>
           {:else}
-          Send me a magic link
+          Send magic link
           {/if}
         </button>
         <div class="disclaimer" in:fade={{duration:200}}>
-          You acknowledge that you read, and agree to our <a href="#">Terms of Service</a> and our <a href="#">Privacy Policy</a>.
+          Impact Dashboards are created after your <a href="#">first donation</a>
         </div>
       </div>
       {:else}
@@ -81,7 +82,7 @@
           Check your inbox
         </div>
         <div class="desc">
-          We've sent a magic link to <span>{email}</span>. Please click the link to confirm your address.
+          If <span>{email}</span> is associated with donations, you'll receive a magic link. Please click the link to access your dashboard.
         </div>
 
         <div class="requested-links">
@@ -107,7 +108,7 @@
         </div>
       </div>
       {/if}
-      <div class="footer">
+      <!-- <div class="footer">
         <div class="noty">
           <span class="icon">
           <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -116,7 +117,7 @@
           </span>
           <span>Dashboards are created after your first donation &ndash; <a href="#">Donate</a></span> 
         </div>
-      </div>
+      </div> -->
     </div>
 
     <div class="col image-col">
@@ -181,7 +182,7 @@
     background: var(--bg-secondary);
     border-radius: var(--16px);
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
 
     @include md {
       flex-direction: row;
@@ -199,7 +200,7 @@
       align-items: center;
       flex-direction: column;
       justify-content: center;
-      padding: var(--24px);
+      padding: var(--32px) var(--24px) var(--64px);
 
       @include md {
         padding: var(--16px);
@@ -247,7 +248,7 @@
     z-index: 100;
     padding: var(--32px);
     color: var(--text-onbrand);
-    height: 400px;
+    height: calc(var(--16px) * 22);
     justify-content: flex-end;
 
     @include md {
@@ -269,6 +270,7 @@
     color: var(--text-muted);
     margin-top: 4px;
     text-align: center;
+    text-wrap: pretty;
 
     span {
       font-weight: 600;
@@ -279,7 +281,7 @@
   .form {
     margin-top: var(--24px);
     width: 100%;
-    max-width: 350px;
+    max-width: calc(var(--144px) * 2.5);
 
     input {
       font-size: var(--14px);
@@ -357,7 +359,7 @@
 
   .requested {
     width: 100%;
-    max-width: 350px;
+    max-width: calc(var(--144px) * 2.5);
     text-align: center;
   }
 
