@@ -159,7 +159,7 @@
 
   .card-holder {
     padding: 0 var(--16px);
-    max-width: 1200px;
+    max-width: calc(var(--16px) * 75);
     width: 100%;
     position: relative;
   }
@@ -320,6 +320,7 @@
       margin-top: var(--8px);
       color: var(--text-onbrand);
       cursor: pointer;
+      font-weight: 500;
       transition: all 0.2s ease-in-out;
 
       &:hover {
