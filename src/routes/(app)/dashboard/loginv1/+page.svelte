@@ -60,7 +60,7 @@
         Sign in
       </div>
       <div class="desc" in:fade={{duration:200}}>
-        Enter your email to access the Impact Dashboard
+        Enter your email to access the Impact Dashboard.
       </div>
 
       <div class="form" in:fade={{duration:200}}>
@@ -73,7 +73,8 @@
           {/if}
         </button>
         <div class="disclaimer" in:fade={{duration:200}}>
-          Impact Dashboards are created after your <a href="#">first donation</a>
+          <!-- Impact Dashboards are created after your <a href="#">first donation</a> -->
+          Dashboards are currently only available for recurring donors.
         </div>
       </div>
       {:else}
@@ -348,6 +349,7 @@
     font-size: var(--14px);
     color: var(--text-muted);
     text-align: center;
+    text-wrap: pretty;
     a {
       color: var(--text-brand);
       text-decoration: none;
