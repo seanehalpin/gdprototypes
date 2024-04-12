@@ -8,7 +8,7 @@ export let nav = writable([
       { url: '/dashboard/v1', text: 'Donate v1' },
       { url: '/dashboard/v2', text: 'Donate v2' },
       { url: '/dashboard/loginv1', text: 'Sign In v1' },
-      // { url: '/dashboard/gridv1', text: 'Grid v1' },
+      { url: '/dashboard/gridv1', text: 'Responsive Idea' },
     ]
   },
   {
