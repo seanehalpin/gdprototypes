@@ -69,7 +69,7 @@
           {#if loading}
           <span class="loader-docs" in:fade={{duration:200}}></span>
           {:else}
-          Send magic link
+          Send me a magic link
           {/if}
         </button>
         <div class="disclaimer" in:fade={{duration:200}}>
