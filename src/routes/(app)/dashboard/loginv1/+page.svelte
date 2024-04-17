@@ -155,11 +155,11 @@
   @import "../../../../donor";
   @import "../../../../mixins";
 
-  $height: calc(var(--144px) * 5);
+  $height: calc(var(--16px) * 38);
 
   .card-holder {
     padding: 0 var(--16px);
-    max-width: calc(var(--16px) * 75);
+    max-width: calc((var(--16px) * (34 * 2)) + var(--32px));
     width: 100%;
     position: relative;
   }
@@ -264,6 +264,7 @@
     .text {
       font-weight: 600;
       font-size: var(--14px);
+      hanging-punctuation: first last;
     }
 
     .name {

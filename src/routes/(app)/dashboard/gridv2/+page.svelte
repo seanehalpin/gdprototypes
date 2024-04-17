@@ -7,6 +7,8 @@
   import ImageLoader from '$lib/util/image/Loader.svelte'
   import Story from '$lib/util/Story.svelte'
 
+  import '../../../../scale.scss'
+
   export let data: PageData;
 
   let transition = quartOut 
@@ -29,7 +31,7 @@
   }
 
   let storys = [
-    {id: 1, title: "Responsive design for ID", loom: "174bba16f5124b0bbe6fa1f93bece7f8", description: "", key: 1},
+    {id: 1, title: "Modular spacing", loom: "18ccf85c2d014439ad29a5601148ae13", description: "", key: 1},
   ]
 
   let showStory = true
@@ -60,19 +62,26 @@
     <button class="donate">
       Donate
     </button>
-    <!-- <div class="indicator">
-      {colSmall}px
-    </div> -->
   </div>
   <div bind:clientWidth={colBig}>
     <div class="block">
-      <!-- <h1>flex-grow: 999</h1> -->
-      <div class="indicator">
-        {#if calced >= 50}
-        {calced.toFixed(0)}% of holder
-        {:else}
-        100% of holder
-        {/if}
+      <div class="item s0">
+        <div class="indicator">--s0</div>
+      </div>
+      <div class="item s1">
+        <div class="indicator">--s1</div>
+      </div>
+      <div class="item s2">
+        <div class="indicator">--s2</div>
+      </div>
+      <div class="item s3">
+        <div class="indicator">--s3</div>
+      </div>
+      <div class="item s4">
+        <div class="indicator">--s4</div>
+      </div>
+      <div class="item s5">
+        <div class="indicator">--s5</div>
       </div>
     </div>
   </div>
@@ -94,11 +103,11 @@
     --u-gap: var(--64px);
     display: flex;
     flex-wrap: wrap;
-    gap: var(--u-gap);
+    gap: var(--s3);
     width: 100%;
-    padding: 0 var(--16px);
-    max-width: calc(var(--u-width) + (var(--16px) * 2));
-    box-shadow: $shadow;
+    padding: 0 var(--s0);
+    max-width: calc(var(--u-width) + (var(--s0) * 2));
+    // box-shadow: $shadow;
   }
 
   .with-sidebar > :first-child {
@@ -110,6 +119,47 @@
     flex-basis: 0;
     flex-grow: 999;
     min-inline-size: 50%;
+  }
+
+  .item {
+    position: relative;
+    width: 100%;
+    border: 2px solid $outline;
+    border-top: 0;
+
+    &.s0 {
+      height: var(--s0);
+      border-top: 2px solid $outline;
+    }
+    &.s1 {
+      height: var(--s1);
+    }
+    &.s2 {
+      height: var(--s2);
+    }
+    &.s3 {
+      height: var(--s3);
+    }
+    &.s4 {
+      height: var(--s4);
+    }
+    &.s5 {
+      height: var(--s5);
+    }
+  }
+
+  .indicator {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    background: var(--red-600);
+    color: var(--white);
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 0 var(--8px);
+    text-align: center;
   }
 
   button {
@@ -128,30 +178,17 @@
   }
 
   div {
-    box-shadow: $shadow;
+    // box-shadow: $shadow;
     position: relative;
   }
 
   .block {
-    background: var(--bg-secondary);
-    padding: var(--96px);
+    // background: var(--bg-secondary);
+    // padding: var(--96px);
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  .indicator {
-    // position: absolute;
-    // left: 50%;
-    // transform: translate3d(-50%, 0, 0);
-    // bottom: var(--16px);
-    background: var(--red-600);
-    color: var(--white);
-    border-radius: 8px;
-    font-size: var(--14px);
-    font-weight: 500;
-    padding: 0 var(--8px);
-    text-align: center;
+    flex-direction: column;
   }
 
 
