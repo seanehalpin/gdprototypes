@@ -43,7 +43,7 @@
 </script>
 
 <svelte:head>
-  <title>Sign In</title>
+  <title>Impact Dashboard</title>
 </svelte:head>
 {#if ready}
   {#if showStory}
@@ -65,23 +65,44 @@
   </div>
   <div bind:clientWidth={colBig}>
     <div class="block">
+      <div class="item s-6">
+        <div class="indicator minus">s-6</div>
+      </div>
+      <div class="item s-5">
+        <div class="indicator minus">s-5</div>
+      </div>
+      <div class="item s-4">
+        <div class="indicator minus">s-4</div>
+      </div>
+      <div class="item s-3">
+        <div class="indicator minus">s-3</div>
+      </div>
+      <div class="item s-2">
+        <div class="indicator minus">s-2</div>
+      </div>
+      <div class="item s-1">
+        <div class="indicator minus">s-1</div>
+      </div>
       <div class="item s0">
-        <div class="indicator">--s0</div>
+        <div class="indicator neutral">s0</div>
       </div>
       <div class="item s1">
-        <div class="indicator">--s1</div>
+        <div class="indicator">s1</div>
       </div>
       <div class="item s2">
-        <div class="indicator">--s2</div>
+        <div class="indicator">s2</div>
       </div>
       <div class="item s3">
-        <div class="indicator">--s3</div>
+        <div class="indicator">s3</div>
       </div>
       <div class="item s4">
-        <div class="indicator">--s4</div>
+        <div class="indicator">s4</div>
       </div>
       <div class="item s5">
-        <div class="indicator">--s5</div>
+        <div class="indicator">s5</div>
+      </div>
+      <div class="item s6">
+        <div class="indicator">s6</div>
       </div>
     </div>
   </div>
@@ -124,12 +145,19 @@
   .item {
     position: relative;
     width: 100%;
-    border: 2px solid $outline;
+    // border: 2px solid $outline;
     border-top: 0;
+    background: lighten(#d94636, 40%);
+    
+
+    &.s-1 {
+      height: var(--s-1);
+    }
 
     &.s0 {
       height: var(--s0);
-      border-top: 2px solid $outline;
+      // border-top: 2px solid $outline;
+      
     }
     &.s1 {
       height: var(--s1);
@@ -146,10 +174,32 @@
     &.s5 {
       height: var(--s5);
     }
+    &.s6 {
+      height: var(--s6);
+    }
+    &.s-1 {
+      height: var(--s-1);
+    }
+    &.s-2 {
+      height: var(--s-2);
+    }
+    &.s-3 {
+      height: var(--s-3);
+    }
+    &.s-4 {
+      height: var(--s-4);
+    }
+    &.s-5 {
+      height: var(--s-5);
+    }
+    &.s-6 {
+      height: var(--s-6);
+    }
   }
 
   .indicator {
     position: absolute;
+    // left: var(--s0);
     left: 50%;
     top: 50%;
     transform: translate3d(-50%, -50%, 0);
@@ -160,6 +210,13 @@
     font-weight: 500;
     padding: 0 var(--8px);
     text-align: center;
+
+    // &.minus {
+    //   background: var(--blue-500);
+    // }
+    // &.neutral {
+    //   background: var(--grey-600);
+    // }
   }
 
   button {
@@ -189,6 +246,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    gap: 12px;
   }
 
 

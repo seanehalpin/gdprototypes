@@ -2,14 +2,15 @@ import { writable } from 'svelte/store'
 
 export let nav = writable([
   {
-    title: "Donate Portal",
+    title: "Impact Dashboard",
     open: true,
     links: [
       { url: '/dashboard/v1', text: 'Donate v1' },
       { url: '/dashboard/v2', text: 'Donate v2' },
       { url: '/dashboard/loginv1', text: 'Sign In v1' },
       { url: '/dashboard/gridv1', text: 'Responsiveness' },
-      { url: '/dashboard/gridv2', text: 'Modular spacing' },
+      { url: '/dashboard/gridv2', text: 'Harmonic sizes' },
+      { url: '/dashboard/layoutv1', text: 'ID dynamic sizing' },
     ]
   },
   {

@@ -35,6 +35,7 @@
 		"svelte-code-editor": "^1.0.1",
 		"svelte-confetti": "^1.2.2",
 		"svelte-dnd-action": "^0.9.33",
+		"svelte-highlight": "^7.6.0",
 		"svelte-masonry": "^0.1.1",
 		"svelte-prism": "^1.1.6",
 		"svelte-skeleton": "^1.3.1",

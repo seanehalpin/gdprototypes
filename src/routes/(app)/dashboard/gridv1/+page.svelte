@@ -41,7 +41,7 @@
 </script>
 
 <svelte:head>
-  <title>Sign In</title>
+  <title>Impact Dashboard</title>
 </svelte:head>
 {#if ready}
   {#if showStory}
