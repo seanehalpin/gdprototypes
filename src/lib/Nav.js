@@ -10,6 +10,8 @@ export let nav = writable([
       { url: '/dashboard/loginv1', text: 'Sign In v1' },
       { url: '/dashboard/gridv1', text: 'Responsiveness' },
       { url: '/dashboard/gridv2', text: 'Harmonic sizes' },
+      { url: '/dashboard/gridv3', text: 'Sizing variables' },
+      { url: '/dashboard/gridv4', text: 'Color variables' },
       { url: '/dashboard/layoutv1', text: 'ID dynamic sizing' },
     ]
   },

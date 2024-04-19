@@ -36,8 +36,6 @@
     --s4: clamp(2.44rem, 1.83rem + 3.04vw, 4rem);
     --s5: clamp(3.05rem, 2.04rem + 5.07vw, 5.65rem);
     --s6: clamp(3.81rem, 2.3rem + 7.9vw, 7.5rem);
-    --line-height: var(--ratio);
-    --line-height-small: calc(0.8* var(--ratio));
     font-size: var(--s0);
 }`
 
@@ -51,7 +49,7 @@
   }
 
   let storys = [
-    {id: 1, title: "Modular spacing", loom: "18ccf85c2d014439ad29a5601148ae13", description: "", key: 1},
+    {id: 1, title: "Dashboard variables", loom: "061c020eb0a645db84b291b08645bf90", description: "", key: 1},
   ]
 
   let showStory = true
@@ -72,18 +70,20 @@
 {/if}
 
 <Center
---flex-direction="column" 
+  --flex-direction="column"
+  --justify-content="flex-start"
   --background="var(--bg)" 
-  --gap="var(--24px)" 
+  --gap="var(--24px)"
+  --padding="var(--s5) 0"
 >
 
 <div class="with-sidebar">
   <div bind:clientWidth={colSmall}>
-    <button class="donate">
-      Donate
-    </button>
-  </div>
-  <div bind:clientWidth={colBig}>
+    <div class="block text">
+      <h1>The quick brown fox</h1>
+      <p>The quick brown fox</p>
+      <button>Button</button>
+    </div>
     <div class="block">
       <div class="item s-6">
         <div class="indicator minus">s-6</div>
@@ -126,6 +126,12 @@
       </div>
     </div>
   </div>
+  <div bind:clientWidth={colBig}>
+    
+    <div class="block">
+      <Highlighter code={codeButtons} />
+    </div>
+  </div>
 </div>
 
 
@@ -135,6 +141,7 @@
 <style lang="scss">
   $outline: var(--red-600);
   $shadow: 0 0 0 2px $outline;
+  $highlight: hsla(39, 62%, 35%,1);
   
   @import "../../../../donor";
   @import "../../../../mixins";
@@ -152,14 +159,14 @@
   }
 
   .with-sidebar > :first-child {
-    flex-basis: 224px; 
+    flex-basis: 40%; 
     flex-grow: 1;
   }
 
   .with-sidebar > :last-child {
     flex-basis: 0;
     flex-grow: 999;
-    min-inline-size: 50%;
+    min-inline-size: 55%;
   }
 
   .item {
@@ -167,7 +174,7 @@
     width: 100%;
     // border: 2px solid $outline;
     border-top: 0;
-    background: lighten(#d94636, 40%);
+    background: lighten($highlight, 55%);
     
 
     &.s-1 {
@@ -223,7 +230,7 @@
     left: 50%;
     top: 50%;
     transform: translate3d(-50%, -50%, 0);
-    background: var(--red-600);
+    background: $highlight;
     color: var(--white);
     border-radius: 8px;
     font-size: 10px;
@@ -239,21 +246,6 @@
     // }
   }
 
-  button {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--bg-brand);
-    border-radius: var(--48px);
-    border: 0;
-    height: var(--40px);
-    font-size: var(--14px);
-    color: var(--text-onbrand);
-    font-weight: 600;
-    cursor: pointer;
-  }
-
   div {
     // box-shadow: $shadow;
     position: relative;
@@ -267,6 +259,38 @@
     justify-content: center;
     flex-direction: column;
     gap: 12px;
+
+    &.text {
+      align-items: flex-start;
+      margin-bottom: var(--s1);
+
+      h1 {
+        font-size: var(--s2);
+        font-weight: 700;
+      }
+
+      p {
+        font-size: var(--s0);
+      }
+
+    }
+  }
+
+  button {
+    display: flex;
+    // width: 100%;
+    background: var(--bg-brand);
+    border: 0;
+    gap: var(--s1);
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    border-radius: var(--s4);
+    height: 48px;
+    cursor: pointer;
+    color: var(--text-onbrand);
+    font-size: var(--s0);
+    padding: 0 var(--s3);
   }
 
 

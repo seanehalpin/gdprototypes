@@ -25,7 +25,8 @@
     gap: var(--_gap);
     --_overflow: var(--overflow, initial);
     overflow: var(--_overflow);
-    
+    --_padding: var(--padding, 0);
+    padding: var(--_padding);
   }
 
 </style>

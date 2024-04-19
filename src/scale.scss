@@ -1,6 +1,4 @@
 :root {
-    --base-size: var(--16px);
-    --ratio: 1.4;
     --s-6: clamp(0.26rem, 0.31rem + -0.29vw, 0.15rem);
     --s-5: clamp(0.33rem, 0.39rem + -0.29vw, 0.18rem);
     --s-4: clamp(0.41rem, 0.47rem + -0.31vw, 0.25rem);
@@ -14,8 +12,5 @@
     --s4: clamp(2.44rem, 1.83rem + 3.04vw, 4rem);
     --s5: clamp(3.05rem, 2.04rem + 5.07vw, 5.65rem);
     --s6: clamp(3.81rem, 2.3rem + 7.9vw, 7.5rem);
-    --line-height: var(--ratio);
-    --line-height-small: calc(0.8* var(--ratio));
     font-size: var(--s0);
-    // font-size: var(--16px);
 }
