@@ -6,9 +6,10 @@
   import type { PageData } from './$types';
   import ImageLoader from '$lib/util/image/Loader.svelte'
   import Story from '$lib/util/Story.svelte'
+  import Highlighter from '$lib/util/Highlighter.svelte';
 
   import '../../../../scale.scss'
-    import Highlighter from '$lib/util/Highlighter.svelte';
+  
 
   export let data: PageData;
 

@@ -13,6 +13,7 @@ export let nav = writable([
       { url: '/dashboard/gridv3', text: 'Sizing variables' },
       { url: '/dashboard/gridv4', text: 'Color variables' },
       { url: '/dashboard/layoutv1', text: 'ID dynamic sizing' },
+      { url: '/dashboard/layoutv2', text: 'Version 1' },
     ]
   },
   {

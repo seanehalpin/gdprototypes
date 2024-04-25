@@ -7,6 +7,7 @@
   import ImageLoader from '$lib/util/image/Loader.svelte'
   import Logo from '$lib/components/dash/Logo.svelte';
   export let data: PageData;
+  import '../../../../scale.scss'
 
   let transition = quartOut
 
@@ -263,17 +264,17 @@
 
     .text {
       font-weight: 600;
-      font-size: var(--14px);
+      font-size: var(--s-12);
       hanging-punctuation: first last;
     }
 
     .name {
-      font-size: var(--14px);
+      font-size: var(--s-12);
     }
   }
 
   .desc {
-    font-size: var(--14px);
+    font-size: var(--s-12);
     color: var(--text-muted);
     margin-top: 4px;
     text-align: center;
@@ -291,7 +292,7 @@
     max-width: calc(var(--144px) * 2.5);
 
     input {
-      font-size: var(--14px);
+      font-size: var(--s-12);
       width: 100%;
       display: flex;
       height: var(--40px);
@@ -317,7 +318,7 @@
       border-radius: var(--48px);
       border: 0;
       height: var(--40px);
-      font-size: var(--14px);
+      font-size: var(--s-12);
       margin-top: var(--8px);
       color: var(--text-onbrand);
       cursor: pointer;
@@ -348,7 +349,7 @@
 
   .disclaimer {
     margin-top: var(--24px);
-    font-size: var(--14px);
+    font-size: var(--s-12);
     color: var(--text-muted);
     text-align: center;
     text-wrap: pretty;
@@ -387,7 +388,7 @@
       justify-content: center;
       align-items: center;
       gap: 10px;
-      font-size: var(--14px);
+      font-size: var(--s-12);
       text-decoration: none;
       color: var(--text-muted);
       font-weight: 500;

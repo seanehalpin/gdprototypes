@@ -16,6 +16,28 @@
     ready = true 
   })
 
+  // let navMinimized = false
+
+  if (typeof window !== "undefined") {
+    if (localStorage.getItem(`navmin`) === null) {
+      window.localStorage.setItem(`navmin`,JSON.stringify(minimized))
+    } else {
+      minimized = JSON.parse(localStorage.getItem(`navmin`));
+    }
+  }
+
+  $: if (minimized) {
+    if (typeof window !== "undefined") {
+      let on = true
+      window.localStorage.setItem(`navmin`,JSON.stringify(on));
+    }
+  } else {
+    if (typeof window !== "undefined") {
+      let on = false
+      window.localStorage.setItem(`navmin`,JSON.stringify(on));
+    }
+  }
+
 </script>
 
 {#if ready}
