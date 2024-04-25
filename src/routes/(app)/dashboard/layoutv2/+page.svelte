@@ -215,7 +215,7 @@
     {id: 1, title: "Donation management", loom: "b036694884f94c67a103450ddef96edd", description: "", key: 1},
   ]
 
-  let showStory = false
+  let showStory = true
   let ready = false
   onMount(() => {
     ready = true
