@@ -164,6 +164,44 @@
     // console.log('close modal')
   }
 
+  let showPaytypeDropdown = false
+
+  let paymentOption = [ 
+    {id: 1, name: "PayPal", checked: true},
+    {id: 2, name: "Credit Card", checked: false},
+    {id: 3, name: "U.S. Bank Account", checked: false},
+    {id: 4, name: "Crypto", checked: false},
+  ]
+
+  let selectedPaymentIndex = paymentOption.findIndex(option => option.checked);
+  let selectedPaymentOption = paymentOption[selectedPaymentIndex].name;
+  let visiblePaymentOption = "PayPal"
+
+  $: if (selectedPaymentIndex == 1) {
+      selectedPaymentOption = "Credit Card"
+    } else if (selectedPaymentIndex == 2) {
+      selectedPaymentOption = "U.S. Bank Account"
+    } else if (selectedPaymentIndex == 3) {
+      selectedPaymentOption = "Crypto"
+    } else {
+      selectedPaymentOption = "PayPal"
+    }
+
+  const updatePaymentMethod = () => {
+    paymentOption = paymentOption.map((option, index) => {
+      option.checked = index === selectedPaymentIndex;
+      return option;
+    })
+
+    visiblePaymentOption = selectedPaymentOption
+    showPaytypeDropdown = false
+    showNoty = true
+    notyText = `Your payment method has been updated to ${selectedPaymentOption}`
+    setTimeout(() => {
+      showNoty = false
+    }, 5000);
+  }
+
   $: filteredKey = 1
 
   const storyKey = (story: number) => filteredKey = story
@@ -177,7 +215,7 @@
     {id: 1, title: "Donation management", loom: "b036694884f94c67a103450ddef96edd", description: "", key: 1},
   ]
 
-  let showStory = true
+  let showStory = false
   let ready = false
   onMount(() => {
     ready = true
@@ -328,7 +366,7 @@
                   </div>
                 {/if}
                 {#key currentActiveAmount}
-                <button class="payment-text-button" in:fade={{duration:250}} on:click={() => {showPaymentDropdown = !showPaymentDropdown; openDropdownPicker()}}>{currentActiveAmount} a month</button>
+                <button class="payment-text-button" in:fade={{duration:250}} on:click={() => {showPaymentDropdown = !showPaymentDropdown; showPaytypeDropdown = false; openDropdownPicker()}}>{currentActiveAmount} a month</button>
                 {/key}
               </div>
               <span>to Poverty relief - Africa</span>
@@ -337,7 +375,31 @@
           <div class="payment-text">
             <div class="payment-text-desc">
               <span>Your next donation is Feb 5, via </span>
-              <button class="payment-text-button">PayPal</button>
+              <div class="payment-text-button-holder">
+                {#key visiblePaymentOption}
+                <button class="payment-text-button" in:fade={{duration:250}} on:click={() => {showPaytypeDropdown = !showPaytypeDropdown; showPaymentDropdown = false}}>{visiblePaymentOption}</button>
+                {/key}
+                {#if showPaytypeDropdown}
+                  <div class="button-dropdown payment" in:fly={{y:-10,duration:250}} out:fly={{y:-5,duration:250}}>
+                    <form class="button-dropdown-inner radio-list">
+                      <ul class="payment-radio-holder">
+                        {#each paymentOption as option, index (index)}
+                        <li class="payment-radio-holder-item">
+                          <label for={index}>
+                            <input type="radio" id={index} bind:group={selectedPaymentIndex} name="payment" value={index} checked={option.checked} on:change={() => selectedPaymentIndex = index}>
+                            <span>{option.name}</span>
+                          </label>
+                        </li>
+                        {/each}
+                      </ul>
+                      <div class="confirm">
+                        <button class="active" on:click={updatePaymentMethod}>
+                          Update
+                        </button>
+                    </form>
+                  </div>
+                {/if}
+              </div>
             </div>
           </div>
 
@@ -835,6 +897,11 @@
       padding: 0;
       font-size: var(--s0);
 
+      &.payment {
+        left: auto;
+        right: 0;
+      }
+
       .button-dropdown-inner {
         display: flex;
         flex-direction: column;
@@ -844,6 +911,10 @@
         border-radius: var(--s-3);
         padding: var(--s1);
         box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.10), 0px 24px 48px 0px rgba(18, 18, 23, 0.03), 0px 10px 18px 0px rgba(18, 18, 23, 0.03), 0px 5px 8px 0px rgba(18, 18, 23, 0.04), 0px 2px 4px 0px rgba(18, 18, 23, 0.04);
+
+        &.radio-list {
+          gap: 0;
+        }
         
       }
 
@@ -1072,6 +1143,41 @@
         }
       }
 
+    }
+
+  }
+
+  .payment-radio-holder {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .payment-radio-holder-item {
+
+    &:last-child {
+      margin-bottom: var(--s0);
+    }
+    
+    label {
+      display: flex;
+      align-items: center;
+      gap: var(--s0);
+      padding: var(--s-3) var(--s0);
+      cursor: pointer;
+      border-radius: var(--s-3);
+      transition: all 0.2s ease-in-out;
+      
+      &:hover {
+        background: var(--bg-secondary);
+      }
+    }
+
+    input {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      line-height: 1;
     }
 
   }
