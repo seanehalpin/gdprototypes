@@ -90,10 +90,27 @@
   let paymentSet = true
   let showPaymentDropdown = false
   let paymentChanged = false
+  let pauseLength = 1
 
   const donationCancel = () => {
     showPaymentDropdown = false
     showModal = true
+  }
+
+  const selectPauseLength = (number: number) => {
+    pauseLength = number
+  }
+
+  const donationConfirmPause = () => {
+    showModal = false
+    showPauseModal = false
+    notyText = `Your monthly recurring donation has been paused`
+    showNoty = true
+    donationPaused = true
+
+    setTimeout(() => {
+      showNoty = false
+    }, 5000);
   }
 
   const donationCancelConfirm = () => {
@@ -132,15 +149,37 @@
 
   }
 
-  const donationPause = () => {
+  let showPauseModal = false
+  let donationPaused = false
 
+  let pauseOption = [
+    {id: 1, length: 1, name: "Pause for 1 month", checked: true},
+    {id: 2, length: 2, name: "Pause for 3 months", checked: false},
+    {id: 3, length: 6, name: "Pause for 6 months", checked: false},
+  ]
+
+  let selectedPauseIndex = pauseOption.findIndex(option => option.checked);
+
+  const donationResume = () => {
+    donationPaused = false
+    notyText = `Your monthly donation of ${currentActiveAmount} has been reactivated`
+    showNoty = true
+
+    setTimeout(() => {
+      showNoty = false
+    }, 5000);
+  }
+
+  const donationPause = () => {
+    showPauseModal = true
+    showPaymentDropdown = false
   }
 
   const updateDonationAmount = () => {
     paymentChanged = true;
     showPaymentDropdown = false;
     currentActiveAmount = "$" + customDonationAmountPicker;
-    notyText = `Your monthly recurring donation has been updated to ${currentActiveAmount}`
+    notyText = `Your monthly donation has been updated to ${currentActiveAmount}`
     showNoty = true
 
     setTimeout(() => {
@@ -160,6 +199,7 @@
 
   const closeModal = () => {
     showModal = false
+    showPauseModal = false
     customDonationAmountPicker = Number(currentActiveAmount.replace('$', ''))
     // console.log('close modal')
   }
@@ -202,6 +242,9 @@
     }, 5000);
   }
 
+  let showSettingsDropdown = false
+
+
   $: filteredKey = 1
 
   const storyKey = (story: number) => filteredKey = story
@@ -215,7 +258,7 @@
     {id: 1, title: "Donation management", loom: "b036694884f94c67a103450ddef96edd", description: "", key: 1},
   ]
 
-  let showStory = true
+  let showStory = false
   let ready = false
   onMount(() => {
     ready = true
@@ -242,8 +285,8 @@
 --justify-content="flex-start"
 >
 {#if showModal}
-<div class="modal" in:fade={{duration:250}} out:fade={{duration:250}}>
-    <div class="modal-box" in:scale={{start:0.95, duration:450, delay: 200, easing: backOut}} out:scale={{start: 0.95, duration:300, easing: backOut}}>
+<div class="modal" in:fade={{duration:150}} out:fade={{duration:150}}>
+    <div class="modal-box" in:scale={{start:0.95, duration:250, delay: 150, easing: backOut}} out:scale={{start: 0.95, duration:250, easing: backOut}}>
       <div class="modal-title">
         Cancel your monthly donation
       </div>
@@ -259,6 +302,35 @@
       </div>
     </div>
     <div class="modal-backdrop" on:click={()=> closeModal()}></div>
+</div>
+{/if}
+{#if showPauseModal}
+<div class="modal" in:fade={{duration:150}} out:fade={{duration:150}}>
+  <div class="modal-box" in:scale={{start:0.95, duration:250, delay: 150, easing: backOut}} out:scale={{start: 0.95, duration:250, easing: backOut}}>
+    <div class="modal-title">
+      Pause your monthly donation
+    </div>
+    <div class="modal-body">
+      <p>You can pause your donation instead of cancelling</p>
+      <div class="pause-options">
+        {#each pauseOption as option, index (index)}
+        <div class="payment-radio-holder-item">
+          <label for={index}>
+            <input type="radio" id={index} bind:group={selectedPauseIndex} name="payment" value={index} checked={option.checked} on:change={() => selectedPauseIndex = index}>
+            <span>{option.name}</span>
+          </label>
+        </div>
+        {/each}
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="modal-buttons">
+        <button class="back" on:click={()=> closeModal()}>Go back</button>
+        <button class="confirm" on:click={()=> donationConfirmPause()}>Confirm pause</button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-backdrop" on:click={()=> closeModal()}></div>
 </div>
 {/if}
 {#if showNoty}
@@ -287,6 +359,7 @@
   </div>
   
   <div class="main">
+
     <div class="title">
       <h1>Donations</h1>
     </div>
@@ -296,117 +369,136 @@
 
       </div>
       <div class="donate">
+      
         {#if paymentSet}
-        
-          <div class="payment-text" in:fade={{duration:250}}>
 
-            <div class="payment-text-icon">
-              <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M22.75 4C20.1688 4 17.9088 5.11 16.5 6.98625C15.0912 5.11 12.8313 4 10.25 4C8.19528 4.00232 6.22539 4.81958 4.77248 6.27248C3.31958 7.72539 2.50232 9.69528 2.5 11.75C2.5 20.5 15.4738 27.5825 16.0262 27.875C16.1719 27.9533 16.3346 27.9943 16.5 27.9943C16.6654 27.9943 16.8281 27.9533 16.9737 27.875C17.5262 27.5825 30.5 20.5 30.5 11.75C30.4977 9.69528 29.6804 7.72539 28.2275 6.27248C26.7746 4.81958 24.8047 4.00232 22.75 4ZM16.5 25.85C14.2175 24.52 4.5 18.4613 4.5 11.75C4.50198 10.2256 5.10842 8.76423 6.18633 7.68633C7.26423 6.60842 8.72561 6.00198 10.25 6C12.6812 6 14.7225 7.295 15.575 9.375C15.6503 9.55841 15.7785 9.71528 15.9432 9.82569C16.1079 9.93609 16.3017 9.99503 16.5 9.99503C16.6983 9.99503 16.8921 9.93609 17.0568 9.82569C17.2215 9.71528 17.3497 9.55841 17.425 9.375C18.2775 7.29125 20.3188 6 22.75 6C24.2744 6.00198 25.7358 6.60842 26.8137 7.68633C27.8916 8.76423 28.498 10.2256 28.5 11.75C28.5 18.4513 18.78 24.5188 16.5 25.85Z" fill="var(--bg-accent-red)"/>
+          <div class="settings-holder" in:fade={{duration:250}}>
+            <button class="settings-button" on:click={() => {showSettingsDropdown = !showSettingsDropdown;showPaymentDropdown = false; showPaytypeDropdown = false}}>
+              <span>Settings</span>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5.61663 8.79194C5.65137 8.82837 5.69314 8.85738 5.73941 8.87719C5.78568 8.89701 5.8355 8.90723 5.88584 8.90723C5.93617 8.90723 5.98599 8.89701 6.03226 8.87719C6.07853 8.85738 6.1203 8.82837 6.15504 8.79194L10.0006 4.94637L9.4622 4.40796L5.88584 7.98433L2.30902 4.40796L1.77061 4.94637L5.61663 8.79194Z" fill="var(--icon)"/>
               </svg>
+            </button>
+            {#if showSettingsDropdown}
+            <div class="settings-dropdown" in:fly={{y:-10,duration:250}} out:fly={{y:-5,duration:250}}>
+              {#if !donationPaused}
+              <button class="settings-dropdown-button" on:click={() => { showSettingsDropdown = false; donationPause()}}>
+                Pause donation
+              </button>
+              {:else}
+              <button class="settings-dropdown-button" on:click={() => { showSettingsDropdown = false; donationResume()}}>
+                Reactivate donation
+              </button>
+              {/if}
+              <button class="settings-dropdown-button cancel" on:click={() => {showSettingsDropdown = false; donationCancel()}}>
+                Cancel donation
+              </button>
             </div>
+            {/if}
+          </div>
+          {#if !donationPaused}
+            <div class="payment-text" in:fade={{duration:250}}>
+              <div class="payment-text-icon">
+                <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M22.75 4C20.1688 4 17.9088 5.11 16.5 6.98625C15.0912 5.11 12.8313 4 10.25 4C8.19528 4.00232 6.22539 4.81958 4.77248 6.27248C3.31958 7.72539 2.50232 9.69528 2.5 11.75C2.5 20.5 15.4738 27.5825 16.0262 27.875C16.1719 27.9533 16.3346 27.9943 16.5 27.9943C16.6654 27.9943 16.8281 27.9533 16.9737 27.875C17.5262 27.5825 30.5 20.5 30.5 11.75C30.4977 9.69528 29.6804 7.72539 28.2275 6.27248C26.7746 4.81958 24.8047 4.00232 22.75 4ZM16.5 25.85C14.2175 24.52 4.5 18.4613 4.5 11.75C4.50198 10.2256 5.10842 8.76423 6.18633 7.68633C7.26423 6.60842 8.72561 6.00198 10.25 6C12.6812 6 14.7225 7.295 15.575 9.375C15.6503 9.55841 15.7785 9.71528 15.9432 9.82569C16.1079 9.93609 16.3017 9.99503 16.5 9.99503C16.6983 9.99503 16.8921 9.93609 17.0568 9.82569C17.2215 9.71528 17.3497 9.55841 17.425 9.375C18.2775 7.29125 20.3188 6 22.75 6C24.2744 6.00198 25.7358 6.60842 26.8137 7.68633C27.8916 8.76423 28.498 10.2256 28.5 11.75C28.5 18.4513 18.78 24.5188 16.5 25.85Z" fill="var(--bg-accent-red)"/>
+                </svg>
+              </div>
 
-            <div class="payment-text-desc">
-              You are donating 
-            </div>
-            <div class="payment-text-desc">
-              <div class="payment-text-button-holder">
+              <div class="payment-text-desc">
+                You are donating 
+              </div>
+              <div class="payment-text-desc">
+                <div class="payment-text-button-holder">
 
-                {#if showPaymentDropdown}
-                  <div class="button-dropdown" in:fly={{y:-10,duration:250}} out:fly={{y:-5,duration:250}}>
-                    <form class="button-dropdown-inner">
-                      <div class="options">
-                        <!-- {#if !customDonation}
-                        {#each donations as donation}
-                        <button class:active={donation.active} on:click={() => donationChange(donation.id)}>
-                          {donation.amount}
-                        </button>
-                        {/each}
-                        {:else} -->
-                        <div class="custom-donation">
-                          <!-- <button class="back" on:click={()=> resetDonation()}>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M3.21938 11.4694L9.96938 4.71937C10.1101 4.57864 10.301 4.49958 10.5 4.49958C10.699 4.49958 10.8899 4.57864 11.0306 4.71937C11.1714 4.8601 11.2504 5.05097 11.2504 5.24999C11.2504 5.44902 11.1714 5.63989 11.0306 5.78062L5.56031 11.25L20.25 11.25C20.4489 11.25 20.6397 11.329 20.7803 11.4697C20.921 11.6103 21 11.8011 21 12C21 12.1989 20.921 12.3897 20.7803 12.5303C20.6397 12.671 20.4489 12.75 20.25 12.75L5.56031 12.75L11.0306 18.2194C11.1714 18.3601 11.2504 18.551 11.2504 18.75C11.2504 18.949 11.1714 19.1399 11.0306 19.2806C10.8899 19.4213 10.699 19.5004 10.5 19.5004C10.301 19.5004 10.1101 19.4213 9.96938 19.2806L3.21938 12.5306C3.14964 12.461 3.09432 12.3782 3.05658 12.2872C3.01884 12.1962 2.99941 12.0986 2.99941 12C2.99941 11.9014 3.01884 11.8038 3.05658 11.7128C3.09432 11.6217 3.14964 11.539 3.21938 11.4694Z" fill="var(--icon)"/>
-                              </svg>
-                          </button> -->
-                          <div class="input-holder" in:fade={{duration:150}}>
-                            <input type="number" placeholder="" bind:this={customDonationInputPicker} bind:value={customDonationAmountPicker} />
+                  {#if showPaymentDropdown}
+                    <div class="button-dropdown" in:fly={{y:-10,duration:250}} out:fly={{y:-5,duration:250}}>
+                      <form class="button-dropdown-inner">
+                        <div class="options">
+                          <div class="custom-donation">
+                            <div class="input-holder" in:fade={{duration:150}}>
+                              <input type="number" placeholder="" bind:this={customDonationInputPicker} bind:value={customDonationAmountPicker} />
+                            </div>
                           </div>
                         </div>
-                        <!-- {/if} -->
-                      </div>
-                      <div class="confirm">
-                        <!-- {#if !customDonation}
-                        <button class="active" on:click={() => {
-                        paymentChanged = true;
-                        showPaymentDropdown = false;
-                        }}>Update amount</button>
-                        {:else} -->
-                        {#if customDonationAmountPicker >= 1 || customDonationAmountPicker == null}
-                        <button class:active={customDonationButtonPickerActive} on:click={() => updateDonationAmount()}>Update amount</button>
-                        {#if customDonationAmountPicker !== null}
-                        <button class="pause" on:click>
-                          ${customDonationAmountPicker} lifts 2 people out of poverty
-                        </button>
-                        {/if}
-                        {:else}
-                        
-                        <button class="cancel" on:click={()=> donationCancel()}>
-                          Cancel donation
-                        </button>
-                        <button class="pause" on:click={()=> donationPause()}>
-                          pause your donations for 3 months
-                        </button>
-                        {/if}
-                      </div>
-                      <div class="disclaimer">
-                        Your updated payment will be on April 23
-                      </div>
-                    </form>
-                  </div>
-                {/if}
-                {#key currentActiveAmount}
-                <button class="payment-text-button" in:fade={{duration:250}} on:click={() => {showPaymentDropdown = !showPaymentDropdown; showPaytypeDropdown = false; openDropdownPicker()}}>{currentActiveAmount} a month</button>
-                {/key}
-              </div>
-              <span>to Poverty relief - Africa</span>
-            </div>
-          </div>
-          <div class="payment-text">
-            <div class="payment-text-desc">
-              <span>Your next donation is Feb 5, via </span>
-              <div class="payment-text-button-holder">
-                {#key visiblePaymentOption}
-                <button class="payment-text-button" in:fade={{duration:250}} on:click={() => {showPaytypeDropdown = !showPaytypeDropdown; showPaymentDropdown = false}}>{visiblePaymentOption}</button>
-                {/key}
-                {#if showPaytypeDropdown}
-                  <div class="button-dropdown payment" in:fly={{y:-10,duration:250}} out:fly={{y:-5,duration:250}}>
-                    <form class="button-dropdown-inner radio-list">
-                      <ul class="payment-radio-holder">
-                        {#each paymentOption as option, index (index)}
-                        <li class="payment-radio-holder-item">
-                          <label for={index}>
-                            <input type="radio" id={index} bind:group={selectedPaymentIndex} name="payment" value={index} checked={option.checked} on:change={() => selectedPaymentIndex = index}>
-                            <span>{option.name}</span>
-                          </label>
-                        </li>
-                        {/each}
-                      </ul>
-                      <div class="confirm">
-                        <button class="active" on:click={updatePaymentMethod}>
-                          Update
-                        </button>
-                    </form>
-                  </div>
-                {/if}
+                        <div class="confirm">
+                          {#if customDonationAmountPicker >= 1 || customDonationAmountPicker == null}
+                          <button class:active={customDonationButtonPickerActive} on:click={() => updateDonationAmount()}>Update amount</button>
+                          {#if customDonationAmountPicker !== null}
+                          <button class="pause" on:click>
+                            ${customDonationAmountPicker} is 2 months' income for someone in poverty
+                          </button>
+                          {/if}
+                          {:else}
+                          
+                          <button class="cancel" on:click={()=> donationCancel()}>
+                            Cancel donation
+                          </button>
+                          <button class="pause" on:click={()=> donationPause()}>
+                            or pause your donations for 3 months
+                          </button>
+                          {/if}
+                        </div>
+                        <div class="disclaimer">
+                          Your updated payment will be on September 23
+                        </div>
+                      </form>
+                    </div>
+                  {/if}
+                  {#key currentActiveAmount}
+                  <button class="payment-text-button" in:fade={{duration:250}} on:click={() => {showPaymentDropdown = !showPaymentDropdown; showPaytypeDropdown = false; showSettingsDropdown = false; openDropdownPicker()}}>{currentActiveAmount} a month</button>
+                  {/key}
+                </div>
+                <span>to Poverty relief - Africa</span>
               </div>
             </div>
+            <div class="payment-text">
+              <div class="payment-text-desc">
+                <span>Your next donation is Feb 5, via </span>
+                <div class="payment-text-button-holder">
+                  {#key visiblePaymentOption}
+                  <button class="payment-text-button" in:fade={{duration:250}} on:click={() => {showPaytypeDropdown = !showPaytypeDropdown; showPaymentDropdown = false; showSettingsDropdown = false;}}>{visiblePaymentOption}</button>
+                  {/key}
+                  {#if showPaytypeDropdown}
+                    <div class="button-dropdown payment" in:fly={{y:-10,duration:250}} out:fly={{y:-5,duration:250}}>
+                      <form class="button-dropdown-inner radio-list">
+                        <ul class="payment-radio-holder">
+                          {#each paymentOption as option, index (index)}
+                          <li class="payment-radio-holder-item">
+                            <label for={index}>
+                              <input type="radio" id={index} bind:group={selectedPaymentIndex} name="payment" value={index} checked={option.checked} on:change={() => selectedPaymentIndex = index}>
+                              <span>{option.name}</span>
+                            </label>
+                          </li>
+                          {/each}
+                        </ul>
+                        <div class="confirm">
+                          <button class="active" on:click={updatePaymentMethod}>
+                            Update
+                          </button>
+                      </form>
+                    </div>
+                  {/if}
+                </div>
+              </div>
+            </div>
+
+          {:else}
+          <div class="payment-text" in:fade={{duration: 250}}>
+            <div class="payment-text-desc balanced">
+              Your monthly donation of {currentActiveAmount} is currently paused until September 23, 2024
+            </div>
+            <div class="payment-text-reactivate">
+              <button class="payment-text-reactivate-button" on:click={() => { showSettingsDropdown = false; donationResume()}}>
+                Reactivate donation
+              </button>
+            </div>
           </div>
+          {/if}
 
         {:else}
 
-        <div class="title" in:fade={{duration:250}}>
-          Join over 110,000 donors in trusting people in poverty to decide what they need most.
+        <div class="title balanced" in:fade={{duration:250}}>
+          Join a community of 7,900+ monthly donors who help us plan future programs.
         </div>
         <div class="options" in:fade={{duration:250}}>
           {#if !customDonation}
@@ -699,6 +791,10 @@
         font-weight: 600;
         line-height: 140%;
         color: var(--text);
+
+        &.balanced {
+          text-wrap: balance;
+        }
       }
 
       .options {
@@ -787,9 +883,10 @@
             background: var(--bg);
             color: var(--text);
             box-shadow: none;
-            font-size: var(--s-12);
+            font-size: var(--s-1);
             height: var(--32px);
             margin-top: var(--s-3);
+            padding: 0;
 
             &:focus-within {
               outline: 0;
@@ -934,6 +1031,37 @@
       font-size: var(--s1);
       color: var(--text);
       font-weight: 600;
+
+      &.balanced {
+        text-wrap: balance;
+        padding: 0 var(--s2);
+      }
+    }
+
+    .payment-text-reactivate {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--s1) 0 0;
+    }
+    
+    .payment-text-reactivate-button {
+      height: var(--s3);
+      border-radius: var(--s3);
+      padding: 0 var(--s2);
+      background: var(--bg-brand);
+      color: var(--text-onbrand);
+      font-weight: 600;
+      border: 0;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: var(--s0);
+
+      &:focus-within {
+        outline: 0;
+        border-color: var(--border-brand);
+        box-shadow: 0px 0px 0px 2px var(--bg), 0px 0px 0px 3px var(--bg-brand);
+      }
     }
 
     .payment-text-button-holder {
@@ -1178,6 +1306,72 @@
       padding: 0;
       display: flex;
       line-height: 1;
+    }
+
+  }
+
+  .settings-holder {
+    position: absolute;
+    right: var(--s0);
+    top: var(--s0);
+
+
+    .settings-button {
+      font-size: var(--s-1);
+      border: 0;
+      background: transparent;
+      border-radius: var(--s3);
+      color: var(--text);
+      font-weight: 600;
+      box-shadow: 0 0 0 1px var(--border-tertiary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--s-6);
+      padding: var(--s-6) var(--s-1);
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+
+    
+      &:focus-within {
+        outline: 0;
+        box-shadow: 0px 0px 0px 1px var(--bg), 0px 0px 0px 2px var(--border-brand), 0px 0px 0px 5px var(--focus);
+      }
+
+    }
+
+    .settings-dropdown {
+      position: absolute;
+      z-index: var(--zindex-overlay);
+      top: calc(100% + var(--s-3));
+      right: 0;
+      width: calc(var(--s0)* 16);
+      padding: 0;
+      font-size: var(--s0);
+      background: var(--bg);
+      border-radius: var(--s-3);
+      padding: var(--s-5) var(--s-6);
+      box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1), 0px 24px 48px 0px rgba(18, 18, 23, 0.03), 0px 10px 18px 0px rgba(18, 18, 23, 0.03), 0px 5px 8px 0px rgba(18, 18, 23, 0.04), 0px 2px 4px 0px rgba(18, 18, 23, 0.04);
+    }
+
+    .settings-dropdown-button {
+      width: 100%;
+      text-align: left;
+      padding: var(--s-3) var(--s-1);
+      font-size: var(--s-12);
+      border: 0;
+      background: transparent;
+      border-radius: var(--s-3);
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+
+      &.cancel {
+        color: var(--red-600);
+      }
+
+      &:hover {
+        background: var(--bg-secondary);
+      }
     }
 
   }
