@@ -116,6 +116,7 @@
   const donationCancelConfirm = () => {
     showModal = false
     paymentSet = false
+    donationPaused = false
     notyText = "Your monthly recurring donation has been cancelled"
     showNoty = true
     currentActiveAmount = "$60"
