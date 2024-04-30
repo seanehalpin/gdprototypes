@@ -330,7 +330,7 @@
 --gap="var(--24px)" 
 --justify-content="flex-start"
 >
-<button class="dm-toggle" on:click={() => showDm = !showDm}>Dark mode</button>
+<button class="dm-toggle" on:click={() => showDm = !showDm}>Dark mode 🚧</button>
 {#if showModal}
 <div class="modal" in:fade={{duration:150}} out:fade={{duration:150}}>
     <div class="modal-box" in:scale={{start:0.95, duration:250, delay: 150, easing: backOut}} out:scale={{start: 0.95, duration:250, easing: backOut}}>
