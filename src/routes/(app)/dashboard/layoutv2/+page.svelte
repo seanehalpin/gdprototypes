@@ -137,6 +137,7 @@
     }, 5000);
   }
 
+  let showAvatarDropdown = false
 
   const donationSetup = () => {
     showPaymentDropdown = false
@@ -147,16 +148,15 @@
     setTimeout(() => {
       showNoty = false
     }, 5000);
-
   }
 
   let showPauseModal = false
   let donationPaused = false
 
   let pauseOption = [
-    {id: 1, length: 1, name: "Pause for 1 month", checked: true},
-    {id: 2, length: 2, name: "Pause for 3 months", checked: false},
-    {id: 3, length: 6, name: "Pause for 6 months", checked: false},
+    {id: 1, length: 1, name: "Pause for 1 month", sub: "until September 1, 2024", checked: true},
+    {id: 2, length: 2, name: "Pause for 3 months", sub: "until November 1, 2024", checked: false},
+    {id: 3, length: 6, name: "Pause for 6 months", sub: "until February 1, 2025", checked: false},
   ]
 
   let selectedPauseIndex = pauseOption.findIndex(option => option.checked);
@@ -210,8 +210,8 @@
   let paymentOption = [ 
     {id: 1, name: "PayPal", checked: true},
     {id: 2, name: "Credit Card", checked: false},
-    {id: 3, name: "U.S. Bank Account", checked: false},
-    {id: 4, name: "Crypto", checked: false},
+    // {id: 3, name: "U.S. Bank Account", checked: false},
+    // {id: 4, name: "Crypto", checked: false},
   ]
 
   let selectedPaymentIndex = paymentOption.findIndex(option => option.checked);
@@ -281,7 +281,7 @@
 {/if}
 <Center
 --flex-direction="column" 
---background="var(--white)" 
+--background="var(--bg)" 
 --gap="var(--24px)" 
 --justify-content="flex-start"
 >
@@ -293,7 +293,7 @@
       </div>
       <div class="modal-body">
         <p>Thank you for giving monthly to people in poverty for the last 10 months. Please confirm your cancellation of:</p>
-        <span>{currentActiveAmount} a month to Poverty relief - Africa</span>
+        <span class="selected-option">{currentActiveAmount} a month to Poverty relief - Africa</span>
       </div>
       <div class="modal-footer">
         <div class="modal-buttons">
@@ -312,13 +312,16 @@
       Pause your monthly donation
     </div>
     <div class="modal-body">
-      <p>You can pause your donation instead of cancelling</p>
+      <!-- <p>You can pause your donation instead of cancelling</p> -->
       <div class="pause-options">
         {#each pauseOption as option, index (index)}
         <div class="payment-radio-holder-item">
           <label for={index}>
             <input type="radio" id={index} bind:group={selectedPauseIndex} name="payment" value={index} checked={option.checked} on:change={() => selectedPauseIndex = index}>
-            <span>{option.name}</span>
+            <span class="payment-radio-label-holder">
+              <span>{option.name}</span>
+              <span>{option.sub}</span>
+            </span>
           </label>
         </div>
         {/each}
@@ -350,13 +353,28 @@
 <main>
   <div class="controls">
     <Logo />
-    <button class="avatar-button">
-      <span class="avatar">
-        <img src="/dash/avatar-2.png" alt="" >
-      </span>
-      <span class="name">Walid H</span>
-      <svg width="16" height="16" fill="var(--green-500)" focusable="false" viewBox="0 0 24 24"><path d="M12.771 7.115a.829.829 0 0 0-1.2 0L3 15.686l1.2 1.2 7.971-7.971 7.972 7.971 1.2-1.2-8.572-8.571Z"></path></svg>
-      </button>
+    <div class="avatar-button-holder">
+      <button class="avatar-button" on:click={()=> {showAvatarDropdown = !showAvatarDropdown}}>
+        <span class="avatar">
+          W
+        </span>
+        <span class="name">Walid H</span>
+        <svg width="16" height="16" fill="var(--bg-brand)" focusable="false" viewBox="0 0 24 24"><path d="M12.771 7.115a.829.829 0 0 0-1.2 0L3 15.686l1.2 1.2 7.971-7.971 7.972 7.971 1.2-1.2-8.572-8.571Z"></path></svg>
+        </button>
+
+        {#if showAvatarDropdown}
+        <div class="settings-dropdown" in:fly={{y:-10,duration:250}} out:fly={{y:-5,duration:250}}>
+          <div class="avatar-info">
+            <div class="name">Walid H.</div>
+            <div class="email">walidh@email.com</div>
+          </div>
+          <button class="settings-dropdown-button" on:click={()=> {showAvatarDropdown = false}}>
+              <span>Sign out</span> 
+          </button>
+        </div>
+        {/if}
+
+    </div>
   </div>
   
   <div class="main">
@@ -375,7 +393,7 @@
 
           <div class="settings-holder" in:fade={{duration:250}}>
             <button class="settings-button" on:click={() => {showSettingsDropdown = !showSettingsDropdown;showPaymentDropdown = false; showPaytypeDropdown = false}}>
-              <span>Settings</span>
+              <span>Manage</span>
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M5.61663 8.79194C5.65137 8.82837 5.69314 8.85738 5.73941 8.87719C5.78568 8.89701 5.8355 8.90723 5.88584 8.90723C5.93617 8.90723 5.98599 8.89701 6.03226 8.87719C6.07853 8.85738 6.1203 8.82837 6.15504 8.79194L10.0006 4.94637L9.4622 4.40796L5.88584 7.98433L2.30902 4.40796L1.77061 4.94637L5.61663 8.79194Z" fill="var(--icon)"/>
               </svg>
@@ -387,6 +405,9 @@
                 Pause donation
               </button>
               {:else}
+              <button class="settings-dropdown-button" on:click={() => { showSettingsDropdown = false; donationPause()}}>
+                Adjust pause
+              </button>
               <button class="settings-dropdown-button" on:click={() => { showSettingsDropdown = false; donationResume()}}>
                 Reactivate donation
               </button>
@@ -489,6 +510,9 @@
               Your monthly donation of {currentActiveAmount} is currently paused until September 23, 2024
             </div>
             <div class="payment-text-reactivate">
+              <button class="payment-text-reactivate-button paused" on:click={() => { showSettingsDropdown = false; donationPause()}}>
+                Adjust pause
+              </button>
               <button class="payment-text-reactivate-button" on:click={() => { showSettingsDropdown = false; donationResume()}}>
                 Reactivate donation
               </button>
@@ -670,10 +694,17 @@
     }
 
     .avatar {
-      width: 40px;
-      height: 40px;
+      width: var(--s2);
+      height: var(--s2);
       border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+      font-size: var(--s-12);
       overflow: hidden;
+      color: var(--text-muted);
+      background: var(--bg);
 
       img {
         width: 100%;
@@ -703,10 +734,10 @@
       border: 0;
       gap: var(--s1);
       align-items: center;
-      height: 48px;
+      padding: var(--s-12) var(--s2);
       cursor: pointer;
       color: var(--text-muted);
-      font-size: var(--s0);
+      font-size: var(--s-12);
 
       .link-icon {
         display: flex;
@@ -859,9 +890,9 @@
         
         button {
           width: 100%;
-          height: var(--48px);
+          
           border-radius: var(--s3);
-          padding: 0 var(--16px);
+          padding: var(--s-2) var(--s2);
           background: var(--bg-brand);
           color: var(--text-onbrand);
           font-weight: 600;
@@ -870,7 +901,7 @@
           pointer-events: none;
           opacity: 0.5;
           transition: var(--transition);
-          font-size: var(--s0);
+          font-size: var(--s-12);
           // font-size: var(--14px);
 
           &.active {
@@ -881,7 +912,7 @@
           &.pause {
             opacity: 1;
             pointer-events: all;
-            background: var(--bg);
+            background: transparent;
             color: var(--text);
             box-shadow: none;
             font-size: var(--s-1);
@@ -940,9 +971,10 @@
             content: "$";
             position: absolute;
             left: 0;
-            top: 0;
+            top: 11px;
+            font-size: var(--s-12);
             z-index: 100;
-            height: var(--48px);
+            // height: var(--48px);
             width: var(--48px);
             display: flex;
             align-items: center;
@@ -956,10 +988,12 @@
         input {
           // font-size: var(--14px);
           width: 100%;
-          height: var(--48px);
+          // height: var(--48px);
           border-radius: var(--48px);
-          padding: 0 var(--s0) 0 var(--s2);
+          background: var(--bg-dropdown);
+          padding: var(--s-2) var(--s0) var(--s-2) var(--s2);
           border: 1px solid var(--border-tertiary);
+          font-size: var(--s-12);
           position: relative;
           z-index: 10;
           color: var(--text);
@@ -996,6 +1030,7 @@
       font-size: var(--s0);
 
       &.payment {
+        width: calc(var(--s0) * 20);
         left: auto;
         right: 0;
       }
@@ -1005,7 +1040,7 @@
         flex-direction: column;
         gap: var(--s-1);
         width: 100%;
-        background: var(--bg);
+        background: var(--bg-dropdown);
         border-radius: var(--s-3);
         padding: var(--s1);
         box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.10), 0px 24px 48px 0px rgba(18, 18, 23, 0.03), 0px 10px 18px 0px rgba(18, 18, 23, 0.03), 0px 5px 8px 0px rgba(18, 18, 23, 0.04), 0px 2px 4px 0px rgba(18, 18, 23, 0.04);
@@ -1044,6 +1079,7 @@
       align-items: center;
       justify-content: center;
       padding: var(--s1) 0 0;
+      gap: var(--s0)
     }
     
     .payment-text-reactivate-button {
@@ -1057,6 +1093,18 @@
       cursor: pointer;
       transition: var(--transition);
       font-size: var(--s0);
+
+      &.paused {
+        background: var(--bg-secondary);
+        color: var(--text-muted);
+        box-shadow: 0 0 0 1px var(--border-tertiary);
+
+        &:focus-within {
+          outline: 0;
+          border-color: var(--border-brand);
+          box-shadow: inset 0 0 0 1px var(--bg-) 0px 0px 0px 1px var(--bg-brand), 0px 0px 0px 4px var(--focus);
+        }
+      }
 
       &:focus-within {
         outline: 0;
@@ -1193,7 +1241,8 @@
       position: relative;
       z-index: 1000;
       background: var(--bg);
-      max-width: 600px;
+      max-width: calc(var(--s0) * 34);
+      width: 100%;
       border-radius: var(--s0);
       padding: var(--s2) var(--s3);
     }
@@ -1202,9 +1251,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0 0 var(--s0) 0;
+      padding: 0 0 var(--s-12) 0;
       font-size: var(--s0);
       font-weight: 500;
+      color: var(--text);
     }
 
     .modal-body {
@@ -1226,7 +1276,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: var(--s2) 0 0;
+      padding: var(--s0) 0 0;
       gap: var(--s-3);
 
       .modal-buttons {
@@ -1282,6 +1332,24 @@
     padding: 0;
   }
 
+  .payment-radio-label-holder {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    span {
+      &:nth-child(2) {
+        font-size: var(--s-12);
+        color: var(--text-muted);
+        font-weight: 400;
+      }
+    }
+  }
+
+  .pause-options {
+    margin-top: var(--s-12);
+  }
+
   .payment-radio-holder-item {
 
     &:last-child {
@@ -1296,6 +1364,7 @@
       cursor: pointer;
       border-radius: var(--s-3);
       transition: all 0.2s ease-in-out;
+      font-size: var(--s-12);
       
       &:hover {
         background: var(--bg-secondary);
@@ -1349,7 +1418,7 @@
       width: calc(var(--s0)* 16);
       padding: 0;
       font-size: var(--s0);
-      background: var(--bg);
+      background: var(--bg-dropdown);
       border-radius: var(--s-3);
       padding: var(--s-5) var(--s-6);
       box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1), 0px 24px 48px 0px rgba(18, 18, 23, 0.03), 0px 10px 18px 0px rgba(18, 18, 23, 0.03), 0px 5px 8px 0px rgba(18, 18, 23, 0.04), 0px 2px 4px 0px rgba(18, 18, 23, 0.04);
@@ -1365,6 +1434,7 @@
       border-radius: var(--s-3);
       transition: all 0.2s ease-in-out;
       cursor: pointer;
+      color: var(--text);
 
       &.cancel {
         color: var(--red-600);
@@ -1375,6 +1445,73 @@
       }
     }
 
+  }
+
+  .selected-option {
+    padding: var(--s-12) 0 var(--s1);
+  }
+
+  .avatar-button-holder {
+    position: relative;
+
+
+    .settings-dropdown {
+      position: absolute;
+      z-index: var(--zindex-overlay);
+      top: calc(100% + var(--s-4));
+      right: 0;
+      width: calc(var(--s0)* 16);
+      padding: 0;
+      font-size: var(--s0);
+      background: var(--bg-dropdown);
+      border-radius: var(--s-3);
+      padding: var(--s-5) var(--s-6);
+      box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1), 0px 24px 48px 0px rgba(18, 18, 23, 0.03), 0px 10px 18px 0px rgba(18, 18, 23, 0.03), 0px 5px 8px 0px rgba(18, 18, 23, 0.04), 0px 2px 4px 0px rgba(18, 18, 23, 0.04);
+    }
+
+    .settings-dropdown-button {
+      width: 100%;
+      text-align: left;
+      padding: var(--s-3) var(--s-1);
+      font-size: var(--s-12);
+      border: 0;
+      background: transparent;
+      border-radius: var(--s-3);
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+      justify-content: flex-start;
+      color: var(--text);
+
+      &.cancel {
+        color: var(--red-600);
+      }
+
+      &:hover {
+        background: var(--bg-secondary);
+      }
+    }
+
+  }
+
+  .avatar-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: var(--s-4) var(--s-12) var(--s-1);
+    border-bottom: 1px solid var(--border-tertiary);
+    margin-bottom: var(--s-4);
+
+    .name {
+      font-weight: 500;
+      font-size: var(--s-12);
+      color: var(--text);
+    }
+
+    .email {
+      font-size: var(--s-12);
+      color: var(--text-muted);
+    }
   }
 
 
