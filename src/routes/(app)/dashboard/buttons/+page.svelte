@@ -37,7 +37,8 @@
     {filled: true, title: "Secondary", type:"secondary", description: `Secondary actions, useful when presenting many options.`},
     {filled: false, title: "Ghost", type:"ghost", description: `For link buttons, like "Go back".`},
     {filled: true, title: "Icon", type:"icon", description: `Icon buttons utlize SVG icons for actions.`},
-    {filled: false, title: "Avatar Button", type:"avatar", description: `Navigation control button.`},
+    {filled: true, title: "Dropdown", type:"dropdown", description: `For buttons containing a dropdown menu.`},
+    {filled: false, title: "Avatar Button", type:"avatar", description: `Special control for user actions & account navigation.`},
   ]
 
 </script>
@@ -78,6 +79,13 @@
           <button class={button.type}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" ><path d="M3.21938 11.4694L9.96938 4.71937C10.1101 4.57864 10.301 4.49958 10.5 4.49958C10.699 4.49958 10.8899 4.57864 11.0306 4.71937C11.1714 4.8601 11.2504 5.05097 11.2504 5.24999C11.2504 5.44902 11.1714 5.63989 11.0306 5.78062L5.56031 11.25L20.25 11.25C20.4489 11.25 20.6397 11.329 20.7803 11.4697C20.921 11.6103 21 11.8011 21 12C21 12.1989 20.921 12.3897 20.7803 12.5303C20.6397 12.671 20.4489 12.75 20.25 12.75L5.56031 12.75L11.0306 18.2194C11.1714 18.3601 11.2504 18.551 11.2504 18.75C11.2504 18.949 11.1714 19.1399 11.0306 19.2806C10.8899 19.4213 10.699 19.5004 10.5 19.5004C10.301 19.5004 10.1101 19.4213 9.96938 19.2806L3.21938 12.5306C3.14964 12.461 3.09432 12.3782 3.05658 12.2872C3.01884 12.1962 2.99941 12.0986 2.99941 12C2.99941 11.9014 3.01884 11.8038 3.05658 11.7128C3.09432 11.6217 3.14964 11.539 3.21938 11.4694Z" fill="var(--icon)"></path>
             </svg>
+          </button>
+          {:else if button.type == "dropdown"}
+          <button class={button.type}>
+            <span>{button.title}</span>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5.61663 8.79194C5.65137 8.82837 5.69314 8.85738 5.73941 8.87719C5.78568 8.89701 5.8355 8.90723 5.88584 8.90723C5.93617 8.90723 5.98599 8.89701 6.03226 8.87719C6.07853 8.85738 6.1203 8.82837 6.15504 8.79194L10.0006 4.94637L9.4622 4.40796L5.88584 7.98433L2.30902 4.40796L1.77061 4.94637L5.61663 8.79194Z" fill="var(--icon)"/>
+              </svg>
           </button>
           {:else}
           <button class={button.type} on:click>{button.title}</button>
@@ -154,7 +162,7 @@
     cursor: pointer;
     color: var(--text);
     border-radius: var(--s4);
-    font-weight: 500;
+    font-weight: 600;
     font-family: var(--systemFont);
     margin: 0 auto;
     transition: all 0.2s ease-in-out;
@@ -192,6 +200,21 @@
         width: var(--s3);
         height: var(--s3);
       }
+
+
+      &.dropdown {
+        font-size: var(--s-1);
+        background: transparent;
+        border-radius: var(--s3);
+        color: var(--text-muted);
+        box-shadow: 0 0 0 1px var(--border-tertiary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--s-6);
+        padding: var(--s-6) var(--s-1);
+      }
+
     }
 
     .avatar-button {
