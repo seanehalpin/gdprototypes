@@ -265,14 +265,59 @@
     ready = true
   })
 
+  let showDm = false
+
 </script>
 
 <svelte:head>
 <title>Impact Dashboard</title>
+
+{#if showDm}
+<style>
+  :root {
+    --bg: #002921;
+    --bg-hover: #002921;
+    --bg-accent-green: hsla(98, 51%, 64%, 1);
+    --bg-accent-purple: hsla(248, 76%, 77%, 1);
+    --bg-accent-red: hsla(16, 71%, 64%, 1);
+    --bg-accent-turquoise: hsla(168, 51%, 72%, 1);
+    --bg-accent-yellow: hsla(66, 76%, 71%, 1);
+    --bg-always-light: hsla(0, 0%, 0%, 1);
+    --bg-brand: #fff;
+    --bg-brand-hover: #fff;
+    --bg-secondary: #18332C;
+    --bg-tertiary: #21433A;
+    --bg-dropdown: #223f37;
+    --bg-tertiary-hover: #21433A;
+    --border: hsla(0, 100%, 100%, 0.1);
+    --border-always-light: hsla(255, 100%, 100%, 0.1);
+    --border-brand: #fff;
+    --border-secondary: #18332C;
+    --border-tertiary: hsla(255, 100%, 100%, 0.1);
+    --border-active: hsla(255, 100%, 100%, 0.1);
+    --focus: hsla(255, 100%, 100%, 0.1);
+    --icon: hsla(0, 0%, 100%, 1);
+    --icon-active: hsla(0, 0%, 100%, 1);
+    --icon-always-light: hsla(0, 0%, 100%, 1);
+    --icon-brand: hsla(0, 0%, 100%, 1);
+    --icon-muted: hsla(0, 0%, 100%, 0.3);
+    --icon-onbrand: #095845;
+    --overlay: hsla(0, 0%, 0%, 0.6);
+    --text: hsla(0, 0%, 100%, 1);
+    --text-always-dark: hsla(0, 0%, 0%, 0.6);
+    --text-always-light: hsla(0, 0%, 100%, 1);
+    --text-brand: #fff;
+    --text-muted: hsla(0, 0%, 100%, 0.7);
+    --text-onbrand: #095845;
+  }
+</style>
+{/if}
 <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
 <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
 <!-- <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet"> -->
 </svelte:head>
+
+
 
 {#if ready}
   {#if showStory}
@@ -285,6 +330,7 @@
 --gap="var(--24px)" 
 --justify-content="flex-start"
 >
+<button class="dm-toggle" on:click={() => showDm = !showDm}>Dark mode</button>
 {#if showModal}
 <div class="modal" in:fade={{duration:150}} out:fade={{duration:150}}>
     <div class="modal-box" in:scale={{start:0.95, duration:250, delay: 150, easing: backOut}} out:scale={{start: 0.95, duration:250, easing: backOut}}>
@@ -677,7 +723,7 @@
       cursor: pointer;
       transition: all 0.2s ease-in-out;
 
-      &:focus-within {
+      &:focus-visible {
         outline: 0;
         border-color: var(--border-brand);
         box-shadow: inset 0px 0px 0px 1px var(--bg), 0 0 0 1px var(--border-brand), 0px 0px 0px 4px var(--focus);
@@ -866,14 +912,14 @@
             background: var(--bg-brand);
             border-color: var(--bg-brand);
 
-            &:focus-within {
+            &:focus-visible {
               outline: 0;
               border-color: var(--border-brand);
               box-shadow: 0px 0px 0px 2px var(--bg), 0px 0px 0px 3px var(--bg-brand);
             }
           }
 
-          &:focus-within {
+          &:focus-visible {
             outline: 0;
             border-color: var(--border-brand);
             box-shadow: inset 0px 0px 0px 1px var(--bg), 0px 0px 0px 3px var(--focus);
@@ -920,7 +966,7 @@
             margin-top: var(--s-3);
             padding: 0;
 
-            &:focus-within {
+            &:focus-visible {
               outline: 0;
               border-color: var(--border-brand);
               box-shadow: 0px 0px 0px 1px var(--bg-brand), 0px 0px 0px 4px var(--focus);
@@ -933,7 +979,7 @@
             opacity: 1;
             pointer-events: all;
 
-            // &:focus-within {
+            // &:focus-visible {
             //   outline: 0;
             //   border-color: var(--bg-accent-red);
             //   box-shadow: 0px 0px 0px 2px var(--bg), 0px 0px 0px 3px var(--bg-accent-red);
@@ -946,7 +992,7 @@
             color: var(--text);
           }
 
-          &:focus-within {
+          &:focus-visible {
             outline: 0;
             border-color: var(--border-brand);
             box-shadow: 0px 0px 0px 2px var(--bg), 0px 0px 0px 3px var(--bg-brand);
@@ -999,7 +1045,7 @@
           color: var(--text);
           transition: all 0.2s ease-in-out;
           
-          &:focus-within {
+          &:focus-visible {
             outline: 0;
             border-color: var(--border-brand);
             box-shadow: inset 0px 0px 0px 1px var(--bg), 0px 0px 0px 3px var(--focus);
@@ -1091,22 +1137,23 @@
       font-weight: 600;
       border: 0;
       cursor: pointer;
-      transition: var(--transition);
+      transition: all 0.2s ease-in-out;
       font-size: var(--s0);
 
       &.paused {
         background: var(--bg-secondary);
         color: var(--text-muted);
-        box-shadow: 0 0 0 1px var(--border-tertiary);
+        transition: all 0.2s ease-in-out;
+        box-shadow: inset 0 0 0 0 var(--bg), 0px 0px 0px 1px var(--border-tertiary), 0px 0px 0 0 var(--focus);
 
-        &:focus-within {
+        &:focus-visible {
           outline: 0;
           border-color: var(--border-brand);
-          box-shadow: inset 0 0 0 1px var(--bg-) 0px 0px 0px 1px var(--bg-brand), 0px 0px 0px 4px var(--focus);
+          box-shadow: inset 0 0 0 1px var(--bg), 0px 0px 0px 1px var(--bg-brand), 0px 0px 0px 4px var(--focus);
         }
       }
 
-      &:focus-within {
+      &:focus-visible {
         outline: 0;
         border-color: var(--border-brand);
         box-shadow: 0px 0px 0px 2px var(--bg), 0px 0px 0px 3px var(--bg-brand);
@@ -1132,7 +1179,7 @@
         background: var(--bg);
       }
 
-      &:focus-within {
+      &:focus-visible {
         outline: 0;
         background: var(--bg);
         // box-shadow: 0 0 0 var(--bg-brand), inset 0px 0px 0px 1px var(--bg-brand), inset 0px 0px 0px 2px var(--bg), 0px 0px 0px 3px var(--focus);
@@ -1153,7 +1200,7 @@
     //     background: var(--bg);
     //   }
 
-    //   &:focus-within {
+    //   &:focus-visible {
     //     outline: 0;
     //     background: var(--bg);
     //     box-shadow: inset 0px 0px 0px 1px var(--bg-brand), inset 0px 0px 0px 2px var(--bg), 0px 0px 0px 3px var(--focus);
@@ -1203,7 +1250,7 @@
       }
 
 
-      &:focus-within {
+      &:focus-visible {
         outline: 0;
         background: transparent;
         box-shadow: 0px 0px 0px 1px var(--bg-always-light);
@@ -1302,7 +1349,7 @@
         cursor: pointer;
         transition: var(--transition);
 
-        &:focus-within {
+        &:focus-visible {
           outline: 0;
           border-color: var(--border-brand);
           box-shadow: inset 0px 0px 0px 1px var(--bg), 0 0 0 1px var(--border-brand), 0px 0px 0px 4px var(--focus);
@@ -1314,7 +1361,7 @@
           background: var(--bg-brand);
           color: var(--text-onbrand);
 
-          &:focus-within {
+          &:focus-visible {
             outline: 0;
             border-color: var(--border-brand);
             box-shadow: 0px 0px 0px 2px var(--bg), 0px 0px 0px 3px var(--bg-brand);
@@ -1403,7 +1450,7 @@
       transition: all 0.2s ease-in-out;
 
     
-      &:focus-within {
+      &:focus-visible {
         outline: 0;
         box-shadow: 0px 0px 0px 1px var(--bg), 0px 0px 0px 2px var(--border-brand), 0px 0px 0px 5px var(--focus);
       }
@@ -1512,6 +1559,20 @@
       font-size: var(--s-12);
       color: var(--text-muted);
     }
+  }
+
+  .dm-toggle {
+    position: fixed;
+    z-index: 10000;
+    bottom: var(--s3);
+    right: var(--s3);
+    background: var(--bg-brand);
+    border: 0;
+    color: var(--text-onbrand);
+    border-radius: var(--s-2);
+    font-weight: 500;
+    padding: var(--s-2) var(--s1);
+    cursor: pointer;
   }
 
 
