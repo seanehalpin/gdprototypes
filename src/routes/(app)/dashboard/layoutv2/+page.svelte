@@ -1565,7 +1565,8 @@
     position: fixed;
     z-index: 10000;
     bottom: var(--s3);
-    right: var(--s3);
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
     background: var(--bg-brand);
     border: 0;
     color: var(--text-onbrand);
