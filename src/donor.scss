@@ -12,7 +12,12 @@
   --bg-brand: var(--root-brand);
   --bg-brand-hover: hsla(166, 81%, 17%, 1);
   --bg-secondary: hsla(43, 37%, 96%, 1);
+  --bg-secondary-hover: hsla(43, 37%, 93%, 1);
   --bg-tertiary: hsla(42, 28%, 93%, 1);
+  --bg-danger: var(--bg-accent-red);
+  --bg-danger-hover: hsla(16, 71%, 58%, 1);
+  --bg-special: var(--bg-accent-purple);
+  --bg-special-hover: hsla(248, 76%, 72%, 1);
   --bg-dropdown: var(--root-white);
   --bg-tertiary-hover: hsla(42, 28%, 90%, 1);
   --border: hsla(42, 33%, 92%, 1);

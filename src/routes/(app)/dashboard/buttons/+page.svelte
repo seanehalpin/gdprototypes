@@ -38,6 +38,9 @@
     {filled: false, title: "Ghost", type:"ghost", description: `For link buttons, like "Go back".`},
     {filled: true, title: "Icon", type:"icon", description: `Icon buttons utlize SVG icons for actions.`},
     {filled: true, title: "Dropdown", type:"dropdown", description: `For buttons containing a dropdown menu.`},
+    {filled: false, title: "Loading", type:"loading", description: `For loading states.`},
+    {filled: false, title: "Danger", type:"danger", description: `For destructive actions, like "Cancel donation".`},
+    {filled: false, title: "Special", type:"special", description: `For special actions, like "contact us".`},
     {filled: false, title: "Avatar Button", type:"avatar", description: `Special control for user actions & account navigation.`},
   ]
 
@@ -86,6 +89,10 @@
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M5.61663 8.79194C5.65137 8.82837 5.69314 8.85738 5.73941 8.87719C5.78568 8.89701 5.8355 8.90723 5.88584 8.90723C5.93617 8.90723 5.98599 8.89701 6.03226 8.87719C6.07853 8.85738 6.1203 8.82837 6.15504 8.79194L10.0006 4.94637L9.4622 4.40796L5.88584 7.98433L2.30902 4.40796L1.77061 4.94637L5.61663 8.79194Z" fill="var(--icon)"/>
               </svg>
+          </button>
+          {:else if button.type == "loading"}
+          <button class={button.type}>
+            <span class="loader-docs"></span>
           </button>
           {:else}
           <button class={button.type} on:click>{button.title}</button>
@@ -171,19 +178,93 @@
         padding: var(--s-2) var(--s2);
         color: var(--text-onbrand);
         background: var(--bg-brand);
+
+        &:hover {
+          background: var(--bg-brand-hover);
+        }
+
+        &:focus-visible {
+          outline: 0;
+          box-shadow: 0px 0px 0px 2px var(--bg), 0px 0px 0px 3px var(--bg-brand);
+        }
       }
+
+      &.danger {
+        padding: var(--s-2) var(--s2);
+        color: var(--text);
+        background: var(--bg-danger);
+
+        &:hover {
+          background: var(--bg-danger-hover);
+        
+        }
+
+        &:focus-visible {
+          outline: 0;
+          box-shadow: 0px 0px 0px 2px var(--bg), 0px 0px 0px 3px var(--bg-brand);
+        }
+      }
+
+      &.special {
+        padding: var(--s-2) var(--s2);
+        color: var(--text);
+        background: var(--bg-special);
+
+        &:hover {
+          background: var(--bg-special-hover);
+        
+        }
+
+        &:focus-visible {
+          outline: 0;
+          box-shadow: 0px 0px 0px 2px var(--bg), 0px 0px 0px 3px var(--bg-brand);
+        }
+      }
+
+      &.loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        padding: 0 var(--s2);
+        color: var(--text-onbrand);
+        background: var(--bg-brand);
+        width: 100%;
+        height: var(--s3);
+        pointer-events: none;
+
+        &:focus-visible {
+          outline: 0;
+          box-shadow: 0px 0px 0px 2px var(--bg), 0px 0px 0px 3px var(--bg-brand);
+        }
+      }
+
+
 
       &.secondary {
         padding: var(--s-2) var(--s2);
         color: var(--text-muted);
         background: transparent;
-        border: 1px solid var(--border-tertiary);
+        box-shadow: inset 0 0 0 0 var(--bg), 0 0 0 1px var(--border-tertiary), 0 0 0 0 var(--focus);
+
+        &:hover {
+          background: var(--bg-tertiary);
+        }
+
+        &:focus-visible {
+          outline: 0;
+          box-shadow: inset 0 0 0 1px var(--bg), 0 0 0 1px var(--border-brand), 0 0 0 4px var(--focus);
+        }
       }
       &.ghost {
         padding: var(--s-2) var(--s2);
         color: var(--text-muted);
         background: transparent;
-        // border: 1px solid var(--border-tertiary);
+        
+        &:focus-visible {
+          outline: 0;
+          box-shadow: inset 0 0 0 1px var(--bg), 0 0 0 1px var(--border-brand), 0 0 0 4px var(--focus);
+        }
 
         &:hover {
           background: var(--bg-secondary);
@@ -199,6 +280,15 @@
         justify-content: center;
         width: var(--s3);
         height: var(--s3);
+
+        &:hover {
+          background: var(--bg-tertiary);
+        }
+
+        &:focus-visible {
+          outline: 0;
+          box-shadow: inset 0 0 0 1px var(--bg), 0 0 0 1px var(--border-brand), 0 0 0 4px var(--focus);
+        }
       }
 
 
@@ -207,12 +297,21 @@
         background: transparent;
         border-radius: var(--s3);
         color: var(--text-muted);
-        box-shadow: 0 0 0 1px var(--border-tertiary);
+        box-shadow: inset 0 0 0 0 var(--bg), 0 0 0 1px var(--border-tertiary), 0 0 0 0 var(--focus);
         display: flex;
         align-items: center;
         justify-content: center;
         gap: var(--s-6);
         padding: var(--s-6) var(--s-1);
+
+        &:hover {
+          background: var(--bg-tertiary);
+        }
+
+        &:focus-visible {
+          outline: 0;
+          box-shadow: inset 0 0 0 1px var(--bg), 0 0 0 1px var(--border-brand), 0 0 0 4px var(--focus);
+        }
       }
 
     }
@@ -228,6 +327,10 @@
       padding: var(--s-6) var(--s-2) var(--s-6) var(--s-6);
       cursor: pointer;
       transition: all 0.2s ease-in-out;
+
+      &:hover {
+          background: var(--bg-tertiary);
+        }
 
       &:focus-visible {
         outline: 0;
@@ -253,6 +356,35 @@
         transform: rotate(180deg);
       }
     
+    }
+
+    .loader-docs {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      position: relative;
+      animation: rotate 0.7s linear infinite
+    }
+    .loader-docs::before {
+      content: "";
+      box-sizing: border-box;
+      position: absolute;
+      inset: 0px;
+      border-radius: 50%;
+      border: 2px solid var(--bg);
+      animation: prixClipFix 2s linear infinite ;
+    }
+
+    @keyframes rotate {
+      100% {transform: rotate(360deg)}
+    }
+
+    @keyframes prixClipFix {
+      0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+      25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+      50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+      75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
+      100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
     }
 
     
