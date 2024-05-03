@@ -208,18 +208,18 @@
   let showPaytypeDropdown = false
 
   let paymentOption = [ 
-    {id: 1, name: "PayPal", checked: true},
-    {id: 2, name: "Credit Card", checked: false},
+    {id: 1, name: "PayPal", checked: false},
+    {id: 2, name: "Card", checked: true},
     // {id: 3, name: "U.S. Bank Account", checked: false},
     // {id: 4, name: "Crypto", checked: false},
   ]
 
   let selectedPaymentIndex = paymentOption.findIndex(option => option.checked);
   let selectedPaymentOption = paymentOption[selectedPaymentIndex].name;
-  let visiblePaymentOption = "PayPal"
+  let visiblePaymentOption = "Card"
 
   $: if (selectedPaymentIndex == 1) {
-      selectedPaymentOption = "Credit Card"
+      selectedPaymentOption = "Card"
     } else if (selectedPaymentIndex == 2) {
       selectedPaymentOption = "U.S. Bank Account"
     } else if (selectedPaymentIndex == 3) {
@@ -244,6 +244,14 @@
   }
 
   let showSettingsDropdown = false
+
+  let cancelReason = [
+    {detail: "Reason 1"},
+    {detail: "Reason 2"},
+    {detail: "Reason 3"},
+    {detail: "Reason 4"},
+    {detail: "Reason 5"}
+  ]
 
 
   $: filteredKey = 1
@@ -330,7 +338,7 @@
 --gap="var(--24px)" 
 --justify-content="flex-start"
 >
-<button class="dm-toggle" on:click={() => showDm = !showDm}>Dark mode 🚧</button>
+<!-- <button class="dm-toggle" on:click={() => showDm = !showDm}>Dark mode 🚧</button> -->
 {#if showModal}
 <div class="modal" in:fade={{duration:150}} out:fade={{duration:150}}>
     <div class="modal-box" in:scale={{start:0.95, duration:250, delay: 150, easing: backOut}} out:scale={{start: 0.95, duration:250, easing: backOut}}>
@@ -338,8 +346,16 @@
         Cancel your monthly donation
       </div>
       <div class="modal-body">
-        <p>Thank you for giving monthly to people in poverty for the last 10 months. Please confirm your cancellation of:</p>
-        <span class="selected-option">{currentActiveAmount} a month to Poverty relief - Africa</span>
+        <p>Thank you for giving monthly to people in poverty. Please confirm your cancellation of <span class="selected-option">{currentActiveAmount} a month to Poverty relief - Africa</span></p>
+        <div class="reason-select-holder">
+          <select>
+            {#each cancelReason as reason, i}
+            <option id={i} >
+              {reason.detail}
+            </option>
+            {/each}
+          </select>
+        </div>
       </div>
       <div class="modal-footer">
         <div class="modal-buttons">
@@ -452,7 +468,7 @@
               </button>
               {:else}
               <button class="settings-dropdown-button" on:click={() => { showSettingsDropdown = false; donationPause()}}>
-                Adjust pause
+                Extend pause
               </button>
               <button class="settings-dropdown-button" on:click={() => { showSettingsDropdown = false; donationResume()}}>
                 Reactivate donation
@@ -520,14 +536,17 @@
               </div>
             </div>
             <div class="payment-text">
-              <div class="payment-text-desc">
+              <div class="payment-text-desc equal">
                 <span>Your next donation is Feb 5, via </span>
                 <div class="payment-text-button-holder">
                   {#key visiblePaymentOption}
                   <button class="payment-text-button" in:fade={{duration:250}} on:click={() => {showPaytypeDropdown = !showPaytypeDropdown; showPaymentDropdown = false; showSettingsDropdown = false;}}>{visiblePaymentOption}</button>
                   {/key}
+                  <!-- {#if visiblePaymentOption === "Card"}
+                    ending in 8134
+                  {/if} -->
                   {#if showPaytypeDropdown}
-                    <div class="button-dropdown payment" in:fly={{y:-10,duration:250}} out:fly={{y:-5,duration:250}}>
+                    <!-- <div class="button-dropdown payment" in:fly={{y:-10,duration:250}} out:fly={{y:-5,duration:250}}>
                       <form class="button-dropdown-inner radio-list">
                         <ul class="payment-radio-holder">
                           {#each paymentOption as option, index (index)}
@@ -544,6 +563,15 @@
                             Update
                           </button>
                       </form>
+                    </div> -->
+                    <div class="settings-dropdown" in:fly={{y:-10,duration:250}} out:fly={{y:-5,duration:250}}>
+                      <button class="settings-dropdown-button" on:click={() => {showSettingsDropdown = false; donationCancel()}}>
+                        {#if visiblePaymentOption ==  "Card"}
+                        Update card details
+                        {:else}
+                        Update PayPal details
+                        {/if}
+                      </button>
                     </div>
                   {/if}
                 </div>
@@ -557,7 +585,7 @@
             </div>
             <div class="payment-text-reactivate">
               <button class="payment-text-reactivate-button paused" on:click={() => { showSettingsDropdown = false; donationPause()}}>
-                Adjust pause
+                Extend pause
               </button>
               <button class="payment-text-reactivate-button" on:click={() => { showSettingsDropdown = false; donationResume()}}>
                 Reactivate donation
@@ -581,10 +609,13 @@
           {:else}
           <div class="custom-donation">
             <button class="back" on:click={()=> resetDonation()}>
+              Back
+            </button>
+            <!-- <button class="back" on:click={()=> resetDonation()}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M3.21938 11.4694L9.96938 4.71937C10.1101 4.57864 10.301 4.49958 10.5 4.49958C10.699 4.49958 10.8899 4.57864 11.0306 4.71937C11.1714 4.8601 11.2504 5.05097 11.2504 5.24999C11.2504 5.44902 11.1714 5.63989 11.0306 5.78062L5.56031 11.25L20.25 11.25C20.4489 11.25 20.6397 11.329 20.7803 11.4697C20.921 11.6103 21 11.8011 21 12C21 12.1989 20.921 12.3897 20.7803 12.5303C20.6397 12.671 20.4489 12.75 20.25 12.75L5.56031 12.75L11.0306 18.2194C11.1714 18.3601 11.2504 18.551 11.2504 18.75C11.2504 18.949 11.1714 19.1399 11.0306 19.2806C10.8899 19.4213 10.699 19.5004 10.5 19.5004C10.301 19.5004 10.1101 19.4213 9.96938 19.2806L3.21938 12.5306C3.14964 12.461 3.09432 12.3782 3.05658 12.2872C3.01884 12.1962 2.99941 12.0986 2.99941 12C2.99941 11.9014 3.01884 11.8038 3.05658 11.7128C3.09432 11.6217 3.14964 11.539 3.21938 11.4694Z" fill="var(--icon)"/>
                 </svg>
-            </button>
+            </button> -->
             <div class="input-holder" in:fade={{duration:150}}>
               <input type="number" placeholder="Add custom amount" bind:this={customDonationInput} bind:value={customDonationAmount} />
             </div>
@@ -600,7 +631,7 @@
           {:else}
             {#if customDonationAmount > 999999}
             <button class="active custom">
-              Click to contact us about donations over $1M
+              Contact us about donations over $1M
             </button>
             {:else}
             <button class:active={customDonationButtonActive}>
@@ -1006,7 +1037,8 @@
         gap: var(--s-1);
 
         .back {
-          padding: 0 12px;
+          // padding: 0 12px;
+          padding: 0 var(--s2);
         }
 
         .input-holder {
@@ -1117,6 +1149,11 @@
       &.balanced {
         text-wrap: balance;
         padding: 0 var(--s2);
+      }
+
+      &.equal {
+        text-wrap: balance;
+        // padding: 0 var(--s2);
       }
     }
 
@@ -1457,13 +1494,14 @@
 
     }
 
-    .settings-dropdown {
+  }
+
+  .settings-dropdown {
       position: absolute;
       z-index: var(--zindex-overlay);
       top: calc(100% + var(--s-3));
       right: 0;
       width: calc(var(--s0)* 16);
-      padding: 0;
       font-size: var(--s0);
       background: var(--bg-dropdown);
       border-radius: var(--s-3);
@@ -1492,10 +1530,8 @@
       }
     }
 
-  }
-
   .selected-option {
-    padding: var(--s-12) 0 var(--s1);
+    // padding: var(--s-12) 0 var(--s1);
   }
 
   .avatar-button-holder {
@@ -1574,6 +1610,24 @@
     font-weight: 500;
     padding: var(--s-2) var(--s1);
     cursor: pointer;
+  }
+
+  .reason-select-holder {
+    width: 100%;
+    padding: var(--s0) 0;
+
+    select {
+      width: 100%;
+      border: 1px solid var(--bg-tertiary);
+      border-radius: var(--s-1);
+      padding: var(--s-1) var(--s0);
+      transition: all 0.2s ease-in-out;
+
+      &:focus-visible {
+        outline: 0;
+        box-shadow: 0px 0px 0px 1px var(--bg), 0px 0px 0px 2px var(--border-brand), 0px 0px 0px 5px var(--focus);
+      }
+    }
   }
 
 

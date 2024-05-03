@@ -35,13 +35,14 @@
   let buttons = [
     {filled: false, title: "Primary", type:"primary", description: `For primary actions, like "Update amount".`},
     {filled: true, title: "Secondary", type:"secondary", description: `Secondary actions, useful when presenting many options.`},
-    {filled: false, title: "Ghost", type:"ghost", description: `For link buttons, like "Go back".`},
-    {filled: true, title: "Icon", type:"icon", description: `Icon buttons utlize SVG icons for actions.`},
+    {filled: false, title: "Ghost", type:"ghost", description: `For link buttons, like "Go back". Only to be used in conjunction with a primary action.`},
+    // {filled: true, title: "Icon", type:"icon", description: `Icon buttons utlize SVG icons for actions.`},
     {filled: true, title: "Dropdown", type:"dropdown", description: `For buttons containing a dropdown menu.`},
     {filled: false, title: "Loading", type:"loading", description: `For loading states.`},
     {filled: false, title: "Danger", type:"danger", description: `For destructive actions, like "Cancel donation".`},
     {filled: false, title: "Special", type:"special", description: `For special actions, like "contact us".`},
     {filled: false, title: "Avatar Button", type:"avatar", description: `Special control for user actions & account navigation.`},
+    {filled: true, title: "List", type:"list", description: `For button nested inside of a dropdown list.`},
   ]
 
 </script>
@@ -94,6 +95,18 @@
           <button class={button.type}>
             <span class="loader-docs"></span>
           </button>
+          {:else if button.type == "list"}
+          <div class="list-holder">
+            <button class={button.type}>
+              Extend pause
+            </button>
+            <button class={button.type}>
+              Reactivate donation
+            </button>
+            <button class={button.type}>
+              <span class="destroy">Cancel donation</span>
+            </button>
+          </div>
           {:else}
           <button class={button.type} on:click>{button.title}</button>
           {/if}
@@ -145,6 +158,7 @@
     border: 1px solid var(--border);
     border-collapse: collapse;
     border-spacing: 0;
+    margin-bottom: 200px;
 
     td {
       border: 1px solid var(--border);
@@ -291,6 +305,32 @@
         }
       }
 
+      &.list {
+        font-weight: 400;
+        width: 100%;
+        text-align: left;
+        padding: var(--s-3) var(--s-1);
+        font-size: var(--s-12);
+        border: 0;
+        background: transparent;
+        border-radius: var(--s-3);
+        transition: all 0.2s ease-in-out;
+        cursor: pointer;
+        color: var(--text);
+
+        .destroy {
+          color: var(--red-600);
+        }
+        
+        &:hover {
+          background: var(--bg-secondary);
+        }
+
+        &:focus-visible {
+          outline: 0;
+          box-shadow: inset 0 0 0 1px var(--bg), 0 0 0 1px var(--border-brand), 0 0 0 4px var(--focus);
+        }
+      }
 
       &.dropdown {
         font-size: var(--s-1);
@@ -314,6 +354,19 @@
         }
       }
 
+    }
+
+    .list-holder {
+      width: 100%;
+      min-width: 200px;
+      font-size: var(--s0);
+      background: var(--bg-dropdown);
+      border-radius: var(--s-3);
+      padding: var(--s-5) var(--s-6);
+      box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1), 0px 24px 48px 0px rgba(18, 18, 23, 0.03), 0px 10px 18px 0px rgba(18, 18, 23, 0.03), 0px 5px 8px 0px rgba(18, 18, 23, 0.04), 0px 2px 4px 0px rgba(18, 18, 23, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 0;
     }
 
     .avatar-button {
