@@ -245,12 +245,19 @@
 
   let showSettingsDropdown = false
 
+  let selectedReason = 0
+
+  $: console.log(selectedReason)
+
   let cancelReason = [
-    {detail: "Reason 1"},
-    {detail: "Reason 2"},
-    {detail: "Reason 3"},
-    {detail: "Reason 4"},
-    {detail: "Reason 5"}
+    {detail: "Please select a cancelation reason"},
+    {detail: "My financial situation has changed"},
+    {detail: "I decided to give to other charities"},
+    {detail: "I'm still giving to GiveDirectly but through other channels"},
+    {detail: "I didn't mean to start a monthly donation"},
+    {detail: "I had a negative experience with GiveDirectly"},
+    {detail: "My donation is not tax-effective in my country"},
+    {detail: "Other"}
   ]
 
 
@@ -348,13 +355,20 @@
       <div class="modal-body">
         <p>Thank you for giving monthly to people in poverty. Please confirm your cancellation of <span class="selected-option">{currentActiveAmount} a month to Poverty relief - Africa</span></p>
         <div class="reason-select-holder">
-          <select>
+          <select bind:value={selectedReason}>
             {#each cancelReason as reason, i}
-            <option id={i} >
+            <option value={i}>
               {reason.detail}
             </option>
             {/each}
           </select>
+
+          {#if selectedReason == 7}
+          <div class="reason-input-holder">
+            <label for="reason">Please specify why you are cancelling</label>
+            <textarea id="reason"></textarea>
+          </div>
+          {/if}
         </div>
       </div>
       <div class="modal-footer">
@@ -1627,6 +1641,38 @@
         outline: 0;
         box-shadow: 0px 0px 0px 1px var(--bg), 0px 0px 0px 2px var(--border-brand), 0px 0px 0px 5px var(--focus);
       }
+    }
+  }
+
+  .reason-input-holder {
+    padding: var(--s0) 0 0;
+
+    label {
+      font-size: var(--s-12);
+      color: var(--text-muted);
+      width: 100%;
+      display: block;
+      text-align: left;
+      padding: var(--s-1) 0 var(--s-3);
+    }
+    
+    textarea {
+      width: 100%;
+      min-height: var(--s5);
+      border: 0;
+      box-shadow: 0 0 0 1px var(--border-tertiary);
+      border-radius: var(--s-3);
+      resize: vertical;
+      padding: var(--s0);
+      color: var(--text);
+      font-size: var(--s-12);
+      transition: all 0.2s ease-in-out;
+
+      &:focus-visible {
+        outline: 0;
+        box-shadow: 0px 0px 0px 1px var(--bg), 0px 0px 0px 2px var(--border-brand), 0px 0px 0px 5px var(--focus);
+      }
+
     }
   }
 
