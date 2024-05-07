@@ -250,7 +250,7 @@
   $: console.log(selectedReason)
 
   let cancelReason = [
-    {detail: "Please select a cancelation reason"},
+    {detail: "Please select a cancellation reason"},
     {detail: "My financial situation has changed"},
     {detail: "I decided to give to other charities"},
     {detail: "I'm still giving to GiveDirectly but through other channels"},
@@ -363,12 +363,12 @@
             {/each}
           </select>
 
-          {#if selectedReason == 7}
+          <!-- {#if selectedReason == 7} -->
           <div class="reason-input-holder">
-            <label for="reason">Please specify why you are cancelling</label>
+            <label for="reason">We'd appreciate your feedback about why you're cancelling</label>
             <textarea id="reason"></textarea>
           </div>
-          {/if}
+          <!-- {/if} -->
         </div>
       </div>
       <div class="modal-footer">
@@ -1636,6 +1636,12 @@
       border-radius: var(--s-1);
       padding: var(--s-1) var(--s0);
       transition: all 0.2s ease-in-out;
+      background-color: var(--bg);
+      background-image: url("data:image/svg+xml,%3Csvg width='9' height='5' viewBox='0 0 9 5' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.61663 4.79194C4.65137 4.82837 4.69314 4.85738 4.73941 4.87719C4.78568 4.89701 4.8355 4.90723 4.88584 4.90723C4.93617 4.90723 4.98599 4.89701 5.03226 4.87719C5.07853 4.85738 5.1203 4.82837 5.15504 4.79194L9.00061 0.946368L8.4622 0.407961L4.88584 3.98433L1.30902 0.407961L0.770611 0.946368L4.61663 4.79194Z' fill='%23757575'/%3E%3C/svg%3E%0A");
+      background-position: calc(100% - 15px) 17px;
+      background-size: 12px 12px;
+      background-repeat: no-repeat;
+      appearance: none;
 
       &:focus-visible {
         outline: 0;
@@ -1645,7 +1651,7 @@
   }
 
   .reason-input-holder {
-    padding: var(--s0) 0 0;
+    padding: var(--s-6) 0 0;
 
     label {
       font-size: var(--s-12);
