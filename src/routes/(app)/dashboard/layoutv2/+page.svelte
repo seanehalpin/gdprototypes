@@ -253,7 +253,7 @@
 
   let selectedReason = 0
 
-  $: console.log(selectedReason)
+  // $: console.log(selectedReason)
 
   let cancelReason = [
     {detail: "Please select a cancellation reason"},
@@ -463,7 +463,7 @@
           W
         </span>
         <span class="name">Walid H</span>
-        <svg width="16" height="16" fill="var(--bg-brand)" focusable="false" viewBox="0 0 24 24"><path d="M12.771 7.115a.829.829 0 0 0-1.2 0L3 15.686l1.2 1.2 7.971-7.971 7.972 7.971 1.2-1.2-8.572-8.571Z"></path></svg>
+        <svg width="16" height="16" fill="var(--icon)" focusable="false" viewBox="0 0 24 24"><path d="M12.771 7.115a.829.829 0 0 0-1.2 0L3 15.686l1.2 1.2 7.971-7.971 7.972 7.971 1.2-1.2-8.572-8.571Z"></path></svg>
         </button>
 
         {#if showAvatarDropdown}
@@ -488,9 +488,18 @@
     </div>
 
     <div class="monthly">
-      <div class="story">
+      <a class="story" href="https://live.givedirectly.org/" target="_blank">
+        <span class="note">View recent stories from recipients</span>
+        <span class="person">Leonille, Rwanda</span>
 
-      </div>
+        <span class="icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22 10.6666V19.333C22 19.5099 21.9298 19.6794 21.8047 19.8044C21.6797 19.9295 21.5102 19.9997 21.3334 19.9997C21.1565 19.9997 20.987 19.9295 20.862 19.8044C20.7369 19.6794 20.6667 19.5099 20.6667 19.333V12.2758L11.1387 21.8046C11.0136 21.9297 10.8439 22 10.667 22C10.4901 22 10.3205 21.9297 10.1954 21.8046C10.0703 21.6795 10 21.5099 10 21.333C10 21.1561 10.0703 20.9864 10.1954 20.8613L19.7242 11.3333H12.667C12.4901 11.3333 12.3206 11.2631 12.1956 11.138C12.0705 11.013 12.0003 10.8435 12.0003 10.6666C12.0003 10.4898 12.0705 10.3203 12.1956 10.1953C12.3206 10.0702 12.4901 10 12.667 10H21.3334C21.5102 10 21.6797 10.0702 21.8047 10.1953C21.9298 10.3203 22 10.4898 22 10.6666Z" fill="#095845"/>
+            </svg>
+            
+        </span>
+
+      </a>
       <div class="donate">
       
         {#if paymentSet}
@@ -893,6 +902,73 @@
       // height: 100%;
       position: relative;
       min-height: calc(var(--s0) * 25);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: var(--s0);
+      color: var(--text-onbrand);
+      gap: var(--s0);
+      overflow: hidden;
+      text-decoration: none;
+      transition: all 0.2s ease-in-out;
+
+      .icon {
+        position: absolute;
+        right: 16px;
+        top: 16px;
+        z-index: 100;
+        background: var(--bg);
+        display: flex;
+        border-radius: 50%;
+        opacity: 0;
+        transition: all 0.2s ease-in-out;
+        transform: translate3d(0, 5px, 0);
+      }
+
+      &:hover {
+        text-decoration: none;
+
+        .icon {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
+      &:focus-visible {
+        outline: 0;
+        border-color: var(--border-brand);
+        box-shadow: 0px 0px 0px 2px var(--bg), 0px 0px 0px 4px var(--bg-brand);
+      }
+      
+      .note {
+        font-weight: 600;
+        line-height: 1.4;
+        position: relative;
+        z-index: 100;
+        text-wrap: pretty;
+        font-size: var(--s0);
+      }
+
+      .person {
+        opacity: 0.9;
+        font-size: var(--s-12);
+        position: relative;
+        z-index: 100;
+      }
+
+
+      &:after {
+        z-index: 1;
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 180px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+      }
+
+
     }
 
     .donate {
