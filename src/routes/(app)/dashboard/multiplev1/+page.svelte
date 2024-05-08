@@ -294,10 +294,10 @@
   }
 
   let storys = [
-    {id: 1, title: "Donation management", loom: "b036694884f94c67a103450ddef96edd", description: "", key: 1},
+    {id: 1, title: "Multiple donation management", loom: "9253fc2982b2418795cf4b4d74da5c4c", description: "", key: 1},
   ]
 
-  let showStory = false
+  let showStory = true
   let ready = false
   onMount(() => {
     ready = true
