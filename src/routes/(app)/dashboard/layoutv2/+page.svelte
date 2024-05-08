@@ -91,10 +91,15 @@
   let showPaymentDropdown = false
   let paymentChanged = false
   let pauseLength = 1
+  let exitModal = false
 
   const donationCancel = () => {
     showPaymentDropdown = false
     showModal = true
+  }
+
+  const paymentExit = () => {
+    exitModal = true
   }
 
   const selectPauseLength = (number: number) => {
@@ -201,6 +206,7 @@
   const closeModal = () => {
     showModal = false
     showPauseModal = false
+    exitModal = false
     customDonationAmountPicker = Number(currentActiveAmount.replace('$', ''))
     // console.log('close modal')
   }
@@ -216,7 +222,7 @@
 
   let selectedPaymentIndex = paymentOption.findIndex(option => option.checked);
   let selectedPaymentOption = paymentOption[selectedPaymentIndex].name;
-  let visiblePaymentOption = "Card"
+  let visiblePaymentOption = "PayPal"
 
   $: if (selectedPaymentIndex == 1) {
       selectedPaymentOption = "Card"
@@ -413,6 +419,28 @@
   <div class="modal-backdrop" on:click={()=> closeModal()}></div>
 </div>
 {/if}
+
+{#if exitModal}
+<div class="modal" in:fade={{duration:150}} out:fade={{duration:150}}>
+    <div class="modal-box" in:scale={{start:0.95, duration:250, delay: 150, easing: backOut}} out:scale={{start: 0.95, duration:250, easing: backOut}}>
+      <div class="modal-title">
+        Update your details
+      </div>
+      <div class="modal-body">
+        <p>You will be redirected to PayPal's website to update your PayPal payment details.</p>
+      </div>
+      <div class="modal-footer large">
+        <div class="modal-buttons">
+          <button class="back" on:click={()=> closeModal()}>Go back</button>
+          <button class="confirm" on:click={()=> closeModal()}>Open PayPal</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-backdrop" on:click={()=> closeModal()}></div>
+</div>
+{/if}
+
+
 {#if showNoty}
 <div class="noty" in:fly={{y:-30,duration:250}} out:fly={{y:-30,duration:250}}>
   <div class="noty-content">
@@ -554,40 +582,12 @@
                 <span>Your next donation is Feb 5, via </span>
                 <div class="payment-text-button-holder">
                   {#key visiblePaymentOption}
-                  <button class="payment-text-button" in:fade={{duration:250}} on:click={() => {showPaytypeDropdown = !showPaytypeDropdown; showPaymentDropdown = false; showSettingsDropdown = false;}}>{visiblePaymentOption}</button>
+                  <button class="payment-text-button" in:fade={{duration:250}} on:click={() => {showPaymentDropdown = false; showSettingsDropdown = false;paymentExit();}}>{visiblePaymentOption}</button>
                   {/key}
                   <!-- {#if visiblePaymentOption === "Card"}
                     ending in 8134
                   {/if} -->
-                  {#if showPaytypeDropdown}
-                    <!-- <div class="button-dropdown payment" in:fly={{y:-10,duration:250}} out:fly={{y:-5,duration:250}}>
-                      <form class="button-dropdown-inner radio-list">
-                        <ul class="payment-radio-holder">
-                          {#each paymentOption as option, index (index)}
-                          <li class="payment-radio-holder-item">
-                            <label for={index}>
-                              <input type="radio" id={index} bind:group={selectedPaymentIndex} name="payment" value={index} checked={option.checked} on:change={() => selectedPaymentIndex = index}>
-                              <span>{option.name}</span>
-                            </label>
-                          </li>
-                          {/each}
-                        </ul>
-                        <div class="confirm">
-                          <button class="active" on:click={updatePaymentMethod}>
-                            Update
-                          </button>
-                      </form>
-                    </div> -->
-                    <div class="settings-dropdown" in:fly={{y:-10,duration:250}} out:fly={{y:-5,duration:250}}>
-                      <button class="settings-dropdown-button" on:click={() => {showSettingsDropdown = false; donationCancel()}}>
-                        {#if visiblePaymentOption ==  "Card"}
-                        Update card details
-                        {:else}
-                        Update PayPal details
-                        {/if}
-                      </button>
-                    </div>
-                  {/if}
+                  
                 </div>
               </div>
             </div>
@@ -1376,6 +1376,10 @@
       justify-content: center;
       padding: var(--s0) 0 0;
       gap: var(--s-3);
+
+      &.large {
+        padding: var(--s2) 0 0;
+      }
 
       .modal-buttons {
         display: flex;
