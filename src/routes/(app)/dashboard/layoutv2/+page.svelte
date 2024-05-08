@@ -427,7 +427,7 @@
         Update your details
       </div>
       <div class="modal-body">
-        <p>You will be redirected to PayPal's website to update your PayPal payment details.</p>
+        <p>You will be redirected to PayPal's website to update your payment details.</p>
       </div>
       <div class="modal-footer large">
         <div class="modal-buttons">
@@ -1363,6 +1363,10 @@
       gap: var(--s0);
       text-align: center;
       // padding: 0 var(--s0) var(--s1);
+
+      p {
+        text-wrap: pretty;
+      }
 
       span {
         color: var(--text);
