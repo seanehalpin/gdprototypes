@@ -583,8 +583,8 @@
       {/if}
 
       {#each Array.from({ length: donationNum }) as _, index}
-      
-      <div class="donate" class:big={bigDonation}>
+      {#key bigDonation}
+      <div class="donate" class:big={bigDonation} in:fade={{duration:250}}>
         <div class="settings-holder" in:fade={{duration:250}}>
           <button class="settings-button">
             <span>Manage</span>
@@ -610,7 +610,7 @@
             <div class="payment-text-button-holder">
               <button class="payment-text-button" in:fade={{duration:250}}>$100 a month</button>
             </div>
-            <span>Emergency relief</span>
+            <span>to Emergency relief</span>
           </div>
         </div>
         <div class="payment-text">
@@ -622,6 +622,7 @@
           </div>
         </div>
       </div>
+      {/key}
       {/each}
     </div>
 
@@ -882,7 +883,7 @@
       text-align: center;
       // height: 368px;
       position: relative;
-
+      
       &.big {
         padding: var(--s5) var(--s2);
         flex-basis: 0;
