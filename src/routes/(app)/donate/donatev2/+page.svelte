@@ -267,7 +267,15 @@
             {/each}
 
           </div>
-          <button class="donate" on:click={() => formSmall = false}>Continue to payment</button>
+          {#if activeDollarAmount == "Other"}
+          <button class="donate" on:click={() => formSmall = false}>Give</button>
+          {:else}
+            {#if activePaymentInterval == "Monthly"}
+            <button class="donate" on:click={() => formSmall = false}>Give ${activeDollarAmount} monthly</button>
+            {:else}
+            <button class="donate" on:click={() => formSmall = false}>Give ${activeDollarAmount} once</button>
+            {/if}
+          {/if}
           <button class="program">Poverty relief - Africa (edit program)</button>
           <button class="international">Giving from outside the U.S.?</button>
 
