@@ -36,7 +36,8 @@ export let nav = writable([
     title: "Donate.givedirectly.org",
     open: true,
     links: [
-      { url: '/donate/v1', text: 'Donate v1' },
+      { url: '/donate/v1', text: 'Early exploration' },
+      { url: '/donate/donatev2', text: 'What things cost' },
     ]
   },
   {
