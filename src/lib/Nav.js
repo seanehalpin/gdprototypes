@@ -38,6 +38,7 @@ export let nav = writable([
     links: [
       { url: '/donate/v1', text: 'Early exploration' },
       { url: '/donate/donatev2', text: 'What things cost' },
+      { url: '/donate/homepagev2', text: 'Home edits' },
     ]
   },
   {
