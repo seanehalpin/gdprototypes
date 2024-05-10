@@ -459,6 +459,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    border-radius: 0 0 4px 4px;
 
 
     .button-tabs {
@@ -576,12 +577,14 @@
   }
 
   .header {
-    background: var(--white);
-    margin-bottom: 10px;
+    background: var(--grey-50);
+    margin-bottom: 0;
+    // border-bottom: 1px solid var(--grey-50);
     padding: var(--16px);
     position: absolute;
     bottom: 100%;
     width: 100%;
+    border-radius: 4px 4px 0 0;
 
   }
 
