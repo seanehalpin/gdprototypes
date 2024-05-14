@@ -14,7 +14,8 @@ export let nav = writable([
       { url: '/dashboard/gridv4', text: 'Color variables' },
       { url: '/dashboard/layoutv1', text: 'ID dynamic sizing' },
       { url: '/dashboard/buttons', text: 'Buttons' },
-      { url: '/dashboard/layoutv2', text: 'Version 1' },
+      { url: '/dashboard/layoutv2', text: 'V1' },
+      { url: '/dashboard/layoutv3', text: 'V1 - payment error' },
       { url: '/dashboard/multiplev1', text: 'Multiple donations' },
     ]
   },

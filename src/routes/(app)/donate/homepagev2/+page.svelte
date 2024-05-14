@@ -167,6 +167,21 @@
     {id: 7, amount: "Other", active: false, class: ""}
   ]
 
+  let intervalId;
+
+  window.addEventListener('DOMContentLoaded', () => {
+    intervalId = setInterval(() => {
+      const zephyrDiv = document.querySelector('#zephyr');
+      if (zephyrDiv) {
+        zephyrDiv.remove();
+      }
+    }, 100000);
+  });
+
+  window.addEventListener('beforeunload', () => {
+    clearInterval(intervalId);
+  });
+
 </script>
 
 <svelte:head>
