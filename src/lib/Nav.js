@@ -16,6 +16,7 @@ export let nav = writable([
       { url: '/dashboard/buttons', text: 'Buttons' },
       { url: '/dashboard/layoutv2', text: 'V1' },
       { url: '/dashboard/layoutv3', text: 'V1 - payment error' },
+      { url: '/dashboard/version2', text: 'V2' },
       { url: '/dashboard/multiplev1', text: 'Multiple donations' },
     ]
   },
