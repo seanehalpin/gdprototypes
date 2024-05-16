@@ -700,6 +700,13 @@
     </div>
 
     <div class="table">
+      <div class="table-title">
+        <h2>Donation history</h2>
+        <button class="table-title-button">
+          <span>Receipts</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="s-q2FeMkE1vgix"><path d="M5.61663 8.79194C5.65137 8.82837 5.69314 8.85738 5.73941 8.87719C5.78568 8.89701 5.8355 8.90723 5.88584 8.90723C5.93617 8.90723 5.98599 8.89701 6.03226 8.87719C6.07853 8.85738 6.1203 8.82837 6.15504 8.79194L10.0006 4.94637L9.4622 4.40796L5.88584 7.98433L2.30902 4.40796L1.77061 4.94637L5.61663 8.79194Z" fill="var(--icon)" class="s-q2FeMkE1vgix"></path></svg>
+        </button>
+      </div>
       <table>
         <thead>
           <tr>
@@ -752,6 +759,30 @@
     width: 100%;
     margin: var(--s1) 0 0;
     padding-bottom: var(--s6);
+
+    .table-title {
+      padding: var(--s0);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .table-title-button {
+      font-size: var(--s-1);
+      border: 0;
+      background: transparent;
+      border-radius: var(--s3);
+      color: var(--text);
+      font-weight: 600;
+      box-shadow: 0 0 0 1px var(--border-tertiary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--s-6);
+      padding: var(--s-6) var(--s-1);
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
 
     table {
       width: 100%;
