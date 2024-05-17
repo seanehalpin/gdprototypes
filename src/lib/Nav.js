@@ -25,7 +25,8 @@ export let nav = writable([
     open: true,
     links: [
       { url: '/menu/v1', text: 'Menu' },
-      { url: '/website/faq', text: 'FAQ' },
+      { url: '/website/questions', text: 'FAQ Page' },
+      { url: '/website/faq', text: 'FAQ Component' },
       { url: '/website/newsletter', text: 'Newsletter' },
       { url: '/website/newsarticles', text: 'News articles' },
       { url: '/website/storiesv1', text: 'Recipient stories v1' },
