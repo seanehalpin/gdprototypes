@@ -266,6 +266,7 @@
     {detail: "Other"}
   ]
 
+  let showReceiptDropdown = false
 
   $: filteredKey = 1
 
@@ -289,13 +290,13 @@
   let showDm = false
 
   let table = [
-    {date: "Jan 5, 2024	", program: "Poverty relief - Africa", method: "Card ending in 8134", amount: "$500.00"},
-    {date: "Dec 5, 2023", program: "Poverty relief - Africa", method: "Card ending in 8134", amount: "$500.00"},
-    {date: "Nov 5, 2023", program: "Poverty relief - Africa", method: "Card ending in 8134", amount: "$500.00"},
-    {date: "Oct 5, 2023", program: "Poverty relief - Africa", method: "Card ending in 8134", amount: "$500.00"},
-    {date: "Sep 5, 2023", program: "Poverty relief - Africa", method: "Card ending in 8134", amount: "$500.00"},
-    {date: "Aug 5, 2023", program: "Poverty relief - Africa", method: "Card ending in 8134", amount: "$500.00"},
-    {date: "Jul 5, 2023", program: "Poverty relief - Africa", method: "Card ending in 8134", amount: "$500.00"},
+    {date: "Jan 5, 2024	", program: "Poverty relief - Africa", method: "PayPal", amount: "$60.00"},
+    {date: "Dec 5, 2023", program: "Poverty relief - Africa", method: "PayPal", amount: "$60.00"},
+    {date: "Nov 5, 2023", program: "Poverty relief - Africa", method: "PayPal", amount: "$60.00"},
+    {date: "Oct 5, 2023", program: "Poverty relief - Africa", method: "PayPal", amount: "$60.00"},
+    {date: "Sep 5, 2023", program: "Poverty relief - Africa", method: "PayPal", amount: "$60.00"},
+    {date: "Aug 5, 2023", program: "Poverty relief - Africa", method: "PayPal", amount: "$60.00"},
+    {date: "Jul 5, 2023", program: "Poverty relief - Africa", method: "PayPal", amount: "$60.00"},
   ]
 
 </script>
@@ -702,10 +703,30 @@
     <div class="table">
       <div class="table-title">
         <h2>Donation history</h2>
-        <button class="table-title-button">
+        <div class="settings-holder inline">
+        <button class="table-title-button" on:click={() => showReceiptDropdown = !showReceiptDropdown}>
           <span>Receipts</span>
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="s-q2FeMkE1vgix"><path d="M5.61663 8.79194C5.65137 8.82837 5.69314 8.85738 5.73941 8.87719C5.78568 8.89701 5.8355 8.90723 5.88584 8.90723C5.93617 8.90723 5.98599 8.89701 6.03226 8.87719C6.07853 8.85738 6.1203 8.82837 6.15504 8.79194L10.0006 4.94637L9.4622 4.40796L5.88584 7.98433L2.30902 4.40796L1.77061 4.94637L5.61663 8.79194Z" fill="var(--icon)" class="s-q2FeMkE1vgix"></path></svg>
         </button>
+
+        {#if showReceiptDropdown}
+        <div class="settings-dropdown" in:fly={{y:-10,duration:250}} out:fly={{y:-5,duration:250}}>
+          <button class="settings-dropdown-button" on:click>
+            All individual receipts
+          </button>
+          <button class="settings-dropdown-button" on:click>
+            2024 cumulative receipt
+          </button>
+          <button class="settings-dropdown-button" on:click>
+            2023 cumulative receipt
+          </button>
+          <button class="settings-dropdown-button" on:click>
+            2022 cumulative receipt
+          </button>
+        </div>
+        {/if}
+
+        </div>
       </div>
       <table>
         <thead>
@@ -734,6 +755,19 @@
           </tr>
           {/each}
       </table>
+      <div class="pagination">
+        <div class="pagination-details">
+          1-10 of 30 donations
+        </div>
+        <div class="pagination-buttons">
+        <button class="icon">
+          Prev
+        </button>
+        <button class="icon">
+          Next
+        </button>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -753,6 +787,36 @@
   $color-border-tertiary: #CBC5B8;
   $space: 'Space Mono', monospace;
   $navHeight: 140px;
+
+
+  .pagination {
+    display: flex;
+    padding: var(--s2) var(--s0);
+    gap: var(--s-1);
+    font-size: var(--s-12);
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .pagination-buttons {
+    display: flex;
+    gap: var(--s-4);
+
+    button {
+      background: var(--bg);
+      border: 0;
+      border: 1px solid var(--border-tertiary);
+      border-radius: var(--s-12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: var(--s2);
+      color: var(--text-muted);
+      padding: 0 var(--s-12);
+      font-weight: 500;
+      cursor: pointer;
+    }
+  }
 
 
   .table {
@@ -843,7 +907,7 @@
         // border: 1px solid var(--border-tertiary);
         transition: all 0.2s ease-in-out;
         position: relative;
-        opacity: 0;
+        // opacity: 0;
 
         .tooltip {
           visibility: hidden;
@@ -1746,6 +1810,12 @@
     position: absolute;
     right: var(--s0);
     top: var(--s0);
+
+    &.inline {
+      position: relative;
+      right: auto;
+      top: auto;
+    }
 
 
     .settings-button {
