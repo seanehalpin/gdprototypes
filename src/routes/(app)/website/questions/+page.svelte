@@ -60,11 +60,11 @@
       <!-- <div class="desc">Contents</div> -->
 
       <ul class="toc">
-        <li><a href="#">Commonly asked questions</a></li>
-        <li><a href="#">What are the impacts?</a></li>
-        <li><a href="#">How can I help?</a></li>
-        <li><a href="#">I have a question about my donation</a></li>
-        <li><a href="#">About GiveDirectly</a></li>
+        <li><a href="#common">Commonly asked questions</a></li>
+        <li><a href="#impact">What are the impacts?</a></li>
+        <li><a href="#help">How can I help?</a></li>
+        <li><a href="#question">I have a question about my donation</a></li>
+        <li><a href="#about">About GiveDirectly</a></li>
       </ul>
 
     </div>
@@ -72,7 +72,7 @@
     <div class="middle">
 
       <div class="section-accordion">
-        <h2>Most common questions</h2>
+        <h2 id="common">Most common questions</h2>
         <h3>Can I sign up to be a recipient?</h3>
         <div class="accordion-panel show">
         <p>In order to be as fair to all as possible, we select recipients using a systematic and proactive set of criteria that vary from country to country, and do not accept inbound applications for our international programs.</p>
@@ -128,7 +128,7 @@
       </div>
 
       <div class="section-accordion">
-        <h2>What are the impacts?</h2>
+        <h2 id="impact">What are the impacts?</h2>
               <h3>How do recipients use the transfers?</h3>
         <div class="accordion-panel">
           <p>By design, cash transfers let recipients use money for whatever is most important to them. Innovations for Poverty Action’s <a href="https://www.poverty-action.org/publication/household-response-income-changes-evidence-unconditional-cash-transfer-program-kenya" rel="external" target="_blank">evaluation</a> of our transfers in Kenya found increases in expenditure across all categories measured, including food, medical and education expenses, durables, home improvement, and social events. It also found large increases in income and in asset holdings, in particular livestock, furniture, and iron roofs. In addition to this research on GiveDirectly’s transfers, there is <a href="https://www.givedirectly.org/research-on-cash-transfers" rel="internal" target="_self">a large body of research</a> from around the world documenting the impacts of cash transfers on low-income households. See <a href="https://live.givedirectly.org/" rel="internal" target="_self">GDLive</a> for a good idea of how cash is being spent in real time.</p>
@@ -164,7 +164,7 @@
           </div>
 
           <div class="section-accordion">
-            <h2>How can I help?</h2>
+            <h2 id="help">How can I help?</h2>
                   <h3>How can I help?</h3>
       <div class="accordion-panel">
         <ol>
@@ -201,7 +201,7 @@
         </div>
 
         <div class="section-accordion">
-          <h2>I have a question about my donation</h2>
+          <h2 id="question">I have a question about my donation</h2>
                 <h3>Can I choose to whom to give?</h3>
     <div class="accordion-panel">
       <p>No; we let donors choose which programs to donate to, but not individual recipients. Practically speaking, if we did the latter we would risk being regulated as a money transfer service and losing our charitable status. Philosophically, we aim to target the poorest possible recipients, and not those with compelling profiles or narratives. Finally, it keeps costs down.</p>
@@ -294,7 +294,7 @@ Bank Name: Chase Manhattan Bank, 919 3rd Ave., New York, NY, 10022, USA</p>
 
 
       <div class="section-accordion">
-        <h2><a id="segovia" rel="internal">About GiveDirectly</a></h2>
+        <h2 id="about"><a id="segovia" rel="internal">About GiveDirectly</a></h2>
               <h3>When and why was GiveDirectly founded?</h3>
   <div class="accordion-panel">
     <p>GiveDirectly was founded by Michael Faye, Paul Niehaus, Jeremy Shapiro, and Rohit Wanchoo, who were studying economic development at Harvard and MIT at the time and also looking for the most effective way to give their own money to reduce poverty. They found that cash transfers had a strong evidence base, and that the rapid growth of mobile payments technology in emerging markets had opened the door to delivering cash transfers securely and efficiently on an unprecedented scale. They created GiveDirectly as a private giving circle in 2009 and opened it to the public in 2011 after two years of operational testing.</p>
