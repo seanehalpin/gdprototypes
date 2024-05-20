@@ -320,6 +320,14 @@ Bank Name: Chase Manhattan Bank, 919 3rd Ave., New York, NY, 10022, USA</p>
   </div>
     </div>
 
+    <div class="more-details">
+      <p>For additional questions:</p>
+
+      <p>
+        <a href="#" rel="internal" target="_self">info@givedirectly.org</a>
+      </p>
+    </div>
+
     </div> <!-- middle-->
     
   </div>
@@ -434,6 +442,20 @@ Bank Name: Chase Manhattan Bank, 919 3rd Ave., New York, NY, 10022, USA</p>
       font-size: 16px;
       color: var(--grey-600);
       cursor: pointer;
+    }
+  }
+
+  .more-details {
+    width: 100%;
+    max-width: 65ch;
+    margin-bottom: 100px;
+
+    p {
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    a {
+      color: var(--green-600);
     }
   }
   
