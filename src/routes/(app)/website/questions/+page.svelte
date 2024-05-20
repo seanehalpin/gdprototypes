@@ -8,6 +8,38 @@
 
   let transition = quartOut
 
+  let activeAccordion = null;
+
+  function toggleAccordion(event) {
+    const accordionPanel = event.target.nextElementSibling;
+    if (accordionPanel.style.display === 'block') {
+      accordionPanel.style.display = 'none';
+    } else {
+      accordionPanel.style.display = 'block';
+    }
+  }
+
+  function handleAccordionClick(event) {
+    const accordionHeader = event.target;
+    const accordionPanel = accordionHeader.nextElementSibling;
+
+    if (accordionPanel.style.display === 'block') {
+      accordionPanel.style.display = 'none';
+      activeAccordion = null;
+    } else {
+      accordionPanel.style.display = 'block';
+      activeAccordion = accordionPanel;
+    }
+  }
+
+  onMount(() => {
+    const accordionHeaders = document.querySelectorAll('.section-accordion h3');
+    accordionHeaders.forEach((header) => {
+      header.addEventListener('click', handleAccordionClick);
+    });
+  });
+
+
 </script>
 
 
@@ -356,6 +388,7 @@ Bank Name: Chase Manhattan Bank, 919 3rd Ave., New York, NY, 10022, USA</p>
       text-decoration: none;
       border-bottom: 1px solid var(--green-100);
       transition: all 0.25s ease-in-out;
+      font-weight: 600;
 
       &:hover {
         border-bottom-color: var(--green-600);
@@ -365,18 +398,19 @@ Bank Name: Chase Manhattan Bank, 919 3rd Ave., New York, NY, 10022, USA</p>
 
   .accordion-panel {
     display: none;
+    margin-bottom: 30px;
 
-    &.show {
-      display: block;
+    a {
+        color: var(--green-600);
+      }
 
       p {
         font-size: 16px;
         line-height: 1.5;
         color: var(--grey-500);
-        margin-bottom: 30px;
+        // margin-bottom: 30px;
       }
 
-    }
   }
 
   .section-accordion {
@@ -391,7 +425,7 @@ Bank Name: Chase Manhattan Bank, 919 3rd Ave., New York, NY, 10022, USA</p>
       font-size: 30px;
       margin-bottom: 30px;
       letter-spacing: -0.5px;
-      color: var(--green-600);
+      color: var(--grey-600);
     }
 
     h3 {
