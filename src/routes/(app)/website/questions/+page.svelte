@@ -388,7 +388,7 @@ Bank Name: Chase Manhattan Bank, 919 3rd Ave., New York, NY, 10022, USA</p>
       text-decoration: none;
       border-bottom: 1px solid var(--green-100);
       transition: all 0.25s ease-in-out;
-      font-weight: 600;
+      font-weight: 500;
 
       &:hover {
         border-bottom-color: var(--green-600);
