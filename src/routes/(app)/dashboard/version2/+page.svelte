@@ -297,7 +297,22 @@
     {date: "Sep 5, 2023", program: "Poverty relief - Africa", method: "PayPal", amount: "$60.00"},
     {date: "Aug 5, 2023", program: "Poverty relief - Africa", method: "PayPal", amount: "$60.00"},
     {date: "Jul 5, 2023", program: "Poverty relief - Africa", method: "PayPal", amount: "$60.00"},
+    {date: "Jun 5, 2023", program: "Poverty relief - Africa", method: "PayPal", amount: "$60.00"},
+    {date: "May 5, 2023", program: "Poverty relief - Africa", method: "PayPal", amount: "$60.00"},
+    {date: "Apr 5, 2023", program: "Poverty relief - Africa", method: "PayPal", amount: "$60.00"},
   ]
+
+  function calculateTotalAmount() {
+    let totalAmount = 0;
+    table.forEach((item) => {
+      const amount = parseFloat(item.amount.replace('$', ''));
+      totalAmount += amount * 3;
+    });
+    return totalAmount;
+  }
+
+  let totalAmount = calculateTotalAmount();
+  // console.log('Total Amount:', totalAmount);
 
 </script>
 
@@ -482,6 +497,9 @@
             <div class="name">Walid H.</div>
             <div class="email">walidh@email.com</div>
           </div>
+          <button class="settings-dropdown-button" on:click={()=> {showAvatarDropdown = false}}>
+            <span>Settings</span> 
+        </button>
           <button class="settings-dropdown-button" on:click={()=> {showAvatarDropdown = false}}>
               <span>Sign out</span> 
           </button>
@@ -689,13 +707,13 @@
       <div class="metric">
         <div class="sub">Donations</div>
         <div class="value">
-          6
+          30
         </div>
       </div>
       <div class="metric">
         <div class="sub">Amount donated</div>
         <div class="value">
-          $2,500.00
+          ${totalAmount}
         </div>
       </div>
     </div>

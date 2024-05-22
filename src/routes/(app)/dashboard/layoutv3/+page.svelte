@@ -550,21 +550,13 @@
               {/if}
 
               <div class="payment-text-desc error">
-                <!-- {#if isError}
-                Your donation of $60 a month to Poverty relief - Africa is paused due to an issue with your card 
-                {:else}
-                Your donation of $60 a month to Poverty relief - Africa is paused while we resolve an issue with your card
-                {/if} -->
                 Your donation of $60 a month to Poverty relief - Africa is paused due to an issue with your card 
               </div>
-
-              <!-- {#if isError} -->
               <div class="payment-text-reactivate">
                 <button class="payment-text-reactivate-button" class:loading={!isError} on:click={() => showModal = true}> 
                   Update your card
                 </button>
               </div>
-              <!-- {/if} -->
             </div>
           {/if}
 
