@@ -55,8 +55,8 @@
     ready = true
   })
 
-  let activeAmountWorth = "A mattress - many sleep on thin mats on the ground and buy their first mattress with their transfer"
-  let activeDollarAmount = "60"
+  let activeAmountWorth = "a solar panel, latrine, 3 pigs, or mattress"
+  let activeDollarAmount = "50"
   let activePaymentInterval = "Monthly"
 
 
@@ -72,11 +72,11 @@
 
           const numericAmount = Number(amount.amount.replace(/,/g, ''));
 
-          if ([40, 100, 500].includes(numericAmount)) {
-            if (numericAmount === 40) {
-              return { ...amount, amount: "40" };
+          if ([50, 100, 500].includes(numericAmount)) {
+            if (numericAmount === 50) {
+              return { ...amount, amount: "25" };
             } else if (numericAmount === 100) {
-              return { ...amount, amount: "60" };
+              return { ...amount, amount: "50" };
             } else if (numericAmount === 500) {
               return { ...amount, amount: "100" };
             }
@@ -94,10 +94,10 @@
 
         const numericAmount = Number(amount.amount.replace(/,/g, ''));
 
-        if ([40, 60, 100].includes(numericAmount)) {
-          if (numericAmount === 40) {
-            return { ...amount, amount: "40" };
-          } else if (numericAmount === 60) {
+        if ([25, 50, 100].includes(numericAmount)) {
+          if (numericAmount === 25) {
+            return { ...amount, amount: "50" };
+          } else if (numericAmount === 50) {
             return { ...amount, amount: "100" };
           } else if (numericAmount === 100) {
             return { ...amount, amount: "500" };
@@ -116,18 +116,13 @@
 
     if (activePaymentInterval == "Monthly") {
 
-        if (activeDollarAmount === "40") {
-          activeAmountWorth = "A goat - provides milk, manure for farm, and kids that can be sold for income"
-        } else if (activeDollarAmount === "60") {
-          activeAmountWorth = "A mattress - many sleep on thin mats on the ground and buy their first mattress with their transfer"
-        } else if (activeDollarAmount === "100") {
-          activeAmountWorth = "1 month’s worth of food for a family"
-        } else if (activeDollarAmount === "200") {
-          activeAmountWorth = "A cow - provides milk, manure for farm, and calves that can be sold for income"
-        } else if (activeDollarAmount === "300") {
-          activeAmountWorth = "A motorcycle - people can start a mototaxi business transporting people in their village"
-        } else if (activeDollarAmount === "500") {
-          activeAmountWorth = "A new house - many move from a small shelter with a thatch roof and no door to a larger, more durable house with an iron sheet roof to block weather"
+        if (activeDollarAmount === "25") {
+          activeAmountWorth = "6 chickens, a year of health insurance, 10 mototaxi rides, or hair clippers for a barbershop business"
+        }
+        else if (activeDollarAmount === "50") {
+          activeAmountWorth = "a solar panel, latrine, 3 pigs, or mattress"
+        }  else if (activeDollarAmount === "100") {
+          activeAmountWorth = "1 month of food for a family, an iron sheet roof, a sewing machine for a clothing business, or 4 goats"
         } else if (activeDollarAmount === "Other") {
           activeAmountWorth = "Your donation will make a significant impact in improving the lives of individuals and communities";
         }
@@ -135,18 +130,12 @@
     } else if (activePaymentInterval == "Once") {
 
 
-      if (activeDollarAmount === "25") {
-        activeAmountWorth = "A goat - provides milk, manure for farm, and kids that can be sold for income"
-      } else if (activeDollarAmount === "50") {
-        activeAmountWorth = "A mattress - many sleep on thin mats on the ground and buy their first mattress with their transfer"
+      if (activeDollarAmount === "50") {
+        activeAmountWorth = "a solar panel, latrine, 3 pigs, or mattress"
       } else if (activeDollarAmount === "100") {
-        activeAmountWorth = "1 month’s worth of food for a family"
+        activeAmountWorth = "1 month of food for a family, an iron sheet roof, a sewing machine for a clothing business, or 4 goats"
       } else if (activeDollarAmount === "500") {
-        activeAmountWorth = "A new house - many move from a small shelter with a thatch roof and no door to a larger, more durable house with an iron sheet roof to block weather"
-      } else if (activeDollarAmount === "1,000") {
-        activeAmountWorth = "Fund a full lump sum transfer to a family"
-      } else if (activeDollarAmount === "5,000") {
-        activeAmountWorth = "Fund lump sum transfers for 5 families"
+        activeAmountWorth = "a new house, 2 cows, 2 water pumps, or a motorcycle for a mototaxi business"
       } else if (activeDollarAmount === "Other") {
         activeAmountWorth = "Your donation will make a significant impact in improving the lives of individuals and communities";
       }
@@ -161,8 +150,8 @@
   ]
 
   let amounts = [
-    {id: 1, amount: "40", active: false, class: ""},
-    {id: 2, amount: "60", active: true, class: ""},
+    {id: 1, amount: "25", active: false, class: ""},
+    {id: 2, amount: "50", active: true, class: ""},
     {id: 3, amount: "100", active: false, class: ""},
     {id: 7, amount: "Other", active: false, class: ""}
   ]
@@ -246,11 +235,9 @@
             {/each}
           </div>
           {#if activeDollarAmount == "Other"}
-          <div class="big-button-holder">
-            <button class="donate" on:click={() => formSmall = false}>Give</button>
-            <div class="button-details" in:fade={{duration:200}}>
-              {activeAmountWorth}
-            </div>
+          <div class="big-button-holder subdued">
+            <input type="text" class="other-amount" placeholder="Other amount">
+            <button class="donate" on:click={() => formSmall = false}>Give {activePaymentInterval}</button>
           </div>
           {:else}
 
@@ -265,9 +252,7 @@
                 <div in:fade={{duration:200}}>
                   <!-- {#if activeDollarAmount !== "Other"}${activeDollarAmount}: {/if} -->
                   {#if activeDollarAmount !== "Other"}
-                  <span class="bold">What recipients can buy: </span> {activeAmountWorth}
-                  {:else}
-                  {activeAmountWorth}
+                  <span class="bold">${activeDollarAmount} can buy </span> {activeAmountWorth}
                   {/if}
                 </div>
               {/key}
@@ -762,6 +747,11 @@
     border-radius: 8px;
     padding: 8px;
 
+    &.subdued {
+      background: transparent;
+      padding: 0;
+    }
+
     .button-details {
       // padding: var(--14px);
       padding: 10px var(--14px);
@@ -779,6 +769,18 @@
 
     }
 
+  }
+
+  input.other-amount {
+    height: 48px;
+    border-radius: 8px;
+    padding: 0 16px;
+    margin: 0 0 10px;
+    border: 2px var(--grey-50) solid;
+    // box-shadow: 0 0 0 2px var(--grey-50);
+    font-size: var(--14px);
+    font-weight: 500;
+    color: var(--grey-600)
   }
 
 
