@@ -55,7 +55,7 @@
     ready = true
   })
 
-  let activeAmountWorth = "a solar panel, latrine, 3 pigs, or mattress"
+  let activeAmountWorth = "a solar panel ☀️, a latrine 🧻 , 3 pigs 🐷 , or a mattress 🛌"
   let activeDollarAmount = "50"
   let activePaymentInterval = "Monthly"
 
@@ -129,7 +129,7 @@
     if (activePaymentInterval == "Monthly") {
 
         if (activeDollarAmount === "25") {
-          activeAmountWorth = "6 chickens, a year of health insurance, 10 mototaxi rides, or hair clippers for a barbershop business"
+          activeAmountWorth = "6 chickens 🐔, a year of health insurance ❤️‍🩹, 10 mototaxi rides 🏍️, or hair clippers for a barbershop business 💈"
           activeAmountWorthHtml = `
             <div class="worth-list-holder">
               <ul class="worth-list">
@@ -144,7 +144,7 @@
             `
         }
         else if (activeDollarAmount === "50") {
-          activeAmountWorth = "a solar panel, latrine, 3 pigs, or mattress"
+          activeAmountWorth = "a solar panel ☀️, a latrine 🧻 , 3 pigs 🐷 , or a mattress 🛌"
           activeAmountWorthHtml = `
             <div class="worth-list-holder">
               <ul class="worth-list">
@@ -211,7 +211,7 @@
         activeAmountWorthHtml = `
             <div class="worth-list-holder">
               <ul class="worth-list">
-                <li><span>🛖</span>A new house</li>
+                <li><span>🛖</span>a new house</li>
                 <li><span>🐮</span>2 cows</li>
               </ul>
               <ul class="worth-list">
@@ -332,15 +332,12 @@
             <button class="donate" on:click={() => formSmall = false}>Give ${activeDollarAmount} once</button>
             {/if}
             <div class="button-details">
-              <div class="button-details-title">
-                What recipients can buy
-              </div>
               {#key activeDollarAmount}
                 <div in:fade={{duration:200}}>
                   <!-- {#if activeDollarAmount !== "Other"}${activeDollarAmount}: {/if} -->
                   {#if activeDollarAmount !== "Other"}
-                  <!-- <span class="bold">${activeDollarAmount} can buy </span> {activeAmountWorth} -->
-                  {@html activeAmountWorthHtml}
+                  <span class="bold">${activeDollarAmount} can buy </span> {activeAmountWorth}
+                  <!-- {@html activeAmountWorthHtml} -->
                   {/if}
                 </div>
               {/key}
@@ -841,8 +838,7 @@
     }
 
     .button-details {
-      // padding: var(--14px);
-      padding: 0 5px 15px;
+      padding: var(--14px);
       font-size: var(--14px);
 
       .button-details-title {
