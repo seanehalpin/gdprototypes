@@ -372,9 +372,10 @@
 {/if}
 <Center
 --flex-direction="column" 
---background="var(--bg)" 
---gap="var(--24px)" 
---justify-content="flex-start"
+  --background="var(--white)" 
+  --gap="var(--24px)" 
+  --justify-content="flex-start"
+  --overflow="scroll"
 >
 <!-- <button class="dm-toggle" on:click={() => showDm = !showDm}>Dark mode 🚧</button> -->
 {#if showModal}
