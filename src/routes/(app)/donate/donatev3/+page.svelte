@@ -320,7 +320,7 @@
             {/if}
             <div class="button-details">
               <div class="button-details-title">
-                What a family can buy
+                4 different families might buy
               </div>
               {#key activeDollarAmount}
                 <div in:fade={{duration:200}}>
@@ -335,8 +335,11 @@
           </div>
             
           {/if}
-          <div class="dedicate center">
-            <span class="box"></span><span>Dedicated this donation</span> <button class="question">?</button>
+          <div class="dedicate">
+            <div class="checkbox">
+              <span class="box"></span><span>Dedicate this donation</span> 
+            </div>
+          <button class="question">?</button>
           </div>
           <button class="program">Poverty relief - Africa (edit program)</button>
           <button class="international">Giving from outside the U.S.?</button>
@@ -841,8 +844,8 @@
     }
 
     .button-details {
-      // padding: var(--14px);
-      padding: 0 5px 15px;
+      padding: 0 10px var(--14px);
+      // padding: 0 5px 15px;
       font-size: var(--14px);
 
       .button-details-title {
@@ -873,21 +876,28 @@
     // box-shadow: 0 0 0 2px var(--grey-50);
     font-size: var(--14px);
     font-weight: 500;
-    color: var(--grey-600)
+    color: var(--grey-600);
   }
 
 
   .dedicate {
     position: relative;
     display: flex;
-    padding: 5px 0 0 35px;
+    padding: 0;
+    // background: var(--grey-50);
+    box-shadow: inset 0 0 0 1px var(--grey-50);
+    border-radius: 8px;
+    padding: 10px 10px;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 5px;
 
-    &.center {
-      padding: 5px 0;
+    .checkbox {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
+
 
     // &:before {
     //   content: "";
@@ -905,6 +915,7 @@
       width: 16px;
       height: 16px;
       border: 1px solid var(--grey-200);
+      background-color: #fff;
       border-radius: 2px;
       display: flex;
     }
