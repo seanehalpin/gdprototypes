@@ -18,6 +18,7 @@ export let nav = writable([
       { url: '/dashboard/layoutv3', text: 'V1 - payment error' },
       { url: '/dashboard/version2', text: 'V2' },
       { url: '/dashboard/multiplev1', text: 'Multiple donations' },
+      { url: '/dashboard/error', text: '404' },
     ]
   },
   {
