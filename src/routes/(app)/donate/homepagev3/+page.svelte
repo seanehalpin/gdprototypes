@@ -333,7 +333,7 @@
             {/if}
             <div class="button-details">
               <div class="button-details-title">
-                What recipients can buy
+                What a family can buy
               </div>
               {#key activeDollarAmount}
                 <div in:fade={{duration:200}}>
