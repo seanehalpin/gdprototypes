@@ -697,7 +697,7 @@
       </div>
     </div>
 
-    <div class="vanity">
+    <!-- <div class="vanity">
       <div class="metric">
         <div class="sub">Member since</div>
         <div class="value">
@@ -716,7 +716,7 @@
           ${totalAmount}
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="table">
       <div class="table-title">
