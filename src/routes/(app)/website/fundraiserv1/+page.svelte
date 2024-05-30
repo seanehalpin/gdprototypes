@@ -155,7 +155,7 @@
       <div class="fundraiser-large">
         <div class="fundraiser-desc">
           <div class="fundraiser-desc-left">
-            <span><span class="hilite">$5,000 of $45,000</span> raised for Cash Relief for Morocco Earthquake Survivors 
+            <span><span class="hilite">$5,000 of $45,000</span> raised for Morocco Earthquake Survivors 
               <!-- <a href="#">Learn more</a> -->
             </span>
           </div>
