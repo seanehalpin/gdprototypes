@@ -34,6 +34,7 @@ export let nav = writable([
       { url: '/website/storiesv2', text: 'Recipient stories v2' },
       { url: '/website/storiesv3', text: 'Recipient stories v3' },
       { url: '/website/storiesv4', text: 'Recipient stories v4' },
+      { url: '/website/fundraiserv1', text: 'Fundraiser' },
     ]
   },
   {
