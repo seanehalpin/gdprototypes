@@ -4,6 +4,7 @@
   import { backOut, quartOut, quintIn } from "svelte/easing"
   import ImageLoader from '$lib/util/image/Loader.svelte'
   import Alert from '$lib/svg/pathway/Alert.svelte';
+    import LogoSmall from '$lib/svg/pathway/Logo-small.svelte';
 
   let ready = false
 
@@ -80,6 +81,11 @@
   <div class="pathway">
     <div class="title">
       <h1>Pathway <span>Design System</span></h1>
+
+      <div class="logo">
+        <LogoSmall />
+      </div>
+      
     </div>
 
     <section>
@@ -354,13 +360,19 @@
 
   .title {
     padding: var(--ui-s2) 0;
-    // border-bottom: 1px solid var(--ui-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     box-shadow: 0 1px 0 var(--ui-border);
     position: sticky;
     top: 0;
     left: 0;
     z-index: 100;
     background: var(--ui-bg);
+
+    .logo {
+      color: var(--ui-fg-muted);
+    }
     
     h1 {
       color: var(--ui-fg);
@@ -507,7 +519,7 @@
   }
 
   section {
-    padding: var(--ui-s0) 0 var(--ui-s5);
+    padding: var(--ui-s1) 0 var(--ui-s5);
   }
 
   em {
@@ -520,7 +532,7 @@
     width: 100%;
     flex-direction: column;
     gap: var(--ui-s2);
-    padding: var(--ui-s2) 0;
+    padding: var(--ui-s2) 0 0;
 
     .bullet {
       display: flex;
@@ -673,7 +685,7 @@
     color: var(--ui-fg-muted);
     font-size: var(--ui-f7);
     letter-spacing: var(--ui-f7-ls);
-    margin: var(--ui-s2) 0 0;
+    margin: var(--ui-s4) 0 0;
   }
 
   .scale-list {
@@ -682,7 +694,6 @@
     width: 100%;
     gap: 0;
     flex-direction: column;
-    margin-bottom: var(--ui-s4);
 
     .scale {
       display: flex;
