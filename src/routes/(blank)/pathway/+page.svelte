@@ -46,6 +46,24 @@
     {indicator: 'XS', size: 'var(--ui-f1)'},
   ]
 
+  const sizer = [
+    {size: 'var(--ui-s-6)', label: '-6'},
+    {size: 'var(--ui-s-5)', label: '-5'},
+    {size: 'var(--ui-s-4)', label: '-4'},
+    {size: 'var(--ui-s-3)' , label: '-3'},
+    {size: 'var(--ui-s-2)' , label: '-2'},
+    {size: 'var(--ui-s-1)' , label: '-1'},
+    {size: 'var(--ui-s0)', label: '0'},
+    {size: 'var(--ui-s1)', label: '1'},
+    {size: 'var(--ui-s2)', label: '2'},
+    {size: 'var(--ui-s3)', label: '3'},
+    {size: 'var(--ui-s4)', label: '4'},
+    {size: 'var(--ui-s5)', label: '5'},
+    {size: 'var(--ui-s6)', label: '6'},
+    {size: 'var(--ui-s7)', label: '7'},
+    {size: 'var(--ui-s8)', label: '8'},
+  ]
+
 </script>
 
 <svelte:head>
@@ -251,8 +269,10 @@
       <h2>Typeface</h2>
 
       <p>
-        We are transitioning from Aktiv Grotesk to <em>Inter</em> across all brand touchpoints. Inter’s flexibility and accessibility as a Google font make it a perfect fit for our growing digital and print requirements. To enhance visual consistency, we will also introduce a harmonic text sizing scale, creating a balanced and cohesive typographic hierarchy across our brand materials.
+        We are transitioning from Aktiv Grotesk to <em>Inter</em> across all brand touchpoints. Inter's flexibility and accessibility as a Google font make it a perfect fit for our growing digital and print requirements. To enhance visual consistency, we will also introduce a harmonic text sizing scale, creating a balanced and cohesive typographic hierarchy across our brand materials.
       </p>
+
+      <p>Inter can be paired with <em>IBM Plex Serif</em>, a versatile serif typeface. A second typeface allows us flexibiltiy in how we communicate the GiveDirectly brand.</p>
 
       <h3>Inter</h3>
 
@@ -285,6 +305,26 @@
       </div>
 
     </section>
+
+    <section>
+
+      <h2>Sizing</h2>
+
+      <p>
+        Pathway uses a modular scale to create a harmonious and consistent visual language. While the scale is rooted in multiples of 8, all sizes are relative to the viewport size.
+      </p>
+
+      <div class="sizer">
+        {#each sizer as size}
+        <div class="size-item">
+          <div class="size" style="height: {size.size};"></div>
+          <div class="size-text">{size.label}</div>
+        </div>
+        {/each}
+      </div>
+    </section>
+
+    
 
 
   </div>
@@ -657,6 +697,7 @@
       position: relative;
 
       &.serif {
+        font-weight: 500 !important;
         font-family: var(--ui-font-serif);
       }
 
@@ -718,6 +759,35 @@
       font-weight: 500;
     }
 
+  }
+
+  .sizer {
+    display: flex;
+    gap: var(--ui-s2);
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: var(--ui-s3) 0 0;
+    // background: var(--ui-bg-muted);
+    // box-shadow: inset 0 0 0 1px var(--ui-border);
+    // padding: var(--ui-s4);
+    
+    .size-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--ui-s1);
+      justify-content: center;
+    }
+
+    .size-text {
+      color: var(--ui-fg);
+      font-size: var(--ui-f2);
+    }
+
+    .size {
+      background: var(--ui-brand);
+      width: var(--ui-s-4);
+    }
   }
 
 
