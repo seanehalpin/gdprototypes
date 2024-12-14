@@ -763,7 +763,7 @@
 
   .sizer {
     display: flex;
-    gap: var(--ui-s2);
+    // gap: var(--ui-s2);
     justify-content: space-between;
     align-items: flex-end;
     margin: var(--ui-s3) 0 0;
