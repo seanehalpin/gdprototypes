@@ -4,6 +4,7 @@
   overscroll-behavior: none;
   --ui-font-base: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
   --ui-font-serif: "IBM Plex Serif", 'Roboto Slab', 'DejaVu Serif', 'Sitka Small', serif;
+  --ui-font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", monospace;
 
   --ratio: 1.5;
 
@@ -50,6 +51,8 @@
   --ui-r1: 2px;
   --ui-r2: 4px;
   --ui-r3: 8px;
+  --ui-r4: 16px;
+  --ui-r6: 48px;
   --ui-r50: 50%;
 
   --accent-100: #f7943e;
@@ -109,8 +112,10 @@
   --ui-bg-muted-active: var(--sandstone-200);
   --ui-border: var(--border-default);
   --ui-brand: var(--pine-400);
+  --ui-brand-fg: var(--base-white);
   --ui-fg: var(--navy-500);
   --ui-fg-muted: var(--navy-400);
+  --ui-fg-dark: #141f33;
   --ui-icon: var(--sandstone-400);
   --ui-icon-active: var(--sandstone-500);
 
@@ -176,6 +181,7 @@
     --ui-bg-muted-active: var(--sandstone-200);
     --ui-border: var(--border-default);
     --ui-brand: var(--pine-400);
+    --ui-brand-fg: var(--base-white);
     --ui-fg: var(--navy-500);
     --ui-fg-muted: var(--navy-400);
     --ui-icon: var(--sandstone-400);

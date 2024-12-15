@@ -5,6 +5,7 @@
   import ImageLoader from '$lib/util/image/Loader.svelte'
   import Alert from '$lib/svg/pathway/Alert.svelte';
     import LogoSmall from '$lib/svg/pathway/Logo-small.svelte';
+    import Dashboard from '$lib/components/pathway/Dashboard.svelte';
 
   let ready = false
 
@@ -136,17 +137,17 @@
     <section>
       <h2>Surfaces</h2>
       <p>
-        There are two primary variables for surfaces. <em>Bg</em> handles the most diverse amount of content. <em class="no-wrap">Bg-muted</em> is useful for instances where a distinction between surfaces is preferred.
+        There are two primary variables for surfaces. <em class="mono">--bg</em> handles the most diverse amount of content. <em class="no-wrap mono">--bg-muted</em> is useful for instances where a distinction between surfaces is preferred.
       </p>
 
       <div class="bullets">
         <div class="bullet">
           <div class="bullet-swatch bg"></div>
-          <div class="bullet-label">Bg</div>
+          <div class="bullet-label">--bg</div>
         </div>
         <div class="bullet">
           <div class="bullet-swatch bg-muted"></div>
-          <div class="bullet-label">Bg-muted</div>
+          <div class="bullet-label">--bg-muted</div>
       </div>
 
       <div class="surfaces">
@@ -164,7 +165,7 @@
         The palette allows for most hues to be used as a card surface. Use <em>100</em> for backgrounds, <em>200</em> for hover and active states, <em>300</em> for borders, <em>400</em> for icons, and <em>500</em> for text. When handling buttons, <em>400</em> provides a high contrast background when paired with <em>100</em>.
       </p>
 
-      <p>Color contrast is caculated using <a href="https://www.w3.org/WAI/GL/WCAG3/2021/how-tos/visual-contrast-of-text/#design-button" target="_blank" rel="noreffer nopener">APCA</a>, a modern method designed for calculating color contrast more accurately. Use it where possible in place of the outdated AA and AAA standards.</p>
+      <p>Color contrast is caculated using <a href="https://www.w3.org/WAI/GL/WCAG3/2021/how-tos/visual-contrast-of-text/#design-button" target="_blank" rel="noopener noreferrer">APCA</a>, a modern method designed for calculating color contrast more accurately. Use it where possible in place of the outdated AA and AAA standards.</p>
 
       <div class="surfaces">
 
@@ -317,8 +318,12 @@
       <h2>Sizing</h2>
 
       <p>
-        Pathway uses a modular scale to create a harmonious and consistent visual language. While the scale is rooted in multiples of 8, all sizes are relative to the viewport size.
+        Pathway uses a modular scale to create a harmonious and consistent visual language. While the scale is rooted in multiples of 8, all sizes are relative to the viewport. This allows for a more flexible and responsive design system, without relying heavily on <a href="https://ntgard.medium.com/magic-numbers-in-css-9e9bb2c70450" target="_blank" rel="noopener noreferrerr">magic numbers</a> and breakpoints.
       </p>
+
+      <div class="dash">
+        <Dashboard />
+      </div>
 
       <div class="sizer">
         {#each sizer as size}
@@ -331,8 +336,6 @@
     </section>
 
     
-
-
   </div>
 </div>
 {/if}
@@ -525,6 +528,19 @@
   em {
     font-style: normal;
     font-weight: 600;
+    // font-family: var(--ui-font-mono);
+    // letter-spacing: -0.2px;
+
+    &.mono {
+      font-weight: 500;
+      color: var(--ui-fg-muted);
+      font-size: var(--ui-f3);
+      background: var(--ui-bg);
+      box-shadow: inset 0 0 0 1px var(--ui-border);
+      border-radius: var(--ui-r3);
+      padding: var(--ui-s-5) var(--ui-s-3);
+      font-family: var(--ui-font-mono);
+    }
   }
 
   .bullets {
