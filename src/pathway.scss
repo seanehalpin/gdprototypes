@@ -37,11 +37,13 @@
   --ui-f9: clamp(2.5rem, 1.5607rem + 3.0057vw, 3.815rem); // 61px
   
   // letter spacing
+  --ui-f3-ls: -0.01em;
+  --ui-f4-ls: -0.01em;
   --ui-f5-ls: -0.01em;
   --ui-f6-ls: -0.02em;
-  --ui-f7-ls: -0.03em;
-  --ui-f8-ls: -0.03em;
-  --ui-f9-ls: -0.04em;
+  --ui-f7-ls: -0.02em;
+  --ui-f8-ls: -0.02em;
+  --ui-f9-ls: -0.02em;
 
   // line height
   --ui-lh: var(--ratio);

@@ -6,6 +6,8 @@
   import Alert from '$lib/svg/pathway/Alert.svelte';
     import LogoSmall from '$lib/svg/pathway/Logo-small.svelte';
     import Dashboard from '$lib/components/pathway/Dashboard.svelte';
+    import LogoOld from '$lib/svg/pathway/LogoOld.svelte';
+    import LogoNew from '$lib/svg/pathway/LogoNew.svelte';
 
   let ready = false
 
@@ -49,22 +51,28 @@
   ]
 
   const sizer = [
-    {size: 'var(--ui-s-6)', label: '-6'},
-    {size: 'var(--ui-s-5)', label: '-5'},
-    {size: 'var(--ui-s-4)', label: '-4'},
-    {size: 'var(--ui-s-3)' , label: '-3'},
-    {size: 'var(--ui-s-2)' , label: '-2'},
-    {size: 'var(--ui-s-1)' , label: '-1'},
-    {size: 'var(--ui-s0)', label: '0'},
-    {size: 'var(--ui-s1)', label: '1'},
-    {size: 'var(--ui-s2)', label: '2'},
-    {size: 'var(--ui-s3)', label: '3'},
-    {size: 'var(--ui-s4)', label: '4'},
-    {size: 'var(--ui-s5)', label: '5'},
-    {size: 'var(--ui-s6)', label: '6'},
-    {size: 'var(--ui-s7)', label: '7'},
-    {size: 'var(--ui-s8)', label: '8'},
+    {size: 'var(--ui-s-6)', label: '-s6'},
+    {size: 'var(--ui-s-5)', label: '-s5'},
+    {size: 'var(--ui-s-4)', label: '-s4'},
+    {size: 'var(--ui-s-3)' , label: '-s3'},
+    {size: 'var(--ui-s-2)' , label: '-s2'},
+    {size: 'var(--ui-s-1)' , label: '-s1'},
+    {size: 'var(--ui-s0)', label: 's0'},
+    {size: 'var(--ui-s1)', label: 's1'},
+    {size: 'var(--ui-s2)', label: 's2'},
+    {size: 'var(--ui-s3)', label: 's3'},
+    {size: 'var(--ui-s4)', label: 's4'},
+    {size: 'var(--ui-s5)', label: 's5'},
+    {size: 'var(--ui-s6)', label: 's6'},
+    {size: 'var(--ui-s7)', label: 's7'},
+    {size: 'var(--ui-s8)', label: 's8'},
   ]
+
+  let show = false
+
+  function toggle() {
+    show = !show
+  }
 
 </script>
 
@@ -73,7 +81,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
 </svelte:head>
 
@@ -82,11 +90,9 @@
   <div class="pathway">
     <div class="title">
       <h1>Pathway <span>Design System</span></h1>
-
       <div class="logo">
         <LogoSmall />
       </div>
-      
     </div>
 
     <section>
@@ -321,8 +327,16 @@
         Pathway uses a modular scale to create a harmonious and consistent visual language. While the scale is rooted in multiples of 8, all sizes are relative to the viewport. This allows for a more flexible and responsive design system, without relying heavily on <a href="https://ntgard.medium.com/magic-numbers-in-css-9e9bb2c70450" target="_blank" rel="noopener noreferrerr">magic numbers</a> and breakpoints.
       </p>
 
+      <button class="toggle" on:click={()=> toggle()}>
+        {#if show}
+          Hide outline
+        {:else}
+          Show outline
+        {/if}
+      </button>
+
       <div class="dash">
-        <Dashboard />
+        <Dashboard bind:show />
       </div>
 
       <div class="sizer">
@@ -332,6 +346,24 @@
           <div class="size-text">{size.label}</div>
         </div>
         {/each}
+      </div>
+    </section>
+
+    <section>
+      <h2>Logo</h2>
+      <p>
+        The existing logo, currently set in Aktiv Grotesk, is proposed to also be updated to Inter. The widespread availabilty of Inter as a Google font makes it an accessible choice. The updated logo includes custom kerning adjustments for improved optical balance.
+      </p>
+
+      <div class="logo-compare-holder">
+        <div class="logo-compare">
+          <div class="badge">Old</div>
+          <LogoOld />
+        </div>
+        <div class="logo-compare">
+          <div class="badge">New</div>
+          <LogoNew />
+        </div>
       </div>
     </section>
 
@@ -374,10 +406,14 @@
     background: var(--ui-bg);
 
     .logo {
+      position: relative;
+      z-index: 10;
       color: var(--ui-fg-muted);
     }
     
     h1 {
+      position: relative;
+      z-index: 10;
       color: var(--ui-fg);
       // letter-spacing: var(--ui-f6-ls);
       letter-spacing: -0.5px;
@@ -406,6 +442,7 @@
     color: var(--ui-fg-muted);
     font-size: var(--ui-f4);
     line-height: var(--ui-lh);
+    letter-spacing: var(--ui-f4-ls);
     margin: 0;
     padding: 0 0 var(--ui-s1) 0;
     max-width: 80ch;
@@ -584,17 +621,6 @@
     border: 1px solid var(--ui-border);
     flex-wrap: wrap;
 
-    // > :first-child {
-    //   flex-basis: 50%; 
-    //   flex-grow: 1;
-    // }
-
-    // > :last-child {
-    //   flex-basis: 0;
-    //   flex-grow: 999;
-    //   min-inline-size: 50%;
-    // }
-
     > div {
       flex-grow: 1;
       flex-shrink: 1;
@@ -726,28 +752,29 @@
       &.serif {
         font-weight: 500 !important;
         font-family: var(--ui-font-serif);
+        letter-spacing: -0.03em !important;
       }
 
       &.xxxxl {
-        font-weight: 600;
+        font-weight: 700;
         font-size: var(--ui-f9);
         letter-spacing: var(--ui-f9-ls);
         line-height: var(--ui-lh-sm);
       }
       &.xxxl {
-        font-weight: 600;
+        font-weight: 700;
         font-size: var(--ui-f8);
         letter-spacing: var(--ui-f8-ls);
         line-height: var(--ui-lh-sm);
       }
       &.xxl {
-        font-weight: 600;
+        font-weight: 700;
         font-size: var(--ui-f7);
         letter-spacing: var(--ui-f7-ls);
         line-height: var(--ui-lh-sm);
       }
       &.xl {
-        font-weight: 600;
+        font-weight: 700;
         font-size: var(--ui-f6);
         letter-spacing: var(--ui-f6-ls);
         line-height: var(--ui-lh-sm);
@@ -761,11 +788,13 @@
       &.m {
         font-weight: 500;
         font-size: var(--ui-f4);
+        letter-spacing: var(--ui-f4-ls);
         line-height: var(--ui-lh-sm);
       }
       &.r {
         font-weight: 500;
         font-size: var(--ui-f3);
+        letter-spacing: var(--ui-f3-ls);
         line-height: var(--ui-lh-sm);
       }
       &.s {
@@ -816,6 +845,71 @@
       width: var(--ui-s-4);
     }
   }
+
+  .logo-compare-holder {
+    background: var(--ui-bg-muted);
+    box-shadow: inset 0 0 0 1px var(--ui-border);
+    padding: var(--ui-s5) var(--ui-s4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: var(--ui-s3) 0;
+    position: relative;
+    grid-row-gap: var(--ui-s2);
+    // gap: var(--ui-s0);
+    flex-wrap: wrap;
+    // width: 80vw;
+    // left: calc(-40vw + 50%);
+
+    .badge {
+      position: absolute;
+      left: 1px;
+      top: 1px;
+      padding: var(--ui-s-1);
+      font-family: var(--ui-font-serif);
+      font-size: var(--ui-f2);
+      color: var(--ui-fg-muted);
+      line-height: var(--ui-lh-sm);
+    }
+
+    .logo-compare {
+      flex-grow: 1;
+      flex-shrink: 1;
+      flex-basis: 30ch;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 0 1px var(--ui-border);
+      background: var(--ui-bg);
+      padding: var(--ui-s5);
+      width: 100%;
+      position: relative;
+
+      &:last-child {
+        left: -1px;
+      }
+    }
+
+  }
+
+  .toggle {
+    background: var(--ui-bg);
+    color: var(--ui-fg-muted);
+    border: 1px solid var(--ui-border);
+    border-radius: var(--ui-r3);
+    padding: var(--ui-s-4) var(--ui-s0);
+    margin: var(--ui-s0) 0 0;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+
+    &:hover {
+      background: var(--ui-bg-muted);
+      color: var(--ui-fg);
+    }
+  }
+
+
 
 
 </style>

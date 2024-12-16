@@ -83,7 +83,7 @@
 
 </script>
 
-<div class="dash {show}">
+<div class="dash" class:show-outline={show}>
   <section>
     <div class="main">
   
@@ -91,14 +91,14 @@
         <div class="story">
   
         </div>
-        <div class="donate">
+        <div class="donate" data-v-space="s5">
           <div class="title">
             Join over 110,000 donors in trusting people in poverty to decide what they need most.
           </div>
           <div class="options">
             {#if !customDonation}
             {#each donations as donation}
-            <button class:active={donation.active} on:click={() => donationChange(donation.id)}>
+            <button class:active={donation.active} on:click={() => donationChange(donation.id)} data-v-space="s2">
               {donation.amount}
             </button>
             {/each}
@@ -117,7 +117,7 @@
             </div>
             {/if}
           </div>
-          <div class="confirm">
+          <div class="confirm" data-v-space="s2">
             {#if !customDonation}
             <button class="active">Donate 
               <span in:fade={{duration:200}}>{currentActiveAmount}</span>
@@ -126,7 +126,7 @@
             {:else}
               {#if customDonationAmount > 999999}
               <button class="active custom">
-                Click to contact us about donations over $1M
+                Contact us about large dontations
               </button>
               {:else}
               <button class:active={customDonationButtonActive}>
@@ -152,7 +152,24 @@
 
     .show-outline {
       * {
-        box-shadow: 0 0 0 1px var(--ruby-400);
+        position: relative;
+        box-shadow: 0 0 0 2px var(--ruby-400);
+        transition: none !important;
+        
+        &:after {
+          pointer-events: none;
+          content: attr(data-v-space);
+          position: absolute;
+          top: -1px;
+          left: 50%;
+          z-index: 1000;
+          transform: translateX(-50%);
+          background: var(--ruby-400);
+          color: var(--ruby-100);
+          font-size: var(--ui-f2);
+          font-weight: 500;
+          padding: 0 var(--ui-s-6);
+        }
       }
     }
 
@@ -319,6 +336,7 @@
           font-size: var(--ui-f6);
           color: var(--ui-fg);
           margin-bottom:  var(--ui-s2);
+          text-wrap: pretty;
         }
       }
     }
@@ -371,6 +389,7 @@
           font-weight: 500;
           color: var(--ui-fg);
           margin-bottom: var(--ui-s-3);
+          text-wrap: pretty;
         }
   
         .options {
@@ -387,9 +406,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            height: var(--ui-s3);
+            // height: var(--ui-s3);
             border-radius: var(--ui-r6);
-            padding: 0 var(--ui-s0);
+            padding: var(--ui-s-2) var(--ui-s0);
             width: 100%;
             flex: 1;
             border: 0;
@@ -419,9 +438,9 @@
           
           button {
             width: 100%;
-            height: var(--ui-s3);
+            // height: var(--ui-s3);
             border-radius: var(--ui-r6);
-            padding: 0 var(--ui-s0);
+            padding: var(--ui-s-2) var(--ui-s0);
             background: var(--ui-brand);
             color: var(--ui-brand-fg);
             font-weight: 600;
@@ -461,8 +480,9 @@
             &:before {
               content: "$";
               position: absolute;
-              left: 0;
-              top: 0;
+              left: 0.2em;
+              top: 50%;
+              transform: translate3d(0, -50%, 0);
               z-index: 100;
               height: var(--ui-s3);
               width: var(--ui-s3);
@@ -477,14 +497,15 @@
           input {
             // font-size: var(--14px);
             width: 100%;
-            height: var(--ui-s3);
+            // height: var(--ui-s3);
             border-radius: var(--ui-s3);
-            padding: 0 var(--ui-s0) 0 var(--ui-s2);
+            padding: var(--ui-s-2) var(--ui-s0) var(--ui-s-2) var(--ui-s3);
             border: 1px solid var(--ui-border);
             position: relative;
             z-index: 10;
             color: var(--ui-fg);
             background: var(--ui-bg);
+            font-size: var(--ui-f3);
             
             &:focus-within {
               outline: 0;
