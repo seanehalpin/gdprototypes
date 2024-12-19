@@ -4,10 +4,12 @@
   import { backOut, quartOut, quintIn } from "svelte/easing"
   import ImageLoader from '$lib/util/image/Loader.svelte'
   import Alert from '$lib/svg/pathway/Alert.svelte';
-    import LogoSmall from '$lib/svg/pathway/Logo-small.svelte';
-    import Dashboard from '$lib/components/pathway/Dashboard.svelte';
-    import LogoOld from '$lib/svg/pathway/LogoOld.svelte';
-    import LogoNew from '$lib/svg/pathway/LogoNew.svelte';
+  import LogoSmall from '$lib/svg/pathway/Logo-small.svelte';
+  import Dashboard from '$lib/components/pathway/Dashboard.svelte';
+  import LogoOld from '$lib/svg/pathway/LogoOld.svelte';
+  import LogoNew from '$lib/svg/pathway/LogoNew.svelte';
+  import Story from '$lib/util/Story.svelte'
+
 
   let ready = false
 
@@ -74,6 +76,21 @@
     show = !show
   }
 
+  $: filteredKey = 1
+
+  const storyKey = (story: number) => filteredKey = story
+
+  const handleStory = (event: { detail: { text: any; }; }) => {
+    let story = event.detail.text
+    filteredKey = story
+  }
+
+  let storys = [
+    {id: 1, title: "Pathway", loom: "7579ccd666dd4592bb060d9ee039419c", description: "", key: 1},
+  ]
+
+  let showStory = true
+
 </script>
 
 <svelte:head>
@@ -86,6 +103,9 @@
 </svelte:head>
 
 {#if ready}
+{#if showStory}
+<Story bind:filteredKey={filteredKey} bind:storys={storys} />
+{/if}
 <div class="holder">
   <div class="pathway">
     <div class="title">
