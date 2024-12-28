@@ -19,11 +19,11 @@
 
   const swatches = [
     {swatch: 'sandstone'},
-    {swatch: 'pine'},
-    {swatch: 'lime'},
-    {swatch: 'cyan'},
-    {swatch: 'lemon'},
     {swatch: 'ruby'},
+    {swatch: 'cyan'},
+    {swatch: 'lime'},
+    {swatch: 'pine'},
+    {swatch: 'lemon'},
     {swatch: 'orange'},
   ]
 
@@ -122,15 +122,50 @@
       </p>
       <div class="swatches">
 
-        <div class="swatch spaced">
-          <div class="swatch-name">Base</div>
-          <div class="swatch-shade no-border"></div>
-          <div class="swatch-shade no-border"></div>
-          <div class="swatch-shade no-border"></div>
-          <div class="swatch-shade" style="background:var(--base-white)"></div>
-          <div class="swatch-shade" style="background:var(--base-black)"></div>
+        <div></div>
+        <div class="swatch-line double">
+          Backgrounds
         </div>
-        <div class="swatch spaced">
+
+        <div class="swatch-line">
+          Borders
+        </div>
+        <div class="swatch-line">
+          Icons
+        </div>
+        <div class="swatch-line">
+          Text
+        </div>
+
+        <div></div>
+        {#each Array(5) as _, i}
+          <div class="swatch-title">{i + 1}00</div>
+          {/each}
+        {#each swatches as swatch}
+          <!-- <div class="swatch"> -->
+            <div class="swatch-name">{swatch.swatch}</div>
+            {#each Array(5) as _, i}
+              <div class="swatch-shade" style="background: var(--{swatch.swatch}-{i + 1}00);"></div>
+            {/each}
+          <!-- </div> -->
+        {/each}
+
+        <div class="swatch-name">Navy</div>
+        <div class="swatch-shade no-border"></div>
+        <div class="swatch-shade no-border"></div>
+        <div class="swatch-shade no-border"></div>
+        <div class="swatch-shade" style="background:var(--navy-400)"></div>
+        <div class="swatch-shade" style="background:var(--navy-500)"></div>
+
+        <div class="swatch-name">Base</div>
+        <div class="swatch-shade no-border"></div>
+        <div class="swatch-shade no-border"></div>
+        <div class="swatch-shade no-border"></div>
+        <div class="swatch-shade" style="background:var(--base-white)"></div>
+        <div class="swatch-shade" style="background:var(--base-black)"></div>
+
+        
+        <!-- <div class="swatch spaced">
           <div class="swatch-name">Navy</div>
           <div class="swatch-shade no-border"></div>
           <div class="swatch-shade no-border"></div>
@@ -138,16 +173,32 @@
           <div class="swatch-shade" style="background:var(--navy-400)"></div>
           <div class="swatch-shade" style="background:var(--navy-500)"></div>
         </div>
-        {#each swatches as swatch}
-          <div class="swatch">
-            <div class="swatch-name">{swatch.swatch}</div>
-            {#each Array(5) as _, i}
-              <div class="swatch-shade" style="background: var(--{swatch.swatch}-{i + 1}00);"></div>
-            {/each}
-          </div>
-        {/each}
 
-        <div class="swatch no-gap">
+        <div class="swatch spaced">
+          <div class="swatch-name">Base</div>
+          <div class="swatch-shade no-border"></div>
+          <div class="swatch-shade no-border"></div>
+          <div class="swatch-shade no-border"></div>
+          <div class="swatch-shade" style="background:var(--base-white)"></div>
+          <div class="swatch-shade" style="background:var(--base-black)"></div>
+        </div> -->
+        
+        <!-- <div class="swatch no-gap top-pad">
+          <div class="swatch-name">Accents</div>
+
+          {#each Array(10) as _, i}
+          <div class="swatch-shade no-border accent">
+            <div class="accent" style="background: var(--accent-{i + 1}00);"></div>
+          </div>
+          {/each}
+          
+        </div> -->
+
+
+        
+      </div>
+
+       <div class="swatch no-gap top-pad">
           <div class="swatch-name">Accents</div>
 
           {#each Array(10) as _, i}
@@ -157,7 +208,6 @@
           {/each}
           
         </div>
-      </div>
     </section>
 
     <section>
@@ -493,15 +543,43 @@
   }
 
   .swatches {
-    display: flex;
-    flex-direction: column;
-    gap: var(--ui-s2);
-    padding: var(--ui-s2) 0 0;
+    // display: flex;
+    // flex-direction: column;
+    // gap: var(--ui-s-3);
+    padding: var(--ui-s4) 0 0;
+    gap: var(--ui-s-2);
+    display: grid;
+    grid-template-columns: minmax(64px, 1fr) repeat(5, minmax(0, 1fr));
+    align-items: center;
   }
+
+  .swatch-line {
+    font-size: var(--ui-f2);
+    color: var(--ui-fg-muted);
+    border-bottom: 1px solid var(--ui-border);
+    padding: 0 0 var(--ui-s-2) 0;
+    mask-image: linear-gradient(to right, black 0%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black 0%, transparent 100%);
+    
+
+    &.double {
+      grid-column: span 2;
+    }
+  }
+
+  .swatch-name {
+      color: var(--ui-fg);
+      font-size: var(--ui-f3);
+      font-weight: 500;
+      width: 100%;
+      text-transform: capitalize;
+      flex-shrink: 0;
+      // max-width: var(--ui-s6);
+    }
 
   .swatch {
     display: flex;
-    gap: var(--ui-s0);
+    gap: var(--ui-s-3);
     align-items: center;
 
     &.spaced {
@@ -512,9 +590,13 @@
       gap: 0;
     }
 
+    &.top-pad {
+      padding-top: var(--ui-s5);
+    }
+
     .swatch-name {
       color: var(--ui-fg);
-      font-size: var(--ui-f4);
+      font-size: var(--ui-f3);
       font-weight: 500;
       width: 100%;
       text-transform: capitalize;
@@ -522,7 +604,24 @@
       max-width: var(--ui-s6);
     }
 
-    .swatch-shade {
+    .swatch-group {
+      display: flex;
+      gap: var(--ui-s3);
+    }
+
+  }
+
+  .swatch-title {
+      width: 100%;
+      position: relative;
+      // text-align: center;
+      color: var(--ui-fg-muted);
+      font-size: var(--ui-f2);
+      padding: 0 0 var(--ui-s-6) 0;
+    }
+
+
+  .swatch-shade {
       width: 100%;
       height: var(--ui-s4);
       border-radius: var(--ui-r3);
@@ -570,13 +669,6 @@
       }
 
     }
-
-    .swatch-group {
-      display: flex;
-      gap: var(--ui-s3);
-    }
-
-  }
 
   section {
     padding: var(--ui-s1) 0 var(--ui-s5);
