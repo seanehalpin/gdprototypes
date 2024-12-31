@@ -10,7 +10,8 @@
 
   .center {
     width: 100%;
-    height: 100%;
+    --_height: var(--height, 100%);
+    height: var(--_height);
     display: flex;
     --_justify-content: var(--justify-content, center);
     justify-content: var(--_justify-content);

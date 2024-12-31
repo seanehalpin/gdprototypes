@@ -2,6 +2,13 @@ import { writable } from 'svelte/store'
 
 export let nav = writable([
   {
+    title: "Research",
+    open: true,
+    links: [
+      { url: '/research/researchv1', text: 'Research v1' },
+    ]
+  },
+  {
     title: "Impact Dashboard",
     open: true,
     links: [
