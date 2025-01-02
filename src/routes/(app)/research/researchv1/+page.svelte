@@ -16,7 +16,7 @@
     Location: "Siaya County, Kenya",
     Overview: "The study documented large, positive impacts of cash transfers averaging ~$500 across a wide range of outcomes including assets, earnings, food security, psychological well-being, and domestic violence, an average four months after transfers ended.",
     active: false,
-    links: "Washington Post, The Economist, NPR, Vox, World Economic Forum, CBS Bay Area, GiveDirectly, The Life You Can Save, Behavioral Scientist, Michael Walker (taxation findings), Econimate",
+    links: "<a class='global-r-link' href='#'>Washington Post</a>, <a class='global-r-link' href='#'>The Economist</a>, <a class='global-r-link' href='#'>NPR</a>, <a class='global-r-link' href='#'>Vox</a>, <a class='global-r-link' href='#'>World Economic Forum</a>, <a class='global-r-link' href='#'>CBS Bay Area</a>, <a class='global-r-link' href='#'>GiveDirectly</a>, <a class='global-r-link' href='#'>The Life You Can Save</a>, <a class='global-r-link' href='#'>Behavioral Scientist</a>, <a class='global-r-link' href='#'>Michael Walker (taxation findings)</a>, <a class='global-r-link' href='#'>Econimate</a>",
     peer: "Peer-reviewed paper (Econometrica, 2022). Working paper on taxation impacts released in 2018."
   },
   {
@@ -25,7 +25,7 @@
     Location: "Kayonza and Nyabihu districts, Rwanda",
     Overview: "The study explored the cost-effectiveness (impact per dollar) of unconditional cash transfers and of Gikuriro, an integrated nutrition program.",
     active: false,
-    links: "Washington Post, The Economist, NPR, Vox, World Economic Forum, CBS Bay Area, GiveDirectly, The Life You Can Save, Behavioral Scientist, Michael Walker (taxation findings), Econimate",
+    links: "<a class='global-r-link' href='#'>Washington Post</a>, <a class='global-r-link' href='#'>The Economist</a>, <a class='global-r-link' href='#'>NPR</a>, <a class='global-r-link' href='#'>Vox</a>, <a class='global-r-link' href='#'>World Economic Forum</a>, <a class='global-r-link' href='#'>CBS Bay Area</a>, <a class='global-r-link' href='#'>GiveDirectly</a>, <a class='global-r-link' href='#'>The Life You Can Save</a>, <a class='global-r-link' href='#'>Behavioral Scientist</a>, <a class='global-r-link' href='#'>Michael Walker (taxation findings)</a>, <a class='global-r-link' href='#'>Econimate</a>",
     peer: "Peer-reviewed paper (Econometrica, 2022). Working paper on taxation impacts released in 2018."
   },
   {
@@ -34,7 +34,7 @@
     Location: "Iganga district, Uganda",
     Overview: "The study evaluated the impact of $1,000 cash transfers to Ugandan communities where coffee-farming is common.",
     active: false,
-    links: "Washington Post, The Economist, NPR, Vox, World Economic Forum, CBS Bay Area, GiveDirectly, The Life You Can Save, Behavioral Scientist, Michael Walker (taxation findings), Econimate",
+    links: "<a class='global-r-link' href='#'>Washington Post</a>, <a class='global-r-link' href='#'>The Economist</a>, <a class='global-r-link' href='#'>NPR</a>, <a class='global-r-link' href='#'>Vox</a>, <a class='global-r-link' href='#'>World Economic Forum</a>, <a class='global-r-link' href='#'>CBS Bay Area</a>, <a class='global-r-link' href='#'>GiveDirectly</a>, <a class='global-r-link' href='#'>The Life You Can Save</a>, <a class='global-r-link' href='#'>Behavioral Scientist</a>, <a class='global-r-link' href='#'>Michael Walker (taxation findings)</a>, <a class='global-r-link' href='#'>Econimate</a>",
     peer: "Peer-reviewed paper (Econometrica, 2022). Working paper on taxation impacts released in 2018."
   },
   {
@@ -43,7 +43,7 @@
     Location: "Rwanda",
     Overview: "This study benchmarked the impact of a youth employment education intervention to cash transfers in the Rwandan context.",
     active: false,
-    links: "Washington Post, The Economist, NPR, Vox, World Economic Forum, CBS Bay Area, GiveDirectly, The Life You Can Save, Behavioral Scientist, Michael Walker (taxation findings), Econimate",
+    links: "<a class='global-r-link' href='#'>Washington Post</a>, <a class='global-r-link' href='#'>The Economist</a>, <a class='global-r-link' href='#'>NPR</a>, <a class='global-r-link' href='#'>Vox</a>, <a class='global-r-link' href='#'>World Economic Forum</a>, <a class='global-r-link' href='#'>CBS Bay Area</a>, <a class='global-r-link' href='#'>GiveDirectly</a>, <a class='global-r-link' href='#'>The Life You Can Save</a>, <a class='global-r-link' href='#'>Behavioral Scientist</a>, <a class='global-r-link' href='#'>Michael Walker (taxation findings)</a>, <a class='global-r-link' href='#'>Econimate</a>",
     peer: "Peer-reviewed paper (Econometrica, 2022). Working paper on taxation impacts released in 2018."
   },
   {
@@ -52,7 +52,7 @@
     Location: "Siaya County, Kenya",
     Overview: "This study found that the consumption expenditure and income increased for both people who received cash, and those who did not.",
     active: false,
-    links: "Washington Post, The Economist, NPR, Vox, World Economic Forum, CBS Bay Area, GiveDirectly, The Life You Can Save, Behavioral Scientist, Michael Walker (taxation findings), Econimate",
+    links: "<a class='global-r-link' href='#'>Washington Post</a>, <a class='global-r-link' href='#'>The Economist</a>, <a class='global-r-link' href='#'>NPR</a>, <a class='global-r-link' href='#'>Vox</a>, <a class='global-r-link' href='#'>World Economic Forum</a>, <a class='global-r-link' href='#'>CBS Bay Area</a>, <a class='global-r-link' href='#'>GiveDirectly</a>, <a class='global-r-link' href='#'>The Life You Can Save</a>, <a class='global-r-link' href='#'>Behavioral Scientist</a>, <a class='global-r-link' href='#'>Michael Walker (taxation findings)</a>, <a class='global-r-link' href='#'>Econimate</a>",
     peer: "Peer-reviewed paper (Econometrica, 2022). Working paper on taxation impacts released in 2018."
   },
   {
@@ -61,7 +61,7 @@
     Location: "Siaya and Bomet counties, Kenya",
     Overview: "The largest study of UBI to date will explore the impact of a long term basic income (12 years of monthly payments equivalent to $0.75 per day), a short term basic income (2 years at $0.75 per day) and a lump sum equivalent to the total value short term basic income.",
     active: false,
-    links: "Washington Post, The Economist, NPR, Vox, World Economic Forum, CBS Bay Area, GiveDirectly, The Life You Can Save, Behavioral Scientist, Michael Walker (taxation findings), Econimate",
+    links: "<a class='global-r-link' href='#'>Washington Post</a>, <a class='global-r-link' href='#'>The Economist</a>, <a class='global-r-link' href='#'>NPR</a>, <a class='global-r-link' href='#'>Vox</a>, <a class='global-r-link' href='#'>World Economic Forum</a>, <a class='global-r-link' href='#'>CBS Bay Area</a>, <a class='global-r-link' href='#'>GiveDirectly</a>, <a class='global-r-link' href='#'>The Life You Can Save</a>, <a class='global-r-link' href='#'>Behavioral Scientist</a>, <a class='global-r-link' href='#'>Michael Walker (taxation findings)</a>, <a class='global-r-link' href='#'>Econimate</a>",
     peer: "Peer-reviewed paper (Econometrica, 2022). Working paper on taxation impacts released in 2018."
   },
   {
@@ -70,7 +70,7 @@
     Location: "Siaya and Homa Bay counties, Kenya",
     Overview: "This study examines whether short, low-cost motivational interventions drawing on social psychology affect psychological outcomes and economic behaviour.",
     active: false,
-    links: "Washington Post, The Economist, NPR, Vox, World Economic Forum, CBS Bay Area, GiveDirectly, The Life You Can Save, Behavioral Scientist, Michael Walker (taxation findings), Econimate",
+    links: "<a class='global-r-link' href='#'>Washington Post</a>, <a class='global-r-link' href='#'>The Economist</a>, <a class='global-r-link' href='#'>NPR</a>, <a class='global-r-link' href='#'>Vox</a>, <a class='global-r-link' href='#'>World Economic Forum</a>, <a class='global-r-link' href='#'>CBS Bay Area</a>, <a class='global-r-link' href='#'>GiveDirectly</a>, <a class='global-r-link' href='#'>The Life You Can Save</a>, <a class='global-r-link' href='#'>Behavioral Scientist</a>, <a class='global-r-link' href='#'>Michael Walker (taxation findings)</a>, <a class='global-r-link' href='#'>Econimate</a>",
     peer: "Peer-reviewed paper (Econometrica, 2022). Working paper on taxation impacts released in 2018."
   },
   {
@@ -79,7 +79,7 @@
     Location: "Siaya County, Kenya",
     Overview: "This study is measuring the impact of different cash transfer designs, including giving recipients control over timing and giving them information on the performance of investments made by past recipients.",
     active: false,
-    links: "Washington Post, The Economist, NPR, Vox, World Economic Forum, CBS Bay Area, GiveDirectly, The Life You Can Save, Behavioral Scientist, Michael Walker (taxation findings), Econimate",
+    links: "<a class='global-r-link' href='#'>Washington Post</a>, <a class='global-r-link' href='#'>The Economist</a>, <a class='global-r-link' href='#'>NPR</a>, <a class='global-r-link' href='#'>Vox</a>, <a class='global-r-link' href='#'>World Economic Forum</a>, <a class='global-r-link' href='#'>CBS Bay Area</a>, <a class='global-r-link' href='#'>GiveDirectly</a>, <a class='global-r-link' href='#'>The Life You Can Save</a>, <a class='global-r-link' href='#'>Behavioral Scientist</a>, <a class='global-r-link' href='#'>Michael Walker (taxation findings)</a>, <a class='global-r-link' href='#'>Econimate</a>",
     peer: "Peer-reviewed paper (Econometrica, 2022). Working paper on taxation impacts released in 2018."
   },
   {
@@ -88,7 +88,7 @@
     Location: "Bong and Nimba counties, Liberia",
     Overview: "This study will evaluate the impact of different cash transfers sizes ($250 to $750) on a broad range of outcome measures for a broad range of recipients.",
     active: false,
-    links: "Washington Post, The Economist, NPR, Vox, World Economic Forum, CBS Bay Area, GiveDirectly, The Life You Can Save, Behavioral Scientist, Michael Walker (taxation findings), Econimate",
+    links: "<a class='global-r-link' href='#'>Washington Post</a>, <a class='global-r-link' href='#'>The Economist</a>, <a class='global-r-link' href='#'>NPR</a>, <a class='global-r-link' href='#'>Vox</a>, <a class='global-r-link' href='#'>World Economic Forum</a>, <a class='global-r-link' href='#'>CBS Bay Area</a>, <a class='global-r-link' href='#'>GiveDirectly</a>, <a class='global-r-link' href='#'>The Life You Can Save</a>, <a class='global-r-link' href='#'>Behavioral Scientist</a>, <a class='global-r-link' href='#'>Michael Walker (taxation findings)</a>, <a class='global-r-link' href='#'>Econimate</a>",
     peer: "Peer-reviewed paper (Econometrica, 2022). Working paper on taxation impacts released in 2018."
   },
   {
@@ -97,7 +97,7 @@
     Location: "Machinga and Chiradzulu districts, Malawi",
     Overview: "This study will evaluate the impact of different cash transfers sizes ($250 to $750) on a broad range of outcome measures for a broad range of recipients.",
     active: false,
-    links: "Washington Post, The Economist, NPR, Vox, World Economic Forum, CBS Bay Area, GiveDirectly, The Life You Can Save, Behavioral Scientist, Michael Walker (taxation findings), Econimate",
+    links: "<a class='global-r-link' href='#'>Washington Post</a>, <a class='global-r-link' href='#'>The Economist</a>, <a class='global-r-link' href='#'>NPR</a>, <a class='global-r-link' href='#'>Vox</a>, <a class='global-r-link' href='#'>World Economic Forum</a>, <a class='global-r-link' href='#'>CBS Bay Area</a>, <a class='global-r-link' href='#'>GiveDirectly</a>, <a class='global-r-link' href='#'>The Life You Can Save</a>, <a class='global-r-link' href='#'>Behavioral Scientist</a>, <a class='global-r-link' href='#'>Michael Walker (taxation findings)</a>, <a class='global-r-link' href='#'>Econimate</a>",
     peer: "Peer-reviewed paper (Econometrica, 2022). Working paper on taxation impacts released in 2018."
   },
   {
@@ -106,7 +106,7 @@
     Location: "Goma, Democratic Republic of the Congo",
     Overview: "This study will evaluate the impact of different cash transfers sizes to young people living in an urban environment on a broad range of outcome measures.",
     active: false,
-    links: "Washington Post, The Economist, NPR, Vox, World Economic Forum, CBS Bay Area, GiveDirectly, The Life You Can Save, Behavioral Scientist, Michael Walker (taxation findings), Econimate",
+    links: "<a class='global-r-link' href='#'>Washington Post</a>, <a class='global-r-link' href='#'>The Economist</a>, <a class='global-r-link' href='#'>NPR</a>, <a class='global-r-link' href='#'>Vox</a>, <a class='global-r-link' href='#'>World Economic Forum</a>, <a class='global-r-link' href='#'>CBS Bay Area</a>, <a class='global-r-link' href='#'>GiveDirectly</a>, <a class='global-r-link' href='#'>The Life You Can Save</a>, <a class='global-r-link' href='#'>Behavioral Scientist</a>, <a class='global-r-link' href='#'>Michael Walker (taxation findings)</a>, <a class='global-r-link' href='#'>Econimate</a>",
     peer: "Peer-reviewed paper (Econometrica, 2022). Working paper on taxation impacts released in 2018."
   },
   {
@@ -115,7 +115,7 @@
     Location: "Walungu, Democratic Republic of the Congo",
     Overview: "This study will evaluate the effects of delivering cash transfers to young people living in rural areas.",
     active: false,
-    links: "Washington Post, The Economist, NPR, Vox, World Economic Forum, CBS Bay Area, GiveDirectly, The Life You Can Save, Behavioral Scientist, Michael Walker (taxation findings), Econimate",
+    links: "<a class='global-r-link' href='#'>Washington Post</a>, <a class='global-r-link' href='#'>The Economist</a>, <a class='global-r-link' href='#'>NPR</a>, <a class='global-r-link' href='#'>Vox</a>, <a class='global-r-link' href='#'>World Economic Forum</a>, <a class='global-r-link' href='#'>CBS Bay Area</a>, <a class='global-r-link' href='#'>GiveDirectly</a>, <a class='global-r-link' href='#'>The Life You Can Save</a>, <a class='global-r-link' href='#'>Behavioral Scientist</a>, <a class='global-r-link' href='#'>Michael Walker (taxation findings)</a>, <a class='global-r-link' href='#'>Econimate</a>",
     peer: "Peer-reviewed paper (Econometrica, 2022). Working paper on taxation impacts released in 2018."
   },
   {
@@ -124,7 +124,7 @@
     Location: "Kiryandongo, Uganda",
     Overview: "This study will explore the impact of $1,000 cash transfers on refugee households and their host communities.",
     active: false,
-    links: "Washington Post, The Economist, NPR, Vox, World Economic Forum, CBS Bay Area, GiveDirectly, The Life You Can Save, Behavioral Scientist, Michael Walker (taxation findings), Econimate",
+    links: "<a class='global-r-link' href='#'>Washington Post</a>, <a class='global-r-link' href='#'>The Economist</a>, <a class='global-r-link' href='#'>NPR</a>, <a class='global-r-link' href='#'>Vox</a>, <a class='global-r-link' href='#'>World Economic Forum</a>, <a class='global-r-link' href='#'>CBS Bay Area</a>, <a class='global-r-link' href='#'>GiveDirectly</a>, <a class='global-r-link' href='#'>The Life You Can Save</a>, <a class='global-r-link' href='#'>Behavioral Scientist</a>, <a class='global-r-link' href='#'>Michael Walker (taxation findings)</a>, <a class='global-r-link' href='#'>Econimate</a>",
     peer: "Peer-reviewed paper (Econometrica, 2022). Working paper on taxation impacts released in 2018."
   },
   {
@@ -133,7 +133,7 @@
     Location: "United States",
     Overview: "This study evaluates the impact of $1,000 cash transfers provided to low-income families across the U.S. during the COVID-19 pandemic.",
     active: false,
-    links: "Washington Post, The Economist, NPR, Vox, World Economic Forum, CBS Bay Area, GiveDirectly, The Life You Can Save, Behavioral Scientist, Michael Walker (taxation findings), Econimate",
+    links: "<a class='global-r-link' href='#'>Washington Post</a>, <a class='global-r-link' href='#'>The Economist</a>, <a class='global-r-link' href='#'>NPR</a>, <a class='global-r-link' href='#'>Vox</a>, <a class='global-r-link' href='#'>World Economic Forum</a>, <a class='global-r-link' href='#'>CBS Bay Area</a>, <a class='global-r-link' href='#'>GiveDirectly</a>, <a class='global-r-link' href='#'>The Life You Can Save</a>, <a class='global-r-link' href='#'>Behavioral Scientist</a>, <a class='global-r-link' href='#'>Michael Walker (taxation findings)</a>, <a class='global-r-link' href='#'>Econimate</a>",
     peer: "Peer-reviewed paper (Econometrica, 2022). Working paper on taxation impacts released in 2018."
   }
 ];
@@ -255,7 +255,7 @@
                 <path d="M8 1.5C6.71442 1.5 5.45772 1.88122 4.3888 2.59545C3.31988 3.30968 2.48676 4.32484 1.99479 5.51256C1.50282 6.70028 1.37409 8.00721 1.6249 9.26809C1.8757 10.529 2.49477 11.6872 3.40381 12.5962C4.31285 13.5052 5.47104 14.1243 6.73192 14.3751C7.99279 14.6259 9.29973 14.4972 10.4874 14.0052C11.6752 13.5132 12.6903 12.6801 13.4046 11.6112C14.1188 10.5423 14.5 9.28558 14.5 8C14.498 6.2767 13.8126 4.62455 12.594 3.406C11.3754 2.18744 9.7233 1.50198 8 1.5ZM13.5 8C13.5004 8.50723 13.4304 9.01205 13.2919 9.5H10.885C11.0383 8.50588 11.0383 7.49412 10.885 6.5H13.2919C13.4304 6.98795 13.5004 7.49277 13.5 8ZM6.375 10.5H9.625C9.30482 11.5491 8.74899 12.5111 8 13.3125C7.2513 12.5109 6.69551 11.549 6.375 10.5ZM6.13125 9.5C5.95959 8.50737 5.95959 7.49263 6.13125 6.5H9.87375C10.0454 7.49263 10.0454 8.50737 9.87375 9.5H6.13125ZM2.5 8C2.49957 7.49277 2.56961 6.98795 2.70813 6.5H5.115C4.96167 7.49412 4.96167 8.50588 5.115 9.5H2.70813C2.56961 9.01205 2.49957 8.50723 2.5 8ZM9.625 5.5H6.375C6.69518 4.45088 7.25102 3.48886 8 2.6875C8.74871 3.48908 9.3045 4.45102 9.625 5.5ZM12.8956 5.5H10.6694C10.3888 4.47057 9.91588 3.50355 9.27563 2.65C10.0492 2.83583 10.7734 3.18674 11.3987 3.67866C12.024 4.17058 12.5355 4.79189 12.8981 5.5H12.8956ZM6.72438 2.65C6.08413 3.50355 5.61122 4.47057 5.33063 5.5H3.10188C3.46455 4.79189 3.97605 4.17058 4.60131 3.67866C5.22657 3.18674 5.95081 2.83583 6.72438 2.65ZM3.10188 10.5H5.33063C5.61122 11.5294 6.08413 12.4965 6.72438 13.35C5.95081 13.1642 5.22657 12.8133 4.60131 12.3213C3.97605 11.8294 3.46455 11.2081 3.10188 10.5ZM9.27563 13.35C9.91588 12.4965 10.3888 11.5294 10.6694 10.5H12.8981C12.5355 11.2081 12.024 11.8294 11.3987 12.3213C10.7734 12.8133 10.0492 13.1642 9.27563 13.35Z" fill="var(--ui-brand)" />
                 </svg>
                 <div class="text">
-                  <p class="small">{research.links}</p>
+                  <p class="small">{@html research.links}</p>
                 </div>
             </div>
 
@@ -329,11 +329,26 @@
       z-index: 101;
       // box-shadow: 0 0 0 1px var(--ui-border);
       box-shadow:  0 0 0 1px var(--ui-border), 0px 235px 66px 0px rgba(0, 0, 0, 0.00), 0px 150px 60px 0px rgba(0, 0, 0, 0.01), 0px 85px 51px 0px rgba(0, 0, 0, 0.05), 0px 38px 38px 0px rgba(0, 0, 0, 0.09), 0px 9px 21px 0px rgba(0, 0, 0, 0.10);
-        z-index: 100;
+      z-index: 100;
 
-        &::before {
-          display: none;
-        }
+      &::before {
+        display: none;
+      }
+
+      // &:after {
+      //   content: "";
+      //   position: absolute;
+      //   top: 100px;
+      //   left: 50%;
+      //   transform: translate(-50%, 0);
+      //   width: 160px;
+      //   height: 186px;
+      //   background: url('/research/kenya.svg') no-repeat;
+      //   pointer-events: none;
+      //   z-index: 1;
+      //   opacity: 0.1;
+      //   // transition: all 0.2s ease-in-out;
+      // }
     }
     
     .unit {
@@ -347,6 +362,21 @@
       flex-direction: column;
       justify-content: space-between;
       gap: var(--ui-s3);
+
+      // &:after {
+      //   content: "";
+      //   position: absolute;
+      //   top: 100px;
+      //   left: 50%;
+      //   transform: translate(-50%, 0);
+      //   width: 160px;
+      //   height: 186px;
+      //   background: url('/research/kenya.svg') no-repeat;
+      //   pointer-events: none;
+      //   z-index: 1;
+      //   opacity: 0;
+      //   transition: all 0.2s ease-in-out;
+      // }
 
 
       &.active {
@@ -370,6 +400,10 @@
       }
 
       &:hover {
+
+        &:after {
+          opacity: 0.1;
+        }
 
         &::before {
           content: "";
@@ -400,6 +434,8 @@
         margin-bottom: var(--ui-s-1);
         color: var(--ui-brand);
         text-wrap: pretty;
+        position: relative;
+        z-index: 100;
       }
 
       p {
@@ -408,12 +444,21 @@
         line-height: var(--ui-lh);
         color: var(--ui-fg);
         text-wrap: pretty;
+        position: relative;
+        z-index: 100;
+
+        a {
+          color: var(--ui-fg-muted);
+          text-decoration: none !important;
+        }
 
         &.small {
           font-size: var(--ui-f2);
-          color: var(--ui-brand);
+          color: var(--ui-fg-muted);
           font-style: italic;
+          
         }
+
       }
       
       p + p {
@@ -476,6 +521,11 @@
     }
   }
 
+  :global(.global-r-link){
+    color: var(--ui-fg-muted);
+    text-decoration: underline;
+  }
+
   .inline {
     display: inline;
     padding: 0;
@@ -504,6 +554,8 @@
     display: flex;
     gap: var(--ui-s-4);
     padding: var(--ui-s0) 0;
+    position: relative;
+    z-index: 100;
   }
 
 </style>
